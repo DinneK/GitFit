@@ -10,7 +10,7 @@ README!!!!
 
 
 ## Illustrations
-  ![What's For Dinner?](https://frontend.turing.edu/projects/module-1/assets/dinner/dinner_0.png)
+  ![GITFIT](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Golde33443.jpg/640px-Golde33443.jpg)
 
 ## Features
 - Any of the radio buttons chosen will output a specific item from that array.
