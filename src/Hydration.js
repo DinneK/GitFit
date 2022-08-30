@@ -17,7 +17,6 @@ class Hydration {
   }
 
   getAverageAllTimeFluidOunces(user) {
-    //console.log(this.findUserByID(user).length);
     const averageOunces = this.findUserByID(user).reduce((acc, curr) => {
       return (acc += curr.numOunces);
     }, 0);
@@ -30,6 +29,20 @@ class Hydration {
     //add all the ounces on the array
     //divide the ounces by the length of the array
     //return the average ounces
+  }
+
+  findFluidOuncesPerDay(userDay, date) {
+    //console.log(this.findUserByID(userDay));
+    const specificDayOunces = this.findUserByID(userDay).find(
+      (day) => day.date === date
+    );
+    return specificDayOunces.numOunces;
+    //find the specific user
+    //check the specific day in that user's array
+    //if a specific day matches the requested day
+    //return the day
+    //check the ounces for that day
+    //return the ounces for that day
   }
 }
 

@@ -75,4 +75,19 @@ describe("Hydration", () => {
     expect(hydration.getAverageAllTimeFluidOunces(user1.userId)).to.equal(54);
     expect(hydration.getAverageAllTimeFluidOunces(user2.userId)).to.equal(69);
   });
+
+  it("should return ounces for specific day", () => {
+    expect(
+      hydration.findFluidOuncesPerDay(user1.userId, "2019/06/21")
+    ).to.equal(55);
+    expect(
+      hydration.findFluidOuncesPerDay(user1.userId, "2019/06/16")
+    ).to.equal(48);
+    expect(
+      hydration.findFluidOuncesPerDay(user2.userId, "2019/06/20")
+    ).to.equal(72);
+    expect(
+      hydration.findFluidOuncesPerDay(user2.userId, "2019/06/17")
+    ).to.equal(27);
+  });
 });
