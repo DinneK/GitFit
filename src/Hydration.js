@@ -15,6 +15,22 @@ class Hydration {
     }, []);
     return userHydrationInfo;
   }
+
+  getAverageAllTimeFluidOunces(user) {
+    //console.log(this.findUserByID(user).length);
+    const averageOunces = this.findUserByID(user).reduce((acc, curr) => {
+      return (acc += curr.numOunces);
+    }, 0);
+    //console.log(averageOunces / this.findUserByID(user).length);
+    return parseInt(
+      (averageOunces / this.findUserByID(user).length).toFixed(0)
+    );
+    //return the individual user array
+    //look at the numOunces on each object in the array
+    //add all the ounces on the array
+    //divide the ounces by the length of the array
+    //return the average ounces
+  }
 }
 
 export default Hydration;

@@ -70,4 +70,9 @@ describe("Hydration", () => {
       { userID: 2, date: "2019/06/21", numOunces: 36 },
     ]);
   });
+
+  it("should return the all time fluid ounces a person has drank", () => {
+    expect(hydration.getAverageAllTimeFluidOunces(user1.userId)).to.equal(54);
+    expect(hydration.getAverageAllTimeFluidOunces(user2.userId)).to.equal(69);
+  });
 });
