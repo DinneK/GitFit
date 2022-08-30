@@ -53,12 +53,22 @@ We will need to finish our project board:
 ### Monday 08/29/22
 
 - We created the `mockUserData.js`, `mockHydrationData.js`, `mockSleepData.js`
+- We also created the the `User.js`, `UserHydration.js` and the `UserRepository.js` class.
+- Along with the classes we created our constructors and our test files to accompany the classes.
+
+
 
 - Challenges:
-     - Dinne: 
-     - Matt:
-     - Dani: 
+     - Dinne: 'This is slower than I thought it would go. I'm Finding it challenging to actually type out the implementation that we talked out loud as a group during our preplanning."
+     - Matt: "Making my idea on my head match the idea on paper. Took a while to lean into the actual planning we created. It was a challenge to actually walk down the path we have set out for ourselves when created the map"
+     - Dani: On a personal level, my biggest challenge was dealing with the personal thoughts that held me from focus. On the technical end, the challenge is understanding how to handle big data sets. "We are handling big datasets for class, and will most definitely have to out in the real world, so how exactly do we delegate the data for optimal 'reach' and access?"
 - Wins:
-     - Dinne: 
-     - Matt:
-     - Dani: 
+     - Dinne: Excited for how far we have gotten with actually understanding our roadmap, and how well we work together.
+     - Matt: "However, the challenge is also the reward. We have an actual map that we can follow!"
+     - Dani: "My biggest win is feeling excited to work with this team! We tried out dividing and conquering today and I think that it worked out well. We were all in the same breakout room and we were able to check in on each other."
+
+- To Do Tomorrow:
+     - We have to finish our `User.js`, `UserRepository.js` and `Hydration.js` classes
+     - Start our `Sleep.js` class.
+     - Finsih our tentative wireframe
+     
