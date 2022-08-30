@@ -71,4 +71,4 @@ const mockUserData = [
   }
 ]
 
-module.exports = mockUserData
+export default mockUserData;
