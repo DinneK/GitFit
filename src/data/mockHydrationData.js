@@ -69,6 +69,16 @@ const mockHydrationData = [
     date: "2019/06/21",
     numOunces: 36,
   },
+  {
+    userID: 1,
+    date: "2019/06/22",
+    numOunces: 46,
+  },
+  {
+    userID: 2,
+    date: "2019/06/22",
+    numOunces: 39,
+  },
 ];
 
 export default mockHydrationData;
