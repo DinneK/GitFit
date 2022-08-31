@@ -65,6 +65,14 @@ class Hydration {
     );
     return weekDays;
   }
+
+  returnAWeekOfOunces(userWeek, date) {
+    const weekOunces = [];
+    this.findAWeekOfDateData(userWeek, date).forEach((day) =>
+      weekOunces.push(day.numOunces)
+    );
+    return weekOunces;
+  }
 }
 
 export default Hydration;

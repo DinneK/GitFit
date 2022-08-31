@@ -141,4 +141,14 @@ describe("Hydration", () => {
       "2019/06/21",
     ]);
   });
+
+  it("should return a weeks worth of ounces per day", () => {
+    expect(
+      hydration.returnAWeekOfOunces(user1.userId, "2019/06/21")
+    ).to.deep.equal([37, 48, 91, 62, 48, 38, 55]);
+
+    expect(
+      hydration.returnAWeekOfOunces(user2.userId, "2019/06/21")
+    ).to.deep.equal([75, 82, 27, 127, 62, 72, 36]);
+  });
 });
