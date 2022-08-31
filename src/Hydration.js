@@ -31,7 +31,7 @@ class Hydration {
     //return the average ounces
   }
 
-  findFluidOuncesPerDay(userDay, date) {
+  getFluidOuncesPerDay(userDay, date) {
     //console.log(this.findUserByID(userDay));
     const specificDayOunces = this.findUserByID(userDay).find(
       (day) => day.date === date
@@ -43,6 +43,25 @@ class Hydration {
     //return the day
     //check the ounces for that day
     //return the ounces for that day
+  }
+
+  findAWeekOfDays(userWeek, date) {
+    const specificUser = this.findUserByID(userWeek);
+    const getDayByIndex = specificUser.findIndex((day) => day.date === date);
+    const backToDate = specificUser.slice(0, getDayByIndex + 1);
+    const weekDays = backToDate.slice(-7).map((dates) => dates.date);
+    return weekDays;
+    //should grab a specific user
+    //look at all the dates in that object
+    //for the most current date
+    //subtract 7 days
+    //return each of those in reverse order
+  }
+
+  getOuncesDailyOuncesPerWeek(user, date) {
+    const days = this.findAWeekOfDays(user, date);
+    console.log({ days });
+    console.log("findUser", this.findUserByID(user).date);
   }
 }
 

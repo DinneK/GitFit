@@ -3,7 +3,6 @@ import mockHydrationData from "../src/data/mockHydrationData";
 import mockUserData from "../src/data/mockUserData";
 import Hydration from "../src/Hydration";
 import User from "../src/User";
-//src/data/mockHydrationData.js
 
 describe("Hydration", () => {
   let hydration, user1, user2;
@@ -77,17 +76,49 @@ describe("Hydration", () => {
   });
 
   it("should return ounces for specific day", () => {
+    expect(hydration.getFluidOuncesPerDay(user1.userId, "2019/06/21")).to.equal(
+      55
+    );
+    expect(hydration.getFluidOuncesPerDay(user1.userId, "2019/06/16")).to.equal(
+      48
+    );
+    expect(hydration.getFluidOuncesPerDay(user2.userId, "2019/06/20")).to.equal(
+      72
+    );
+    expect(hydration.getFluidOuncesPerDay(user2.userId, "2019/06/17")).to.equal(
+      27
+    );
+  });
+
+  it("should return a weeks worth of dates", () => {
+    expect(hydration.findAWeekOfDays(user1.userId, "2019/06/21")).to.deep.equal(
+      [
+        "2019/06/15",
+        "2019/06/16",
+        "2019/06/17",
+        "2019/06/18",
+        "2019/06/19",
+        "2019/06/20",
+        "2019/06/21",
+      ]
+    );
+
+    expect(hydration.findAWeekOfDays(user2.userId, "2019/06/21")).to.deep.equal(
+      [
+        "2019/06/15",
+        "2019/06/16",
+        "2019/06/17",
+        "2019/06/18",
+        "2019/06/19",
+        "2019/06/20",
+        "2019/06/21",
+      ]
+    );
+  });
+
+  it("should return the ounces drank on each day of the week", () => {
     expect(
-      hydration.findFluidOuncesPerDay(user1.userId, "2019/06/21")
-    ).to.equal(55);
-    expect(
-      hydration.findFluidOuncesPerDay(user1.userId, "2019/06/16")
-    ).to.equal(48);
-    expect(
-      hydration.findFluidOuncesPerDay(user2.userId, "2019/06/20")
-    ).to.equal(72);
-    expect(
-      hydration.findFluidOuncesPerDay(user2.userId, "2019/06/17")
-    ).to.equal(27);
+      hydration.getOuncesDailyOuncesPerWeek(user1.userId, "2019/06/21")
+    ).to.deep.equal([]);
   });
 });
