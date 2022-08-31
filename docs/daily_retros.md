@@ -72,3 +72,20 @@ We will need to finish our project board:
      - Start our `Sleep.js` class.
      - Finsih our tentative wireframe
      
+
+### Tuesday 08/30/22
+- Today we created 
+
+- Challenges:
+     - Dinne: "Sticking to the poms today."
+     - Matt: "I feel like I lost total scope on 'something', but everything worked out. we're still on the general path." 
+     - Dani: "My challenge was not getting too ahead of myself with preplanning."
+- Wins:
+     - Dinne: "I was able to build two methods without any outside help! First time I was able to write my own code in a group setting. I feel like I have been able to write down my own ideas and to implement my own code. It doesn't feel like I'm blindfolded and throwing darts at a dartboard. My coding feels that much more intentional."
+     - Matt: "Just how quick I was able to build the function and build the user class! I never actually done the test driven dev on my own without looking at previous work I've done."
+     - Dani: "being able to voice my concerns about our class-to-class communication and come to an understanding with my team. As I'm writing out the `UserRepository` class, I noticed that data sets would have to get passsed through either the `User` class or the `UserRepository` class, but the wording on the project spec is not clear. this led me down a path of "what ifs', which I honestly would not have stepped out of if it wasn't for communicating this to my team. We were able to come to an understanding where we were all able to get an even clearer picture of the finished product."
+
+- To do tomorrow:
+     - Finish UserREspository
+     - Matt and Dani will start `Sleep.js` class
+     - Dinne will work on the wireframe 

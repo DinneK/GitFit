@@ -56,13 +56,11 @@ describe("User", function () {
     expect(user2.friends).to.be.an("array");
   });
 
-  describe('getFirstName', function() {
-    it('Should be able to return the user\'s fisrt name', function() {
-      user1.getFirstName();
-      user2.getFirstName();
-      expect(user1.firstName).to.equal('Luisa');
-      expect(user2.firstName).to.equal('Jarvis')
-    }) 
-})
+  it('Should be able to return the user\'s fisrt name', function() {
+    user1.getFirstName();
+    user2.getFirstName();
+    expect(user1.firstName).to.equal('Luisa');
+    expect(user2.firstName).to.equal('Jarvis')
+  }) 
 })
 
