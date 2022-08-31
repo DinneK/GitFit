@@ -3,18 +3,22 @@ import mockUserData from "../src/data/mockUserData";
 
 import User from "../src/User";
 
+
 describe("User", function () {
   let user1, user2, mockUserData0, mockUserData1;
+
 
   beforeEach(() => {
     user1 = new User(mockUserData[0]);
     user2 = new User(mockUserData[1]);
   });
 
+
   it("should instantiate a new instance of User", function () {
     //console.log(user1)
     expect(user1).to.be.an.instanceof(User);
   });
+
 
   it("should instantiate a second new instance of User", function () {
     //console.log(user2)
@@ -65,6 +69,7 @@ describe("User", function () {
     expect(user2.dailyStepGoal).to.equal(5000);
   });
 
+
   it("should have an array of user friend's id numbers", function () {
     //console.log('User 1 friends: ' + user1.friends);
     expect(user1.friends).to.deep.equal([16, 4, 8]);
@@ -74,3 +79,18 @@ describe("User", function () {
     expect(user2.friends).to.be.an("array");
   });
 });
+
+    describe('getFirstName', function() {
+        
+        it('Should be able to return the user\'s fisrt name', function() {
+            user1.getFirstName();
+            user2.getFirstName();
+            console.log(user1.firstName);
+            expect(user1.firstName).to.equal('Luisa');
+            console.log(user2.firstName);
+            expect(user2.firstName).to.equal('Jarvis')
+        }) 
+    })
+
+})
+
