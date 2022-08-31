@@ -7,10 +7,19 @@ class UserRepository {
     }
 
     returnUserData(id) {
-        const sample = this.users.filter(user => {
+        const userObj = this.users.filter(user => {
             return user.userId === id;
         })
-        return sample;
+        return userObj;
+    }
+
+    returnAllAvgStepGoals() {
+        const allAvg = this.users.reduce((stepAvg, user) => {
+            return stepAvg + user.dailyStepGoal;
+        }, 0) / this.users.length;
+
+        console.log(allAvg);
+        return allAvg;
     }
 
 }

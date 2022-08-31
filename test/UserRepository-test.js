@@ -41,4 +41,10 @@ describe('UserRepository', () => {
     });
   });
 
+  // returnAllAvgStepGoals()
+  it.only('Should be able to return the average step goals of all users', function() {
+    const totalStepAvgs = users1.returnAllAvgStepGoals();
+    expect(totalStepAvgs).to.be.equal(6400);
+  });
+
 });
