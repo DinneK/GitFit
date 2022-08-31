@@ -13,6 +13,7 @@ class Hydration {
       }
       return acc;
     }, []);
+    //console.log(userHydrationInfo);
     return userHydrationInfo;
   }
 
