@@ -78,7 +78,7 @@ describe("User", function () {
     expect(user2.friends).to.deep.equal([9, 18, 24, 19]);
     expect(user2.friends).to.be.an("array");
   });
-});
+
 
     describe('getFirstName', function() {
         
