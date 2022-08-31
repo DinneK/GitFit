@@ -13,7 +13,7 @@ describe('Sleep', () => {
         user2 = new User(mockUserData[1]);
     });
 
-    it('Should read the sleep data', () => {
+    it.only('Should read the sleep data', () => {
         expect(sleep.sleepData[0]).to.deep.equal({
             userID: 1, date: "2019/06/15", hoursSlept: 6.1, sleepQuality: 2.2,
         });
@@ -24,7 +24,7 @@ describe('Sleep', () => {
     });
 
     // Find user sleep data
-    it('Should return a specific user\'s sleep data', () => {
+    it.only('Should return a specific user\'s sleep data', () => {
         const userSleepData = sleep.findUserSleepData(2);
         
         expect(userSleepData[0]).to.deep.equal({
@@ -33,8 +33,13 @@ describe('Sleep', () => {
     });
 
     // Find user avg hours slept per day
-    it('Should return a user\'s average hours slept per day', () => {
-        
+    it.only('Should return a user\'s average hours slept per day', () => {
+        const userAvgSleepData = sleep.avgSleepHoursPerDay(1);
+        console.log(userAvgSleepData)
+
+        expect(userAvgSleepData).to.deep.equal({
+            userID: 1, date: "2019/06/15", hoursSlept: 6.1, sleepQuality: 2.2,
+  })
     })
 
 });

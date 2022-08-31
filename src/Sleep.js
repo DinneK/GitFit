@@ -15,12 +15,14 @@ class Sleep {
     }
 
     avgSleepHoursPerDay(userId) {
-        const userData = this.sleepData.reduce((data, user) => {
-            if(user.userId === userId){
-                data.push(user);
+        const userData = this.sleepData.reduce((avg, user) => {
+            if(user.userID === userId){
+                avg.push(user);
             }
-        })
-        console.log(user)
+            return avg
+        }, []);
+
+        return userData
     }
     
 }
