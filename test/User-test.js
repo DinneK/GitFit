@@ -59,8 +59,6 @@ describe("User", function () {
   it('Should be able to return the user\'s fisrt name', function() {
     expect(user1.getFirstName()).to.equal('Luisa');
     expect(user2.getFirstName()).to.equal('Jarvis');
-    console.log(user1.getFirstName());
-    console.log(user2.getFirstName());
   }) 
 })
 
