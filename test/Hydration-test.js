@@ -116,9 +116,29 @@ describe("Hydration", () => {
     ]);
   });
 
-  it("should return the ounces drank on each day of the week", () => {
+  it("should return a weeks worth of dates", () => {
     expect(
-      hydration.getOuncesDailyOuncesPerWeek(user1.userId, "2019/06/21")
-    ).to.deep.equal([]);
+      hydration.returnAWeekOfDates(user1.userId, "2019/06/21")
+    ).to.deep.equal([
+      "2019/06/15",
+      "2019/06/16",
+      "2019/06/17",
+      "2019/06/18",
+      "2019/06/19",
+      "2019/06/20",
+      "2019/06/21",
+    ]);
+
+    expect(
+      hydration.returnAWeekOfDates(user2.userId, "2019/06/21")
+    ).to.deep.equal([
+      "2019/06/15",
+      "2019/06/16",
+      "2019/06/17",
+      "2019/06/18",
+      "2019/06/19",
+      "2019/06/20",
+      "2019/06/21",
+    ]);
   });
 });

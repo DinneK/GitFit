@@ -49,8 +49,8 @@ class Hydration {
     const specificUser = this.findUserByID(userWeek);
     const getDayByIndex = specificUser.findIndex((day) => day.date === date);
     const backToDate = specificUser.slice(0, getDayByIndex + 1);
-    const weekDays = backToDate.slice(-7).map((dates) => dates);
-    return weekDays;
+    const weekData = backToDate.slice(-7).map((dates) => dates);
+    return weekData;
     //should grab a specific user
     //look at all the dates in that object
     //for the most current date
@@ -58,13 +58,13 @@ class Hydration {
     //return each of those in reverse order
   }
 
-  // getOuncesDailyOuncesPerWeek(user, date) {
-  //   const days = this.findAWeekOfDays(user, date);
-  //   console.log({ days });
-  //   console.log("findUser", this.findUserByID(user));
-  //   //iterate over the days for the week
-  //   //iterate over the findUserByID array
-  // }
+  returnAWeekOfDates(userWeek, date) {
+    const weekDays = [];
+    this.findAWeekOfDateData(userWeek, date).forEach((day) =>
+      weekDays.push(day.date)
+    );
+    return weekDays;
+  }
 }
 
 export default Hydration;
