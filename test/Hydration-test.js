@@ -90,30 +90,30 @@ describe("Hydration", () => {
     );
   });
 
-  it("should return a weeks worth of dates", () => {
-    expect(hydration.findAWeekOfDays(user1.userId, "2019/06/21")).to.deep.equal(
-      [
-        "2019/06/15",
-        "2019/06/16",
-        "2019/06/17",
-        "2019/06/18",
-        "2019/06/19",
-        "2019/06/20",
-        "2019/06/21",
-      ]
-    );
+  it("should return a weeks worth of data", () => {
+    expect(
+      hydration.findAWeekOfDateData(user1.userId, "2019/06/21")
+    ).to.deep.equal([
+      { userID: 1, date: "2019/06/15", numOunces: 37 },
+      { userID: 1, date: "2019/06/16", numOunces: 48 },
+      { userID: 1, date: "2019/06/17", numOunces: 91 },
+      { userID: 1, date: "2019/06/18", numOunces: 62 },
+      { userID: 1, date: "2019/06/19", numOunces: 48 },
+      { userID: 1, date: "2019/06/20", numOunces: 38 },
+      { userID: 1, date: "2019/06/21", numOunces: 55 },
+    ]);
 
-    expect(hydration.findAWeekOfDays(user2.userId, "2019/06/21")).to.deep.equal(
-      [
-        "2019/06/15",
-        "2019/06/16",
-        "2019/06/17",
-        "2019/06/18",
-        "2019/06/19",
-        "2019/06/20",
-        "2019/06/21",
-      ]
-    );
+    expect(
+      hydration.findAWeekOfDateData(user2.userId, "2019/06/21")
+    ).to.deep.equal([
+      { userID: 2, date: "2019/06/15", numOunces: 75 },
+      { userID: 2, date: "2019/06/16", numOunces: 82 },
+      { userID: 2, date: "2019/06/17", numOunces: 27 },
+      { userID: 2, date: "2019/06/18", numOunces: 127 },
+      { userID: 2, date: "2019/06/19", numOunces: 62 },
+      { userID: 2, date: "2019/06/20", numOunces: 72 },
+      { userID: 2, date: "2019/06/21", numOunces: 36 },
+    ]);
   });
 
   it("should return the ounces drank on each day of the week", () => {
