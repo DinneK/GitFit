@@ -14,7 +14,7 @@ describe('UserRepository', () => {
     expect(UserRepository).to.be.a('function');
   });
 
-  itnly('should instantiate UserRepository', function() {
+  it('should instantiate UserRepository', function() {
     expect(users1).to.be.an.instanceOf(UserRepository);
   });
 
@@ -26,7 +26,6 @@ describe('UserRepository', () => {
     expect(users1.users).to.be.an('array');
   });
 
-  // returnUserData()
   it('Should be able to return user data based on Id', function() {
     const user1Data = users1.returnUserData(2);
     expect(user1Data[0]).to.be.deep.equal({
@@ -37,11 +36,9 @@ describe('UserRepository', () => {
       strideLength: 4.5,
       dailyStepGoal: 5000,
       friends: [ 9, 18, 24, 19 ],
-      firstName: ''
     });
   });
 
-  // returnAllAvgStepGoals()
   it('Should be able to return the average step goals of all users', function() {
     const totalStepAvgs = users1.returnAllAvgStepGoals();
     expect(totalStepAvgs).to.be.equal(6400);
