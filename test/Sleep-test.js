@@ -23,6 +23,7 @@ describe('Sleep', () => {
         });
     });
 
+    // Find user sleep data
     it('Should return a specific user\'s sleep data', () => {
         const userSleepData = sleep.findUserSleepData(2);
         
@@ -31,5 +32,9 @@ describe('Sleep', () => {
         });
     });
 
+    // Find user avg hours slept per day
+    it('Should return a user\'s average hours slept per day', () => {
+        
+    })
 
 });
