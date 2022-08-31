@@ -9,6 +9,11 @@ class User {
         this.strideLength = data.strideLength;
         this.dailyStepGoal = data.dailyStepGoal;
         this.friends = data.friends;
+        this.firstName = '';
+    }
+    getFirstName() {
+        const [first, last] = this.name.split(' ');
+        this.firstName = first;
     }
 }
 
