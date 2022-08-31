@@ -57,10 +57,10 @@ describe("User", function () {
   });
 
   it('Should be able to return the user\'s fisrt name', function() {
-    user1.getFirstName();
-    user2.getFirstName();
-    expect(user1.firstName).to.equal('Luisa');
-    expect(user2.firstName).to.equal('Jarvis')
+    expect(user1.getFirstName()).to.equal('Luisa');
+    expect(user2.getFirstName()).to.equal('Jarvis');
+    console.log(user1.getFirstName());
+    console.log(user2.getFirstName());
   }) 
 })
 
