@@ -15,17 +15,21 @@ describe('Sleep', () => {
 
     it('Should read the sleep data', () => {
         expect(sleep.sleepData[0]).to.deep.equal({
-            userID: 1,
-            date: "2019/06/15",
-            hoursSlept: 6.1,
-            sleepQuality: 2.2,
+            userID: 1, date: "2019/06/15", hoursSlept: 6.1, sleepQuality: 2.2,
         });
+
         expect(sleep.sleepData[1]).to.deep.equal({
-            userID: 2,
-            date: "2019/06/15",
-            hoursSlept: 7,
-            sleepQuality: 4.7,
+            userID: 2, date: "2019/06/15", hoursSlept: 7, sleepQuality: 4.7,
         });
     });
+
+    it('Should return a specific user\'s sleep data', () => {
+        const userSleepData = sleep.findUserSleepData(2);
+        
+        expect(userSleepData[0]).to.deep.equal({
+            userID: 2, date: "2019/06/15", hoursSlept: 7, sleepQuality: 4.7,
+        });
+    });
+
 
 });
