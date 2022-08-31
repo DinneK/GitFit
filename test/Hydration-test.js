@@ -9,10 +9,8 @@ describe("Hydration", () => {
 
   beforeEach(() => {
     hydration = new Hydration(mockHydrationData);
-    //console.log(hydration.hydrationData);
     user1 = new User(mockUserData[0]);
     user2 = new User(mockUserData[1]);
-    //console.log(user2);
   });
 
   it("should be a function", () => {
@@ -43,12 +41,6 @@ describe("Hydration", () => {
       { userID: 2, date: "2019/06/22", numOunces: 39 },
     ]);
   });
-
-  // it.skip("should have an ID", () => {
-  //   //console.log("hydration", hydration.hydrationData);
-  //   hydration.hydrationData.forEach((hyd) => console.log(hyd.userID));
-  //   expect(hydration.hydrationUserID).to.equal(1);
-  // });
 
   it("should return the hydration data for a particular user", () => {
     expect(hydration.findUserByID(user1.userId)).to.deep.equal([
