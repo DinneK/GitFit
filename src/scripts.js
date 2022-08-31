@@ -18,8 +18,19 @@ import User from "./User";
 import UserRepository from "./UserRepository";
 
 //SELECTORS
+//USER SELECTORS
+const userWidget = document.querySelector(".user-info-widget");
+const userWelcome = document.querySelector(".welcome-message");
+const userInfo = document.querySelector(".user-info-card");
+
+//HYDRATION SELECTORS
+//SLEEP SELECTORS
 
 //EVENT LISTENERS
+window.addEventListener("load", () => {
+  renderWelcomeMessage();
+  renderUserInfo();
+});
 
 //GLOBAL VARIABLES
 let currentUser;
@@ -33,3 +44,17 @@ console.log({ currentUser });
 //HELPER FUNCTIONS
 
 //FUNCTIONS
+function renderWelcomeMessage() {
+  userWelcome.innerHTML = `<section class="welcome-message">Welcome Back ${currentUser.getFirstName()}</section>`;
+}
+
+function renderUserInfo() {
+  userWidget.innerHTML = `<section class="user-info-card">
+    <p class="user-info">
+      Email: ${currentUser.email}<br>
+      Addres: ${currentUser.address}<br>
+      Stride Length: ${currentUser.strideLength}<br>
+      Daily Step Goal: ${currentUser.dailyStepGoal}<br>
+    </p>
+  </section>`;
+}
