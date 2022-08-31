@@ -34,12 +34,11 @@ describe('Sleep', () => {
 
     // Find user avg hours slept per day
     it.only('Should return a user\'s average hours slept per day', () => {
-        const userAvgSleepData = sleep.avgSleepHoursPerDay(1);
-        console.log(userAvgSleepData)
+        const userAvgSleepData1 = sleep.avgSleepHoursPerDay(1);
+        const userAvgSleepData2 = sleep.avgSleepHoursPerDay(2);
 
-        expect(userAvgSleepData).to.deep.equal({
-            userID: 1, date: "2019/06/15", hoursSlept: 6.1, sleepQuality: 2.2,
-  })
+        expect(userAvgSleepData1).to.equal(6.34);
+        expect(userAvgSleepData2).to.equal(6.5);
     })
 
 });

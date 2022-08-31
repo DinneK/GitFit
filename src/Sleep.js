@@ -15,16 +15,18 @@ class Sleep {
     }
 
     avgSleepHoursPerDay(userId) {
-        const userData = this.sleepData.reduce((avg, user) => {
+        const hrsSlept = this.sleepData.reduce((acc, user) => {
             if(user.userID === userId){
-                avg.push(user);
-            }
-            return avg
+                acc.push(user.hoursSlept);
+            };
+            return acc
         }, []);
 
-        return userData
-    }
+        const avgHours = hrsSlept.reduce((acc, hrs) => 
+            acc + hrs, 0);
+        return parseFloat((avgHours / hrsSlept.length).toFixed(2));
+    };
     
-}
+};
 
 export default Sleep;
