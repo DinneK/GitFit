@@ -18,7 +18,6 @@ class UserRepository {
             return stepAvg + user.dailyStepGoal;
         }, 0) / this.users.length;
 
-        console.log(allAvg);
         return allAvg;
     }
 
