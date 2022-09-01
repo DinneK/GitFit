@@ -30,13 +30,18 @@ class UserRepository {
           userForFriend.push(friend);
         });
       }
-      console.log("1", userForFriend);
     });
     return userForFriend;
-    console.log("2", userForFriend);
-    //iterate through users
-    //iterate check the user check the friends ids on the user
-    //match the friends ids to users in the users repository
+  }
+
+  returnUserFriendsNames(id) {
+    // console.log("1", this.findUserFriendsIDs(id));
+    // console.log("this.users.Id", this.users);
+    const friendNames = this.findUserFriendsIDs(id).reduce((acc, curr) => {
+      console.log({ acc });
+      console.log({ curr });
+      return acc;
+    }, []);
   }
 }
 

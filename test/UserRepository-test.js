@@ -43,14 +43,17 @@ describe("UserRepository", () => {
     expect(totalStepAvgs).to.be.equal(6400);
   });
 
-  it("should return the names of a users friends", () => {
+  it("should return the ids of a users friends", () => {
     const user1Data = users1.returnUserData(1);
-    // console.log(user1Data[0].userId);
-    // console.log({ users1 });
-    // console.log("userData", users1.userData);
-    // console.log("users", users1.users);
     expect(users1.findUserFriendsIDs(user1Data[0].userId)).to.deep.equal([
       1, 4, 5,
     ]);
+  });
+
+  it("should return the names of a users friends", () => {
+    const user1Data = users1.returnUserData(1);
+    expect(users1.returnUserFriendsNames(user1Data[0].userId)).to.deep.equal(
+      []
+    );
   });
 });
