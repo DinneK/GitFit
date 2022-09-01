@@ -32,4 +32,15 @@ describe('Sleep', () => {
     });
 
 
+
+
+
+
+
+
+
+    it('Should return user sleep data from the given date', () => {
+        const userWeek = sleep.getDataFromDate(1, '2019/06/17');
+    });
+
 });

@@ -14,6 +14,34 @@ class Sleep {
         return userData;
     }
     
+
+
+
+
+
+
+
+
+
+
+
+
+    getDataFromDate(userId, date) {
+
+        const userInfo = this.sleepData.reduce((userData, curr) => {
+            if(curr.userID === userId){
+                userData.push(curr);
+            }
+
+            return userData;
+        }, []);
+
+        const dateIndex = userInfo.map(user => user.date).indexOf(date);
+        const weekOf = userInfo.splice
+        console.log(dateIndex);
+
+    }
+
 }
 
 export default Sleep;
