@@ -26,6 +26,9 @@ class Sleep {
 
 
 
+
+
+    
     getDataFromDate(userId, date) {
 
         const userInfo = this.sleepData.reduce((userData, curr) => {
