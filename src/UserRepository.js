@@ -40,8 +40,14 @@ class UserRepository {
     const friendNames = this.findUserFriendsIDs(id).reduce((acc, curr) => {
       console.log({ acc });
       console.log({ curr });
+      this.users.forEach((user) => {
+        if (curr === user.userId) {
+          acc.push(user.name);
+        }
+      });
       return acc;
     }, []);
+    console.log(friendNames);
     return friendNames;
   }
 }

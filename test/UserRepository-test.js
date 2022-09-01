@@ -52,8 +52,10 @@ describe("UserRepository", () => {
 
   it("should return the names of a users friends", () => {
     const user1Data = users1.returnUserData(1);
-    expect(users1.returnUserFriendsNames(user1Data[0].userId)).to.deep.equal(
-      []
-    );
+    expect(users1.returnUserFriendsNames(user1Data[0].userId)).to.deep.equal([
+      "Luisa Hane",
+      "Mae Connelly",
+      "Erick Schaden",
+    ]);
   });
 });
