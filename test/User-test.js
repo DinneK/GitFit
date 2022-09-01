@@ -30,7 +30,9 @@ describe("User", function () {
   });
 
   it("should have user addresses", function () {
-    expect(user1.address).to.equal("15195 Nakia Tunnel, Erdmanport VA 19901-1697");
+    expect(user1.address).to.equal(
+      "15195 Nakia Tunnel, Erdmanport VA 19901-1697"
+    );
     expect(user2.address).to.equal("30086 Kathryn Port, Ciceroland NE 07273");
   });
 
@@ -50,15 +52,14 @@ describe("User", function () {
   });
 
   it("should have an array of user friend's id numbers", function () {
-    expect(user1.friends).to.deep.equal([16, 4, 8]);
+    expect(user1.friends).to.deep.equal([1, 4, 5]);
     expect(user1.friends).to.be.an("array");
     expect(user2.friends).to.deep.equal([9, 18, 24, 19]);
     expect(user2.friends).to.be.an("array");
   });
 
-  it('Should be able to return the user\'s fisrt name', function() {
-    expect(user1.getFirstName()).to.equal('Luisa');
-    expect(user2.getFirstName()).to.equal('Jarvis');
-  }) 
-})
-
+  it("Should be able to return the user's fisrt name", function () {
+    expect(user1.getFirstName()).to.equal("Luisa");
+    expect(user2.getFirstName()).to.equal("Jarvis");
+  });
+});
