@@ -35,11 +35,7 @@ class UserRepository {
   }
 
   returnUserFriendsNames(id) {
-    // console.log("1", this.findUserFriendsIDs(id));
-    // console.log("this.users.Id", this.users);
     const friendNames = this.findUserFriendsIDs(id).reduce((acc, curr) => {
-      console.log({ acc });
-      console.log({ curr });
       this.users.forEach((user) => {
         if (curr === user.userId) {
           acc.push(user.name);
@@ -47,7 +43,6 @@ class UserRepository {
       });
       return acc;
     }, []);
-    console.log(friendNames);
     return friendNames;
   }
 }
