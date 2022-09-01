@@ -21,15 +21,21 @@ import UserRepository from "./UserRepository";
 //USER SELECTORS
 const userWidget = document.querySelector(".user-info-widget");
 const userWelcome = document.querySelector(".welcome-message");
-const userInfo = document.querySelector(".user-info-card");
+const userInfo = document.querySelector(".user-info-card"); //Has not been used yet
 
 //HYDRATION SELECTORS
 //SLEEP SELECTORS
+
+//FRIEND SELECTORS
+const friendWidget = document.querySelector(".user-friends-widget");
+const friendInfo = document.querySelector(".user-friend-info-card");
 
 //EVENT LISTENERS
 window.addEventListener("load", () => {
   renderWelcomeMessage();
   renderUserInfo();
+  renderFriendInfo();
+  //splitFriendsIntoList(); //Do not invoke this here
 });
 
 //GLOBAL VARIABLES
@@ -78,4 +84,25 @@ function returnStepGoalComparision() {
       currentUser.dailyStepGoal
     } is lower than the average step goal of ${allUsers.returnAllAvgStepGoals()}. You Can Do It!`;
   }
+}
+
+function renderFriendInfo() {
+  friendWidget.innerHTML = `<section class="user-friend-info-card">
+    <h3 class="friend-label">
+      Friends
+    </h3>
+    <div class="friend-list">
+      ${splitFriendsIntoList()}
+    </div>
+  </section>`;
+}
+
+function splitFriendsIntoList() {
+  let currentUserID = currentUser.userId;
+  let friendList;
+  allUsers.returnUserFriendsNames(currentUserID).forEach((friend) => {
+    friendList =
+      friendInfo.innerHTML += `<div class="indiv-friend">${friend}</div>`;
+  });
+  return friendList;
 }
