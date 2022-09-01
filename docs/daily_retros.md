@@ -89,3 +89,31 @@ We will need to finish our project board:
      - Finish UserREspository
      - Matt and Dani will start `Sleep.js` class
      - Dinne will work on the wireframe 
+
+
+### Wednesday 08/31/22
+- Today we created
+     - `Sleep` Class
+          - findUserSleepData
+          - findWeeklyData method
+          - getDataFromDate method
+          - testing for these two methods.
+     - `HTML`, `CSS`, `Script` files
+          - scripts 
+               - started our event listeners and our setup which includes our query selectors
+               - renderWelcomeMessage method 
+               - renderUserInfo method
+               - render RandomUser 
+               - returnStepGoalComparision() method
+     - `UserREspository` class
+          - return user's friends ids method
+          - return usersFriendsNames method
+
+- Challenges:
+     - Dinne: Challenge today was to construct the  data to the DOM. Another getting the ids to match the friends names display the friends names. One thing That I want to put into practice is something that I learned from last mod, and that is to know when to stop when I come across a problem, specifically when its coming close to the end of the day. My instructor from last mod, Heather, suggessted that it's okay to step away from a problem when I spend so much time on it, I just need to remember to write down where I left off and pick it up the next day.
+     - Matt: Today's challenge was implementing the reduce iterator to the `Sleep` class.
+     - Dani: learning how to implement multiple iterators to work with each other. 'Chain iterating'. 
+- Wins:
+     - Dinne: beginning to feel just how much fun coding is. I got a lot done today.
+     - Matt: I feel like I had a lot of small victories. it culminated in me creating such useful functionality, and it makes me feel like I got a lot accomplished. 
+     - Dani: Biggest win is learning about Turnary operators! I was able to do research and reach out to my mentor about using this in my code, and it turned out to be a useful implementation.
