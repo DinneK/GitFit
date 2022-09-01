@@ -42,6 +42,7 @@ class UserRepository {
       console.log({ curr });
       return acc;
     }, []);
+    return friendNames;
   }
 }
 
