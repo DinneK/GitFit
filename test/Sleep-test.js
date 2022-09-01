@@ -40,23 +40,6 @@ describe('Sleep', () => {
         expect(userAvgSleepData1).to.equal(6.34);
         expect(userAvgSleepData2).to.equal(6.5);
     })
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     // Find use avg hours slept per week
     it('Should return a total of the users weekly hours slept', () => {
@@ -67,4 +50,19 @@ describe('Sleep', () => {
         expect(userWeeklyHours2).to.equal(52);
 
     })
+
+    //get data from date
+    it('Should return user sleep data from the given date', () => {
+        const userWeek = sleep.getDataFromDate(1, '2019/06/22');
+
+        expect(userWeek).to.deep.equal([
+            { userID: 1, date: '2019/06/16', hoursSlept: 3.5, sleepQuality: 2.1 },
+            { userID: 1, date: '2019/06/17', hoursSlept: 5.3, sleepQuality: 4.1 },
+            { userID: 1, date: '2019/06/18', hoursSlept: 14.2, sleepQuality: 1.2 },
+            { userID: 1, date: '2019/06/19', hoursSlept: 7.2, sleepQuality: 3.4 },
+            { userID: 1, date: '2019/06/20', hoursSlept: 3.9, sleepQuality: 1.2 },
+            { userID: 1, date: '2019/06/21', hoursSlept: 3.6, sleepQuality: 1.3 },
+            { userID: 1, date: '2019/06/22', hoursSlept: 6.9, sleepQuality: 4.9 }
+        ]);
+    });
 });

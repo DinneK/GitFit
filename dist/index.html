@@ -2,11 +2,30 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Fitlit</title>
+    <title>GitFit</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+      </style>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+        </style>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+    <!-- <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
+    <header>
+      <h1>GitFit Tracker</h1>
+      <section class="welcome-message"></section>
+    </header>
+    <main>
+      <!-- <section class="all-info-holder"> -->
+        <section class="user-info-widget">
+          <section class="user-info-card"></section>
+        </section>
+        <section class="user-hydration-widget">SO THIRSTY</section>
+        <section class="user-sleep-widget">SO SLEEPY</section>
+        <section class="user-friends-widget">SO FRIENDLY</section>
+      <!-- </section> -->
+    </main>
 
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>

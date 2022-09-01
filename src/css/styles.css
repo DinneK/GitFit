@@ -1,5 +1,59 @@
-body, html {
+body, html, main, header {
   background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
   background-repeat: no-repeat;
-  height: 100%;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 60px;
+}
+
+.welcome-message {
+  font-family: 'Roboto', sans-serif;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: stretch;
+}
+
+.user-info-widget, 
+.user-hydration-widget,
+.user-sleep-widget,
+.user-friends-widget {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 12px;
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  height: 35%;
+  width: 40%;
+  margin-top: 20px;
+}
+
+.user-info-label,
+.user-step-goal-label {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  margin: 5px;
+  margin-top: 15px;
+}
+
+p {
+  margin: 10px;
 }
