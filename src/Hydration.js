@@ -8,7 +8,7 @@ class Hydration {
       if (userID === curr.userID) {
         acc.push(curr);
       }
-      
+
       return acc;
     }, []);
 
@@ -23,6 +23,14 @@ class Hydration {
     return parseInt(
       (averageOunces / this.findUserByID(user).length).toFixed(0)
     );
+  }
+
+  findTheLastDayForData(userID) {
+    const lastDate = this.findUserByID(userID)
+      .reverse()
+      .splice(0, 1)
+      .map((lastDay) => lastDay.date);
+    return lastDate[0];
   }
 
   getFluidOuncesPerDay(userDay, date) {
