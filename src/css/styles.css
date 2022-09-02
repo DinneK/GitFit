@@ -61,6 +61,7 @@ main {
   border: 2px solid black;
   border-radius: 12px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   font-family: 'Roboto', sans-serif;
   height: 100%;
@@ -78,7 +79,9 @@ main {
 
 .user-info-label,
 .user-step-goal-label,
-.friend-label {
+.friend-label,
+.day-drink-label,
+.week-drink-label {
   font-size: 1.5em;
   font-weight: bold;
   text-align: center;
@@ -102,4 +105,21 @@ p {
 
 .indiv-friend {
   margin-bottom: 10px;
+}
+
+.single-day-card,
+.week-day-card {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.day-drink-label
+.week-drink-label {
+  margin-bottom: 40px;
+}
+
+.day-ounces {
+  font-size: 3em;
 }
