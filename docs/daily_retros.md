@@ -122,9 +122,10 @@ We will need to finish our project board:
 
 - Challenges:
      - Dinne: "Being able to stop when I hit a code blind spot. More importantly, being able to stop for a day and get some sleep."
-     - Matt:
-     - Dani: 
+     - Matt: "This was my first real exposure to API and it was a whlole lot, but I was able to keep up with it! This was a whole new foundation for me and it was awesome!
+     - Dani: double checking that I am following the organization we set from the very beginning. I felt Like I deviated from the project specs and did not make sure that I was implementing the right functionalities. We created the methods for the sleep class in the beginning, but the wording was so off from the project spec that I created the wrong method, which sparked a need to go back and reorganize."
+
 - Wins:
      - Dinne: "The fact that we worked as a team and figured out the fetch calls; Being able to finish the fetch implementation and beginning to understand it 'that' much more."
-     - Matt:
-     - Dani: 
+     - Matt: being able to map out how some of these cross-function interactions were going, and I cannjust see it now. The class-to-class is starting to be in alignment. Also, being able to re-implement iterators to new methods."
+     - Dani: Hive Minding the fetch flow and being able to follow the logic for this implementation. I felt like we all actually worked out as a team in understanding the fetch/API implementation, and our thought processes were not stepping over anyone elses' toes. We all were able to voice our opinions and ideas, and acted on them, without stepping over anyone! That's a big win!
