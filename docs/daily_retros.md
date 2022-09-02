@@ -117,3 +117,14 @@ We will need to finish our project board:
      - Dinne: beginning to feel just how much fun coding is. I got a lot done today.
      - Matt: I feel like I had a lot of small victories. it culminated in me creating such useful functionality, and it makes me feel like I got a lot accomplished. 
      - Dani: Biggest win is learning about Turnary operators! I was able to do research and reach out to my mentor about using this in my code, and it turned out to be a useful implementation.
+
+### Thursday 09/01/22
+
+- Challenges:
+     - Dinne: "Being able to stop when I hit a code blind spot. More importantly, being able to stop for a day and get some sleep."
+     - Matt:
+     - Dani: 
+- Wins:
+     - Dinne: "The fact that we worked as a team and figured out the fetch calls; Being able to finish the fetch implementation and beginning to understand it 'that' much more."
+     - Matt:
+     - Dani: 
