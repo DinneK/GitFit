@@ -49,10 +49,7 @@ class Sleep {
     // For a user, how many hours they slept for a specific day (identified by a date)
     getUserSleepHrsForDay(userId, date) {
         const userData = this.getUserSleepData(userId);
-        const hrsSlpDay = userData.filter((userInfo) => {
-            return userInfo.date === date;
-        });
-        console.log(hrsSlpDay[0].hoursSlept);
+        const hrsSlpDay = userData.filter((userInfo) => userInfo.date === date);
         return hrsSlpDay[0].hoursSlept;
     }
 
