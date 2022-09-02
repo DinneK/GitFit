@@ -32,7 +32,6 @@ main {
 }
 
 .user-info-widget, 
-.user-hydration-widget,
 .user-sleep-widget,
 .user-friends-widget {
   background-color: white;
@@ -45,6 +44,36 @@ main {
   height: 35%;
   width: 40%;
   margin-top: 20px;
+}
+
+.user-hydration-widget {
+  display: flex;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  height: 35%;
+  width: 40%;
+  margin-top: 20px;
+}
+
+.single-day-ounces,
+.week-ounces {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
+  width: 50%;
+  margin: 0px;
+}
+
+.single-day-ounces {
+  margin-right: 7px;
+}
+
+.week-ounces {
+  margin-left: 7px;
 }
 
 .user-info-label,

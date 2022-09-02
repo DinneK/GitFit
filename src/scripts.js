@@ -13,7 +13,11 @@ console.log("This is the JavaScript entry file - your code begins here.");
 
 // import userData from "./data/users";
 import User from "./User";
-import { getUsersApiData, getSleepApiData, getHydrationApiData } from "./apiCalls";
+import {
+  getUsersApiData,
+  getSleepApiData,
+  getHydrationApiData,
+} from "./apiCalls";
 import UserRepository from "./UserRepository";
 
 //GLOBAL VARIABLES
@@ -23,28 +27,29 @@ let newUserRepo;
 let sleepData;
 let hydrationData;
 
-
 //FETCH CALLS
 function instatiateAllData() {
-  Promise.all([getUsersApiData, getSleepApiData, getHydrationApiData])
-  .then((data) => {
-    usersData = data[0].userData;
-    sleepData = data[1].sleepData;
-    hydrationData = data[2].hydrationData;
+  Promise.all([getUsersApiData, getSleepApiData, getHydrationApiData]).then(
+    (data) => {
+      usersData = data[0].userData;
+      sleepData = data[1].sleepData;
+      hydrationData = data[2].hydrationData;
 
-    // console.log('OUR USERS', usersData);
-    // console.log('OUR SLEEP!', sleepData);
-    // console.log('OUR HYDRATION! ', hydrationData);
+      // console.log('OUR USERS', usersData);
+      // console.log('OUR SLEEP!', sleepData);
+      // console.log('OUR HYDRATION! ', hydrationData);
 
-    newUserRepo = new UserRepository(usersData);
-    currentUser = new User(usersData[Math.floor(Math.random() * usersData.length)]);
-    // console.log('ALL USER******', newUserRepo);
-    // console.log('CURRENT USER******', currentUser);
+      newUserRepo = new UserRepository(usersData);
+      currentUser = new User(
+        usersData[Math.floor(Math.random() * usersData.length)]
+      );
+      // console.log('ALL USER******', newUserRepo);
+      // console.log('CURRENT USER******', currentUser);
 
-    loadUser();
-  })
+      loadUser();
+    }
+  );
 }
-
 
 //SELECTORS
 //USER SELECTORS
@@ -53,24 +58,24 @@ const userWelcome = document.querySelector(".welcome-message");
 const userInfo = document.querySelector(".user-info-card"); //Has not been used yet
 
 //HYDRATION SELECTORS
-//SLEEP SELECTORS\
+const hydrationWidget = document.querySelector(".user-hydration-widget");
+const singleDayHydration = document.querySelector(".single-day-ounces");
+const weeklyHydration = document.querySelector(".week-ounces");
+//SLEEP SELECTORS
 
 //FRIEND SELECTORS
 const friendWidget = document.querySelector(".user-friends-widget");
 const friendInfo = document.querySelector(".user-friend-info-card");
 
-
-
 //EVENT LISTENERS
 window.addEventListener("load", instatiateAllData);
-
-
 
 //HELPER FUNCTIONS
 function loadUser() {
   renderWelcomeMessage();
   renderUserInfo();
   renderFriendInfo();
+  renderOuncesDrankPerDay();
 }
 
 //FUNCTIONS
@@ -128,4 +133,10 @@ function splitFriendsIntoList() {
       friendInfo.innerHTML += `<div class="indiv-friend">${friend}</div>`;
   });
   return friendList;
+}
+
+function renderOuncesDrankPerDay() {
+  const currentUserID = currentUser.userId;
+  console.log(currentUserID);
+  //console.log(hydrationData.getFluidOuncesPerDay(currentUserID, DATE));
 }
