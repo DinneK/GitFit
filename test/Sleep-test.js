@@ -93,5 +93,9 @@ describe("Sleep", () => {
     });
 
     //For all users, the average sleep quality
- 
+    it.only('should get the total average sleep quality of all users', () => {
+        const totAvgSQ = sleep.getAllUsersAvgSleepQual();
+
+        expect(totAvgSQ).to.equal(3.35);
+    })
 });

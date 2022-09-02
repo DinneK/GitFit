@@ -73,7 +73,14 @@ class Sleep {
     }
 
     //For all users, the average sleep quality
-    getAllUsersAvgSleepQual(){}
+    getAllUsersAvgSleepQual(){
+        const sleepQualData = this.sleepData.map(user => user.sleepQuality);
+        const totalAvgQual = sleepQualData.reduce((acc, upd) => 
+            acc + upd, 0);
+
+        const avgSQ = parseFloat((totalAvgQual / sleepQualData.length).toFixed(2));
+        return avgSQ;
+    }
 
 }
 
