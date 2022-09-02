@@ -63,27 +63,33 @@ describe("Sleep", () => {
     // For a user, how many hours slept each day over the course of a given week (7 days) - 
     // you should be able to calculate this for any week, not just the latest week
     it.only("Should return user sleep data from the given date", () => {
-        const userWeek = sleep.getDataForAWeek(1, "2019/06/22");
+        const user1Week = sleep.getUserHoursSleptForWeek(1, "2019/06/22");
+        const user2Week = sleep.getUserHoursSleptForWeek(2, "2019/06/20");
 
-        expect(userWeek).to.deep.equal([
-            { userID: 1, date: "2019/06/16", hoursSlept: 3.5, sleepQuality: 2.1 },
-            { userID: 1, date: "2019/06/17", hoursSlept: 5.3, sleepQuality: 4.1 },
-            { userID: 1, date: "2019/06/18", hoursSlept: 14.2, sleepQuality: 1.2 },
-            { userID: 1, date: "2019/06/19", hoursSlept: 7.2, sleepQuality: 3.4 },
-            { userID: 1, date: "2019/06/20", hoursSlept: 3.9, sleepQuality: 1.2 },
-            { userID: 1, date: "2019/06/21", hoursSlept: 3.6, sleepQuality: 1.3 },
-            { userID: 1, date: "2019/06/22", hoursSlept: 6.9, sleepQuality: 4.9 },
-        ]);
+        expect(user1Week).to.deep.equal([
+            3.5, 5.3, 14.2,
+            7.2, 3.9,  3.6,
+            6.9
+          ]);
+        expect(user2Week).to.deep.equal([ 7, 5.7, 5.7, 5.8, 6.5, 7.5 ]);
     });
 
     // For a user, their sleep quality each day over the course of a given week (7 days) - 
     // you should be able to calculate this for any week, not just the latest week
     it.only("Should return a total of hours the users slept in a weekl", () => {
-        const userWeeklyHours1 = sleep.getSleepQualForWeek(1);
-        const userWeeklyHours2 = sleep.getSleepQualForWeek(2);
+        const userWeeklyHours1 = sleep.getSleepQualForWeek(1, "2019/06/22");
+        const userWeeklyHours2 = sleep.getSleepQualForWeek(2, "2019/06/22");
 
-        expect(userWeeklyHours1).to.equal(50.7);
-        expect(userWeeklyHours2).to.equal(52);
+        expect(userWeeklyHours1).to.deep.equal([
+            2.1, 4.1, 1.2,
+            3.4, 1.2, 1.3,
+            4.9
+          ]);
+        expect(userWeeklyHours2).to.deep.equal([
+            4.2, 3.7, 4.3,
+            3.5,   5, 3.7,
+            4.1
+          ]);
     });
 
     //For all users, the average sleep quality

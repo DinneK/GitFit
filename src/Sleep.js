@@ -3,7 +3,7 @@ class Sleep {
         this.sleepData = data;
     }
 
-    //Find user sleep data
+    //HELPER METHODS
     getUserSleepData(userId) {
         const userData = this.sleepData.reduce((data, user) => {
             if(user.userID === userId){
@@ -14,6 +14,16 @@ class Sleep {
         }, []);
         
         return userData;
+    }
+
+    getDataForAWeek(userId, date) {
+        const userInfo = this.sleepData.filter( curr => curr.userID === userId);
+        const dateIndex = userInfo.findIndex( data => data.date === date);
+        const startIndex = dateIndex - 6 < 0 ? 0 : dateIndex - 6;
+        const weekOf = userInfo.slice(startIndex, dateIndex + 1);
+
+        return weekOf;
+
     }
 
     //For a user (identified by their userID), the average number of hours slept per day
@@ -46,35 +56,20 @@ class Sleep {
 
     // For a user, how many hours slept each day over the course of a given week (7 days) - 
     // you should be able to calculate this for any week, not just the latest week
+    getUserHoursSleptForWeek(userId, date) {
+        const userDataForWeek = this.getDataForAWeek(userId, date);
+        const hoursSlept = userDataForWeek.map(user => user.hoursSlept);
 
-
-
-    //HELPER METHOD
-    getDataForAWeek(userId, date) {
-        const userInfo = this.sleepData.filter( curr => curr.userID === userId);
-        const dateIndex = userInfo.findIndex( data => data.date === date);
-        const startIndex = dateIndex - 6 < 0 ? 0 : dateIndex - 6;
-        const weekOf = userInfo.slice(startIndex, dateIndex + 1);
-
-        console.log(weekOf);
-        return weekOf;
-
+        return hoursSlept;
     }
-
-
 
     // For a user, their sleep quality each day over the course of a given week (7 days) - 
     // you should be able to calculate this for any week, not just the latest week
     getSleepQualForWeek(userId, date) {
         const userDataForWeek = this.getDataForAWeek(userId, date);
-        const sleepQual = this.userDataForWeek.map(user => user.sleepQuality);
-        
-        console.log(sleepQual);
+        const sleepQual = userDataForWeek.map(user => user.sleepQuality);
 
-        const iV = 0
-        const weeklyHoursSlept = sleepQual.reduce((tot, sum) => tot + sum, iV);
-
-        return parseFloat((weeklyHoursSlept).toFixed(1));
+        return sleepQual;
     }
 
     //For all users, the average sleep quality

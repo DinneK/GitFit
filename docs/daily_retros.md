@@ -121,10 +121,10 @@ We will need to finish our project board:
 ### Thursday 09/01/22
 
 - Challenges:
-     - Dinne: 
+     - Dinne: "Being able to stop when I hit a code blind spot. More importantly, being able to stop for a day and get some sleep."
      - Matt:
      - Dani: 
 - Wins:
-     - Dinne: 
+     - Dinne: "The fact that we worked as a team and figured out the fetch calls; Being able to finish the fetch implementation and beginning to understand it 'that' much more."
      - Matt:
      - Dani: 
