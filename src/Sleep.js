@@ -47,7 +47,11 @@ class Sleep {
     getAllOfUserAvgSleepQual(){}
 
     // For a user, how many hours they slept for a specific day (identified by a date)
-    getUserSleepHrsForDay(){}
+    getUserSleepHrsForDay(userId, date) {
+        const userData = this.getUserSleepData(userId);
+        const hrsSlpDay = userData.filter((userInfo) => userInfo.date === date);
+        return hrsSlpDay[0].hoursSlept;
+    }
 
     // For a user, their sleep quality for a specific day (identified by a date)
     getUserSleepQualForDay(){}
