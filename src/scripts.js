@@ -65,7 +65,8 @@ const userInfo = document.querySelector(".user-info-card"); //Has not been used 
 const hydrationWidget = document.querySelector(".user-hydration-widget");
 const singleDayHydration = document.querySelector(".single-day-ounces");
 const weeklyHydration = document.querySelector(".week-ounces");
-const ounceInfo = document.querySelector(".indiv-ounce");
+//const ounceInfo = document.querySelector(".indiv-ounce");
+
 //SLEEP SELECTORS
 
 //FRIEND SELECTORS
@@ -82,6 +83,7 @@ function loadUser() {
   renderFriendInfo();
   renderOuncesDrankPerDay();
   renderOuncesDrankPerWeek();
+  getOuncesDrankPerWeek();
 }
 
 //FUNCTIONS
@@ -170,36 +172,25 @@ function returnDrinkComparison() {
 }
 
 function renderOuncesDrankPerWeek() {
-  // weeklyHydration.innerHTML = `<div class="week-ounces">
-  //   <h3 class="week-drink-label">
-  //     Drinks Per Week
-  //   </h3>
-  //   <div class="week-days">
-  //      ${getOuncesDrankPerWeek()}
-  //   </div>
-  // </div>`;
-  console.log("ounces", getOuncesDrankPerWeek());
+  weeklyHydration.innerHTML = `<div class="week">
+    <h3 class="week-drink-label">
+      Drinks Per Week
+    </h3>
+    <div class="week-days">
+    </div>
+  </div>`;
 }
-//console.log(getDaysDrankPerWeek());
 
 function getOuncesDrankPerWeek() {
   const currentUserID = currentUser.userId;
-  console.log({ currentUserID });
   const lastHydrationDate = hydration.findTheLastDayForData(currentUserID);
   let ounceList;
-  const ouncePerWeek = hydration
+  const ounceInfo = document.querySelector(".week-days");
+  let x = 1;
+  hydration
     .returnAWeekOfOunces(currentUserID, lastHydrationDate)
     .forEach((ounce) => {
       ounceList =
-        ounceInfo.innerHTML += `<div class="indiv-ounce">${ounce}</div>`;
+        ounceInfo.innerHTML += `<div class="indiv-ounce"> Day ${x++}: ${ounce}</div>`;
     });
-  console.log({ ounceList });
-  console.log({ ouncePerWeek });
-  return ouncePerWeek;
 }
-
-// function getDaysDrankPerWeek() {
-//   const currentUserID = currentUser.userId;
-//   const lastHydrationDate = hydration.findTheLastDayForData(currentUserID);
-//   return hydration.returnAWeekOfDates(currentUserID, lastHydrationDate);
-// }
