@@ -13,7 +13,7 @@ describe("Sleep", () => {
         user2 = new User(mockUserData[1]);
     });
 
-    it.only("Should read the sleep data", () => {
+    it("Should read the sleep data", () => {
         expect(sleep.sleepData[0]).to.deep.equal({
             userID: 1,
             date: "2019/06/15",
@@ -29,8 +29,7 @@ describe("Sleep", () => {
         });
     });
 
-    // Find user sleep data
-    it.only("Should return a specific user's sleep data", () => {
+    it("Should return a specific user's sleep data", () => {
         const userSleepData = sleep.getUserSleepData(2);
 
         expect(userSleepData[0]).to.deep.equal({
@@ -41,8 +40,7 @@ describe("Sleep", () => {
         });
     });
 
-    // For a user (identified by their userID), the average number of hours slept per day
-    it.only("Should return a user's average hours slept per day", () => {
+    it("Should return a user's average hours slept per day", () => {
         const userAvgSleepData1 = sleep.getUserAvgSleepHoursPerDay(1);
         const userAvgSleepData2 = sleep.getUserAvgSleepHoursPerDay(2);
     
@@ -52,8 +50,7 @@ describe("Sleep", () => {
 
 
 
-    //For a user, their average sleep quality per day over all time
-    it.only('Should return a user\'s avg sleep quality per day over all time', () => {
+    it('Should return a user\'s avg sleep quality per day over all time', () => {
         const avgSleepQual1 = sleep.getAllOfUserAvgSleepQual(1);
         const avgSleepQual2 = sleep.getAllOfUserAvgSleepQual(2);
 
@@ -62,8 +59,7 @@ describe("Sleep", () => {
 
     });
 
-    // For a user, how many hours they slept for a specific day (identified by a date)
-    it.only('Should return user\'s hours slept by date', () => {
+    it('Should return user\'s hours slept by date', () => {
         const userDayHrsSlept1 = sleep.getUserSleepHrsForDay(1, "2019/06/22");
         const userDayHrsSlept2 = sleep.getUserSleepHrsForDay(2, "2019/06/18");
 
@@ -71,8 +67,7 @@ describe("Sleep", () => {
         expect(userDayHrsSlept2).to.equal(5.8);
     })
 
-    // For a user, their sleep quality for a specific day (identified by a date)
-    it.only('Should return a user\'s sleep quality for a specific day', () => {
+    it('Should return a user\'s sleep quality for a specific day', () => {
         const usersleepQual1 = sleep.getUserSleepQualForDay(1, "2019/06/22");
         const usersleepQual2 = sleep.getUserSleepQualForDay(2, "2019/06/17");
 
@@ -81,10 +76,7 @@ describe("Sleep", () => {
 
     });
 
-
-    // For a user, how many hours slept each day over the course of a given week (7 days) - 
-    // you should be able to calculate this for any week, not just the latest week
-    it.only("Should return user sleep data from the given date", () => {
+    it("Should return user sleep data from the given date", () => {
         const user1Week = sleep.getUserHoursSleptForWeek(1, "2019/06/22");
         const user2Week = sleep.getUserHoursSleptForWeek(2, "2019/06/20");
 
@@ -96,9 +88,7 @@ describe("Sleep", () => {
         expect(user2Week).to.deep.equal([ 7, 5.7, 5.7, 5.8, 6.5, 7.5 ]);
     });
 
-    // For a user, their sleep quality each day over the course of a given week (7 days) - 
-    // you should be able to calculate this for any week, not just the latest week
-    it.only("Should return a total of hours the users slept in a weekl", () => {
+    it("Should return a total of hours the users slept in a weekl", () => {
         const userWeeklyHours1 = sleep.getSleepQualForWeek(1, "2019/06/22");
         const userWeeklyHours2 = sleep.getSleepQualForWeek(2, "2019/06/22");
 
@@ -114,8 +104,7 @@ describe("Sleep", () => {
           ]);
     });
 
-    //For all users, the average sleep quality
-    it.only('should get the total average sleep quality of all users', () => {
+    it('should get the total average sleep quality of all users', () => {
         const totAvgSQ = sleep.getAllUsersAvgSleepQual();
 
         expect(totAvgSQ).to.equal(3.35);

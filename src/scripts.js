@@ -20,12 +20,14 @@ import {
 } from "./apiCalls";
 import UserRepository from "./UserRepository";
 import Hydration from "./Hydration";
+import Sleep from "./Sleep";
 
 //GLOBAL VARIABLES
 let currentUser;
 let usersData;
 let newUserRepo;
 let sleepData;
+let sleepInfo;
 let hydrationData;
 let hydration;
 
@@ -45,10 +47,8 @@ function instatiateAllData() {
       currentUser = new User(
         usersData[Math.floor(Math.random() * usersData.length)]
       );
-      //console.log(currentUser.userId);
       hydration = new Hydration(hydrationData);
-      // console.log('ALL USER******', newUserRepo);
-      // console.log('CURRENT USER******', currentUser);
+      sleepInfo = new Sleep(sleepData);
 
       loadUser();
     }
@@ -84,11 +84,16 @@ function loadUser() {
   renderOuncesDrankPerDay();
   renderOuncesDrankPerWeek();
   getOuncesDrankPerWeek();
+  // loadSleeper();
 }
 
 //FUNCTIONS
 function renderWelcomeMessage() {
   userWelcome.innerHTML = `<section class="welcome-message">Welcome Back ${currentUser.getFirstName()}</section>`;
+}
+
+function loadSleeper() {
+  console.log(sleepInfo);
 }
 
 function renderUserInfo() {

@@ -26,7 +26,6 @@ class Sleep {
 
     }
 
-    //For a user (identified by their userID), the average number of hours slept per day
     getUserAvgSleepHoursPerDay(userId) {
         const userData = this.getUserSleepData(userId);
         const hrsSlept = userData.map(user => user.hoursSlept);
@@ -36,8 +35,7 @@ class Sleep {
     }
 
     
-    //For a user, their average sleep quality per day over all time
-    getAllOfUserAvgSleepQual(userId){
+    getAllOfUserAvgSleepQual(userId) {
         const userData = this.getUserSleepData(userId);
         const sleepQual = userData.map(user => user.sleepQuality);
         const avgSleepQual = sleepQual.reduce((acc, curr) => 
@@ -47,23 +45,19 @@ class Sleep {
 
     }
 
-    // For a user, how many hours they slept for a specific day (identified by a date)
     getUserSleepHrsForDay(userId, date) {
         const userData = this.getUserSleepData(userId);
         const hrsSlpDay = userData.filter((userInfo) => userInfo.date === date);
         return hrsSlpDay[0].hoursSlept;
     }
 
-    // For a user, their sleep quality for a specific day (identified by a date)
-    getUserSleepQualForDay(userId, date){
+    getUserSleepQualForDay(userId, date) {
         const userData = this.getUserSleepData(userId);
         const sleepQual = userData.filter(user => user.date === date);
 
         return sleepQual[0].sleepQuality;
     }
 
-    // For a user, how many hours slept each day over the course of a given week (7 days) - 
-    // you should be able to calculate this for any week, not just the latest week
     getUserHoursSleptForWeek(userId, date) {
         const userDataForWeek = this.getDataForAWeek(userId, date);
         const hoursSlept = userDataForWeek.map(user => user.hoursSlept);
@@ -71,8 +65,6 @@ class Sleep {
         return hoursSlept;
     }
 
-    // For a user, their sleep quality each day over the course of a given week (7 days) - 
-    // you should be able to calculate this for any week, not just the latest week
     getSleepQualForWeek(userId, date) {
         const userDataForWeek = this.getDataForAWeek(userId, date);
         const sleepQual = userDataForWeek.map(user => user.sleepQuality);
@@ -80,8 +72,7 @@ class Sleep {
         return sleepQual;
     }
 
-    //For all users, the average sleep quality
-    getAllUsersAvgSleepQual(){
+    getAllUsersAvgSleepQual() {
         const sleepQualData = this.sleepData.map(user => user.sleepQuality);
         const totalAvgQual = sleepQualData.reduce((acc, upd) => 
             acc + upd, 0);
