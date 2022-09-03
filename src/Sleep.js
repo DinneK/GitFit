@@ -26,6 +26,12 @@ class Sleep {
 
     }
 
+    getLatestDayForUser(userId) {
+        const userData = this.getUserSleepData(userId);
+        console.log(userData[userData.length - 1].date);
+        return userData[userData.length - 1].date;
+    }
+
     getUserAvgSleepHoursPerDay(userId) {
         const userData = this.getUserSleepData(userId);
         const hrsSlept = userData.map(user => user.hoursSlept);
