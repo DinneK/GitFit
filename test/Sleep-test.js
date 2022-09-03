@@ -72,7 +72,14 @@ describe("Sleep", () => {
     })
 
     // For a user, their sleep quality for a specific day (identified by a date)
+    it.only('Should return a user\'s sleep quality for a specific day', () => {
+        const usersleepQual1 = sleep.getUserSleepQualForDay(1, "2019/06/22");
+        const usersleepQual2 = sleep.getUserSleepQualForDay(2, "2019/06/17");
 
+        expect(usersleepQual1).to.equal(4.9);
+        expect(usersleepQual2).to.equal(3.7);
+
+    });
 
 
     // For a user, how many hours slept each day over the course of a given week (7 days) - 
