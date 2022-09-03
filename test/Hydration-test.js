@@ -71,6 +71,15 @@ describe("Hydration", () => {
     expect(hydration.getAverageAllTimeFluidOunces(user2.userId)).to.equal(65);
   });
 
+  it("should return the last day of user input", () => {
+    expect(hydration.findTheLastDayForData(user1.userId)).to.equal(
+      "2019/06/22"
+    );
+    expect(hydration.findTheLastDayForData(user2.userId)).to.equal(
+      "2019/06/22"
+    );
+  });
+
   it("should return ounces for specific day", () => {
     expect(hydration.getFluidOuncesPerDay(user1.userId, "2019/06/21")).to.equal(
       55

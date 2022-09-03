@@ -13,8 +13,13 @@ console.log("This is the JavaScript entry file - your code begins here.");
 
 // import userData from "./data/users";
 import User from "./User";
-import { getUsersApiData, getSleepApiData, getHydrationApiData } from "./apiCalls";
+import {
+  getUsersApiData,
+  getSleepApiData,
+  getHydrationApiData,
+} from "./apiCalls";
 import UserRepository from "./UserRepository";
+import Hydration from "./Hydration";
 
 //GLOBAL VARIABLES
 let currentUser;
@@ -22,29 +27,33 @@ let usersData;
 let newUserRepo;
 let sleepData;
 let hydrationData;
-
+let hydration;
 
 //FETCH CALLS
 function instatiateAllData() {
-  Promise.all([getUsersApiData, getSleepApiData, getHydrationApiData])
-  .then((data) => {
-    usersData = data[0].userData;
-    sleepData = data[1].sleepData;
-    hydrationData = data[2].hydrationData;
+  Promise.all([getUsersApiData, getSleepApiData, getHydrationApiData]).then(
+    (data) => {
+      usersData = data[0].userData;
+      sleepData = data[1].sleepData;
+      hydrationData = data[2].hydrationData;
 
-    // console.log('OUR USERS', usersData);
-    // console.log('OUR SLEEP!', sleepData);
-    // console.log('OUR HYDRATION! ', hydrationData);
+      // console.log('OUR USERS', usersData);
+      // console.log('OUR SLEEP!', sleepData);
+      // console.log('OUR HYDRATION! ', hydrationData);
 
-    newUserRepo = new UserRepository(usersData);
-    currentUser = new User(usersData[Math.floor(Math.random() * usersData.length)]);
-    // console.log('ALL USER******', newUserRepo);
-    // console.log('CURRENT USER******', currentUser);
+      newUserRepo = new UserRepository(usersData);
+      currentUser = new User(
+        usersData[Math.floor(Math.random() * usersData.length)]
+      );
+      //console.log(currentUser.userId);
+      hydration = new Hydration(hydrationData);
+      // console.log('ALL USER******', newUserRepo);
+      // console.log('CURRENT USER******', currentUser);
 
-    loadUser();
-  })
+      loadUser();
+    }
+  );
 }
-
 
 //SELECTORS
 //USER SELECTORS
@@ -53,24 +62,28 @@ const userWelcome = document.querySelector(".welcome-message");
 const userInfo = document.querySelector(".user-info-card"); //Has not been used yet
 
 //HYDRATION SELECTORS
-//SLEEP SELECTORS\
+const hydrationWidget = document.querySelector(".user-hydration-widget");
+const singleDayHydration = document.querySelector(".single-day-ounces");
+const weeklyHydration = document.querySelector(".week-ounces");
+//const ounceInfo = document.querySelector(".indiv-ounce");
+
+//SLEEP SELECTORS
 
 //FRIEND SELECTORS
 const friendWidget = document.querySelector(".user-friends-widget");
 const friendInfo = document.querySelector(".user-friend-info-card");
 
-
-
 //EVENT LISTENERS
 window.addEventListener("load", instatiateAllData);
-
-
 
 //HELPER FUNCTIONS
 function loadUser() {
   renderWelcomeMessage();
   renderUserInfo();
   renderFriendInfo();
+  renderOuncesDrankPerDay();
+  renderOuncesDrankPerWeek();
+  getOuncesDrankPerWeek();
 }
 
 //FUNCTIONS
@@ -128,4 +141,56 @@ function splitFriendsIntoList() {
       friendInfo.innerHTML += `<div class="indiv-friend">${friend}</div>`;
   });
   return friendList;
+}
+
+function renderOuncesDrankPerDay() {
+  singleDayHydration.innerHTML = `<div class="single-day-card">
+    <h3 class="day-drink-label">
+      Drinks Per Day
+    </h3>
+    <div class="day-ounces">
+      ${getTheHydrationPerDate()} oz
+    </div>
+    <p class="user-drink-goals">
+      ${returnDrinkComparison()}
+    </p>
+  </div>`;
+}
+
+function getTheHydrationPerDate() {
+  const currentUserID = currentUser.userId;
+  const lastHydrationDate = hydration.findTheLastDayForData(currentUserID);
+  return hydration.getFluidOuncesPerDay(currentUserID, lastHydrationDate);
+}
+
+function returnDrinkComparison() {
+  if (getTheHydrationPerDate() < 90) {
+    return `Drink more water!`;
+  } else {
+    return `Awesome! Your drinking is on point`;
+  }
+}
+
+function renderOuncesDrankPerWeek() {
+  weeklyHydration.innerHTML = `<div class="week">
+    <h3 class="week-drink-label">
+      Drinks Per Week
+    </h3>
+    <div class="week-days">
+    </div>
+  </div>`;
+}
+
+function getOuncesDrankPerWeek() {
+  const currentUserID = currentUser.userId;
+  const lastHydrationDate = hydration.findTheLastDayForData(currentUserID);
+  let ounceList;
+  const ounceInfo = document.querySelector(".week-days");
+  let x = 1;
+  hydration
+    .returnAWeekOfOunces(currentUserID, lastHydrationDate)
+    .forEach((ounce) => {
+      ounceList =
+        ounceInfo.innerHTML += `<div class="indiv-ounce"> Day ${x++}: ${ounce}</div>`;
+    });
 }

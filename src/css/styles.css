@@ -32,7 +32,6 @@ main {
 }
 
 .user-info-widget, 
-.user-hydration-widget,
 .user-sleep-widget,
 .user-friends-widget {
   background-color: white;
@@ -47,14 +46,48 @@ main {
   margin-top: 20px;
 }
 
+.user-hydration-widget {
+  display: flex;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  height: 35%;
+  width: 40%;
+  margin-top: 20px;
+}
+
+.single-day-ounces,
+.week-ounces {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
+  width: 50%;
+  margin: 0px;
+}
+
+.single-day-ounces {
+  margin-right: 7px;
+}
+
+.week-ounces {
+  margin-left: 7px;
+}
+
 .user-info-label,
 .user-step-goal-label,
-.friend-label {
+.friend-label,
+.day-drink-label,
+.week-drink-label {
   font-size: 1.5em;
   font-weight: bold;
   text-align: center;
   margin: 5px;
   margin-top: 15px;
+  margin-bottom: 25px
 }
 
 .friend-label {
@@ -73,4 +106,37 @@ p {
 
 .indiv-friend {
   margin-bottom: 10px;
+}
+
+.single-day-card,
+.week-day-card {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.day-drink-label
+.week-drink-label {
+  margin-bottom: 40px;
+}
+
+.day-ounces {
+  font-size: 3em;
+  margin-top: 10px
+}
+
+.user-drink-goals {
+  font-size: 1.7em;
+}
+
+.week {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.indiv-ounce {
+  font-size: 1.2em;
+  margin-bottom: 2px;
 }
