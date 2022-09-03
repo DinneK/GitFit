@@ -15,6 +15,13 @@ class Sleep {
     return userData;
   }
 
+  getLatestDayForUser(userId) {
+    const userData = this.getUserSleepData(userId);
+    const date = userData[userData.length - 1].date;
+
+    return date;
+  }
+
   getDataForAWeek(userId, date) {
     const userInfo = this.sleepData.filter((curr) => curr.userID === userId);
     const dateIndex = userInfo.findIndex((data) => data.date === date);
