@@ -67,7 +67,7 @@ const weeklyHydration = document.querySelector("#week-ounces");
 
 //SLEEP SELECTORS
 const sleepWidget = document.querySelector(".user-sleep-widget");
-const singleSleep = document.getElementById("singleSleepData");
+const singleSleep = document.querySelector("#singleSleepData");
 const weeklySleep = document.querySelector(".week-sleep-data");
 const allTimeAvgs = document.querySelector(".all-time-sleep-avgs");
 
@@ -164,8 +164,8 @@ function getMostRecentUserSleepQual() {
 function renderMostRecentUserSleepData() {
   singleSleep.innerHTML = 
   `<h2 class="label"> Last Night's Sleep
-  <h3>Hours Slept: ${getMostRecentUserSleepHrs()}</h3>
-  <h3>Sleep Quality: ${getMostRecentUserSleepQual()}</h3>
+  <h4>Hours Slept: ${getMostRecentUserSleepHrs()}</h4>
+  <h4>Sleep Quality: ${getMostRecentUserSleepQual()}</h4>
   </h2>`
 }
 
