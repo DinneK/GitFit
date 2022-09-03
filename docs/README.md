@@ -1,46 +1,54 @@
-README!!!!
+# GitFit
 
-## Introduction
-  - The purpose of this project was to allow students to practice some of the foundational concepts learned so far within the module. There are other extensions that test different skills that we can build on. The project allowed us to personalize/entertain different ideas with HTML/CSS as well as the functionality(JavaScript) behind the web page created.
+## Abstract
+  - Ever wanted to track all your activities in one place? Well, now your can with the GitFit Activity Tracker. GitFit implements Vanilla JavaScript to allow a user to see their daily step goals in comparison to other's. Track sleep habits and water intake in one handy, convenient place. 
 
 ## Technologies
   - Javascript
   - HTML
   - CSS
-
+  - TDD Mocha/Chai
 
 ## Illustrations
-  ![GITFIT](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Golde33443.jpg/640px-Golde33443.jpg)
+  ![GitFit Activity Tracker](https://user-images.githubusercontent.com/63877492/188251466-9bbd39dd-4cc1-46c3-841c-da3945b221d8.png)
+  **PLACE HOLDER**
 
 ## Features
-- Any of the radio buttons chosen will output a specific item from that array.
-- The Choose Your Own Adventure I chose was the "Entire Meal Functionality". Each button will output random items (side, main dish, dessert) OR one of each for a meal idea for any user clicking the buttons.
+- Displays a user's data and compares their daily step goals to the average step goals of all users.
+- Displays a user's friends
+- Allows a user to track sleep goals and hydration goals.
 
 ## Deployed Page
-
 Visit our published Hang In There Site! [here](https://jdeloach03.github.io/whats-for-dinner/)
+**PLACE HOLDER**
 
 ## Possible Future Extensions
-  - A login page would be super cool, if it were responsive in a sense of allowing users login to be saved/recipe ideas they like to be stored within their page.
-  - Adding in transitions via CSS would have appreciated.
+  - Implement Chart.js library to create beatiful charts showing a user's progress
+  - Implement Day.js library to 
+  - Drag-and-drop widgets
+  - Calculate and display this trend: for a user, what days had increasing steps for 3 or more days.
+
+## Milestones
+**PLACE HOLDER**
+- Some fabulous stuff about us
+
+## Challenges 
+**PLACE HOLDER**
+- Some things we want to work on
 
 ## Set Up
-
 1. Fork this repo  
 2. Clone the repo to your local machine
 3. View the project in the browser by running open index.html in your terminal.
 
-
-
 ## Sources
   - [MDN](http://developer.mozilla.org/en-US/)
-  -[JavaTPoint](https://www.javatpoint.com/how-to-check-a-radio-button-using-javascript)
-  -[YouTube](https://www.youtube.com/)
-  - [W3Schools](https://www.w3schools.com/)
+  - [YouTube](https://www.youtube.com/)
 
 ## Contributors
-  - [Joshua DeLoach](https://github.com/JDeLoach03)
-
+  - [R. Dani Lopez-Cruz](https://github.com/BertoCruz)
+  - [Matt Walter](https://github.com/MattWalterTX)
+  - [Dinne Kopelevich](https://github.com/DinneK)
 
 ## Project Specs
-  - The project spec & rubric can be found [here](https://frontend.turing.edu/projects/module-1/dinner.html)
+  - The project spec & rubric can be found [here](https://frontend.turing.edu/projects/Fitlit-part-one.html)
