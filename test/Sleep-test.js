@@ -53,6 +53,14 @@ describe("Sleep", () => {
 
 
     //For a user, their average sleep quality per day over all time
+    it.only('Should return a user\'s avg sleep quality per day over all time', () => {
+        const avgSleepQual1 = sleep.getAllOfUserAvgSleepQual(1);
+        const avgSleepQual2 = sleep.getAllOfUserAvgSleepQual(2);
+
+        expect(avgSleepQual1).to.equal(2.55);
+        expect(avgSleepQual2).to.equal(4.15);
+
+    });
 
     // For a user, how many hours they slept for a specific day (identified by a date)
     it.only('Should return user\'s hours slept by date', () => {

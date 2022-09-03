@@ -28,23 +28,24 @@ class Sleep {
 
     //For a user (identified by their userID), the average number of hours slept per day
     getUserAvgSleepHoursPerDay(userId) {
-        const hrsSlept = this.sleepData.reduce((acc, user) => {
-            if(user.userID === userId){
-                acc.push(user.hoursSlept);
-            };
-
-            return acc
-        }, []);
-
-        const avgHours = hrsSlept.reduce((acc, hrs) => 
-            acc + hrs, 0);
+        const userData = this.getUserSleepData(userId);
+        const hrsSlept = userData.map(user => user.hoursSlept);
+        const avgHours = hrsSlept.reduce((acc, hrs) => acc + hrs, 0);
 
         return parseFloat((avgHours / hrsSlept.length).toFixed(2));
     }
 
     
     //For a user, their average sleep quality per day over all time
-    getAllOfUserAvgSleepQual(){}
+    getAllOfUserAvgSleepQual(userId){
+        const userData = this.getUserSleepData(userId);
+        const sleepQual = userData.map(user => user.sleepQuality);
+        const avgSleepQual = sleepQual.reduce((acc, curr) => 
+        acc + curr, 0) / sleepQual.length;
+        
+        return avgSleepQual;
+
+    }
 
     // For a user, how many hours they slept for a specific day (identified by a date)
     getUserSleepHrsForDay(userId, date) {
