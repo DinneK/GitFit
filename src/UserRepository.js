@@ -10,6 +10,7 @@ class UserRepository {
     const userObj = this.users.filter((user) => {
       return user.userId === id;
     });
+
     return userObj;
   }
 
@@ -31,6 +32,7 @@ class UserRepository {
         });
       }
     });
+
     return userForFriend;
   }
 
@@ -41,8 +43,10 @@ class UserRepository {
           acc.push(user.name);
         }
       });
+
       return acc;
     }, []);
+
     return friendNames;
   }
 }
