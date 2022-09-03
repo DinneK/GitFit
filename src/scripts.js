@@ -57,14 +57,12 @@ function instatiateAllData() {
 
 //SELECTORS
 //USER SELECTORS
-const userWidget = document.querySelector(".user-info-widget");
-const userWelcome = document.querySelector(".welcome-message");
-const userInfo = document.querySelector(".user-info-card"); //Has not been used yet
+const userWidget = document.querySelector("#user-info-widget");
+const userWelcome = document.querySelector("#welcome-message");
 
 //HYDRATION SELECTORS
-const hydrationWidget = document.querySelector(".user-hydration-widget");
-const singleDayHydration = document.querySelector(".single-day-ounces");
-const weeklyHydration = document.querySelector(".week-ounces");
+const singleDayHydration = document.querySelector("#single-day-ounces");
+const weeklyHydration = document.querySelector("#week-ounces");
 //const ounceInfo = document.querySelector(".indiv-ounce");
 
 //SLEEP SELECTORS
@@ -74,8 +72,8 @@ const weeklySleep = document.querySelector(".week-sleep-data");
 const allTimeAvgs = document.querySelector(".all-time-sleep-avgs");
 
 //FRIEND SELECTORS
-const friendWidget = document.querySelector(".user-friends-widget");
-const friendInfo = document.querySelector(".user-friend-info-card");
+const friendWidget = document.querySelector("#user-friends-widget");
+const friendInfo = document.querySelector("#user-friend-info-card");
 
 //EVENT LISTENERS
 window.addEventListener("load", instatiateAllData);
@@ -93,20 +91,20 @@ function loadUser() {
 
 //FUNCTIONS
 function renderWelcomeMessage() {
-  userWelcome.innerHTML = `<section class="welcome-message">Welcome Back ${currentUser.getFirstName()}</section>`;
+  userWelcome.innerHTML = `<section class="welcome">Welcome Back ${currentUser.getFirstName()}</section>`;
 }
 
 function renderUserInfo() {
   userWidget.innerHTML = `<section class="user-info-card">
-    <h3 class="user-info-label">
+    <h3 class="label">
       User Information
     </h3>
-    <p class="user-info">
-      Email: ${currentUser.email}<br>
-      Addres: ${currentUser.address}<br>
-      Stride Length: ${currentUser.strideLength}<br>
-    </p>
-    <h3 class="user-step-goal-label">
+    <div class="user-info">
+      <h5><b>Email:</b> ${currentUser.email}</h5>
+      <h5><b>Addres:</b> ${currentUser.address}</h5>
+      <h5><b>Stride Length:</b> ${currentUser.strideLength}</h5>
+    </div>
+    <h3 class="label">
       Step Goal
     </h3>
     <p class="user-step-goals">
@@ -129,7 +127,7 @@ function returnStepGoalComparision() {
 
 function renderFriendInfo() {
   friendWidget.innerHTML = `<section class="user-friend-info-card">
-    <h3 class="friend-label">
+    <h3 class="label friend" id="friend-label">
       Friends
     </h3>
     <div class="friend-list">
@@ -177,8 +175,8 @@ function renderMostRecentUserSleepData() {
 // For a user, their all-time average sleep quality and all-time average number of hours slept
 
 function renderOuncesDrankPerDay() {
-  singleDayHydration.innerHTML = `<div class="single-day-card">
-    <h3 class="day-drink-label">
+  singleDayHydration.innerHTML = `<div class="card">
+    <h3 class="label">
       Drinks Per Day
     </h3>
     <div class="day-ounces">
@@ -206,10 +204,10 @@ function returnDrinkComparison() {
 
 function renderOuncesDrankPerWeek() {
   weeklyHydration.innerHTML = `<div class="week">
-    <h3 class="week-drink-label">
+    <h3 class="label">
       Drinks Per Week
     </h3>
-    <div class="week-days">
+    <div id="week-days">
     </div>
   </div>`;
 }
@@ -218,7 +216,7 @@ function getOuncesDrankPerWeek() {
   const currentUserID = currentUser.userId;
   const lastHydrationDate = hydration.findTheLastDayForData(currentUserID);
   let ounceList;
-  const ounceInfo = document.querySelector(".week-days");
+  const ounceInfo = document.querySelector("#week-days");
   let x = 1;
   hydration
     .returnAWeekOfOunces(currentUserID, lastHydrationDate)
