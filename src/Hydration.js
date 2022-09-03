@@ -30,6 +30,7 @@ class Hydration {
       .reverse()
       .splice(0, 1)
       .map((lastDay) => lastDay.date);
+
     return lastDate[0];
   }
 

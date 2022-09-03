@@ -9,23 +9,23 @@ describe("UserRepository", () => {
     users1 = new UserRepository(mockUserData);
   });
 
-  it("should be a function", function () {
+  it("should be a function", () => {
     expect(UserRepository).to.be.a("function");
   });
 
-  it("should instantiate UserRepository", function () {
+  it("should instantiate UserRepository", () => {
     expect(users1).to.be.an.instanceOf(UserRepository);
   });
 
-  it("Should be able to take in an array as an argument", function () {
+  it("Should be able to take in an array as an argument", () => {
     expect(users1.userData).to.be.an("array");
   });
 
-  it("Should initially store an empty array for users", function () {
+  it("Should initially store an empty array for users", () => {
     expect(users1.users).to.be.an("array");
   });
 
-  it("Should be able to return user data based on Id", function () {
+  it("Should be able to return user data based on Id", () => {
     const user1Data = users1.returnUserData(2);
     expect(user1Data[0]).to.be.deep.equal({
       userId: 2,
@@ -38,7 +38,7 @@ describe("UserRepository", () => {
     });
   });
 
-  it("Should be able to return the average step goals of all users", function () {
+  it("Should be able to return the average step goals of all users", () => {
     const totalStepAvgs = users1.returnAllAvgStepGoals();
     expect(totalStepAvgs).to.be.equal(6400);
   });
