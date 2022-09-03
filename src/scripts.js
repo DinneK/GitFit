@@ -68,7 +68,7 @@ const weeklyHydration = document.querySelector("#week-ounces");
 //SLEEP SELECTORS
 const sleepWidget = document.querySelector(".user-sleep-widget");
 const singleSleep = document.querySelector("#singleSleepData");
-const weeklySleep = document.querySelector(".week-sleep-data");
+const weeklySleep = document.querySelector("#weekSleepData");
 const allTimeAvgs = document.querySelector(".all-time-sleep-avgs");
 
 //FRIEND SELECTORS
@@ -84,6 +84,9 @@ function loadUser() {
   renderUserInfo();
   renderFriendInfo();
   renderMostRecentUserSleepData();
+  getWeekSleepHours();
+  getWeekSleepQual();
+  renderWeekOfUserSleepData();
   renderOuncesDrankPerDay();
   renderOuncesDrankPerWeek();
   getOuncesDrankPerWeek();
@@ -169,9 +172,28 @@ function renderMostRecentUserSleepData() {
   </h2>`
 }
 
-
-
 // For a user, their sleep data over the course of the latest week (hours slept and quality of sleep)
+
+function getWeekSleepHours() {
+  const date = sleepInfo.getLatestDayForUser(currentUser.userId);
+  const weekSleepHours = sleepInfo.getUserHoursSleptForWeek(currentUser.usedId, date);
+
+  console.log(weekSleepHours);
+  // return weekSleepHours;
+}
+
+function getWeekSleepQual() {
+  const date = sleepInfo.getLatestDayForUser(currentUser.userId);
+  const weekSleepQual = sleepInfo.getSleepQualForWeek(currentUser.usedId, date);
+
+  console.log(weekSleepQual);
+  // return weekSleepQual;
+}
+
+function renderWeekOfUserSleepData() {
+  
+}
+
 // For a user, their all-time average sleep quality and all-time average number of hours slept
 
 function renderOuncesDrankPerDay() {
