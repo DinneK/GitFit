@@ -69,9 +69,9 @@ const weeklyHydration = document.querySelector(".week-ounces");
 
 //SLEEP SELECTORS
 const sleepWidget = document.querySelector(".user-sleep-widget");
-const singleSleep = document.querySelector("single-sleep-data");
-const weeklySleep = document.querySelector("week-sleep-data");
-const allTimeAvgs = document.querySelector("all-time-sleep-avgs");
+const singleSleep = document.querySelector(".single-sleep-data");
+const weeklySleep = document.querySelector(".week-sleep-data");
+const allTimeAvgs = document.querySelector(".all-time-sleep-avgs");
 
 //FRIEND SELECTORS
 const friendWidget = document.querySelector(".user-friends-widget");
