@@ -44,7 +44,7 @@ main {
   margin-top: 20px;
 }
 
-.hydration {
+.multiBox {
   display: flex;
   align-items: center;
   font-family: 'Roboto', sans-serif;
@@ -81,6 +81,11 @@ main {
 
 p {
   margin: 10px;
+}
+
+h4 {
+  font-size: 1em;
+  margin: 2px, 0px;
 }
 
 h5 {
@@ -134,4 +139,10 @@ b {
 .indiv-ounce {
   font-size: 1.2em;
   margin-bottom: 2px;
+}
+
+/* Sleep Widget */
+
+.weekly-sleep {
+  margin-right: 14px;
 }

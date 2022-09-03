@@ -120,6 +120,8 @@ We will need to finish our project board:
 
 ### Thursday 09/01/22
 
+- Today we Created 
+
 - Challenges:
      - Dinne: "Being able to stop when I hit a code blind spot. More importantly, being able to stop for a day and get some sleep."
      - Matt: "This was my first real exposure to API and it was a whlole lot, but I was able to keep up with it! This was a whole new foundation for me and it was awesome!
@@ -129,3 +131,15 @@ We will need to finish our project board:
      - Dinne: "The fact that we worked as a team and figured out the fetch calls; Being able to finish the fetch implementation and beginning to understand it 'that' much more."
      - Matt: being able to map out how some of these cross-function interactions were going, and I cannjust see it now. The class-to-class is starting to be in alignment. Also, being able to re-implement iterators to new methods."
      - Dani: Hive Minding the fetch flow and being able to follow the logic for this implementation. I felt like we all actually worked out as a team in understanding the fetch/API implementation, and our thought processes were not stepping over anyone elses' toes. We all were able to voice our opinions and ideas, and acted on them, without stepping over anyone! That's a big win!
+
+
+### Friday 09/02/22
+
+- - Challenges:
+     - Dinne: This was th first time I almost gave up on this project. It was a real moment where I told myself, "I'm not getting this, i'm done". But I caught myself and pushed the positive self talk to move away from those thoughts. The moment was the 'innerHTML' for the function `renderOuncesDrankPerWeek()`. This works similarly to the method `renderOuncesDrankPerDay()`, and that method was working. The problem that is wasn't working was because `renderOuncesDrankPerWeek()` was appending and manipulating the DOM and not necessarily returning a value like `renderOuncesDrankPerDay()` does. `renderOuncesDrankPerWeek()` is merely a side effect.
+     - Matt:
+     - Dani: giving my branch creations/deletions an extra careful look. I created branches today that we no longer needed, but I had implemented changes that seemed necessary, and so I needed to make double check on their importance before I commited my changes.
+- Wins:
+     - Dinne: My win was definitely overcomming and fighting the thoughts of giving up. I was also able to look to my partners as rubber ducks to hear my thought process out loud. 
+     - Matt:
+     - Dani: Being able to look at other people's code and follow the logic. Dinne, Matt and I, for many parts, worked independently (divide and conquer across classes), so being able to read Dinne's excellent Data Model to the DOM implementations was a big win for me.

@@ -20,12 +20,14 @@ import {
 } from "./apiCalls";
 import UserRepository from "./UserRepository";
 import Hydration from "./Hydration";
+import Sleep from "./Sleep";
 
 //GLOBAL VARIABLES
 let currentUser;
 let usersData;
 let newUserRepo;
 let sleepData;
+let sleepInfo;
 let hydrationData;
 let hydration;
 
@@ -38,17 +40,15 @@ function instatiateAllData() {
       hydrationData = data[2].hydrationData;
 
       // console.log('OUR USERS', usersData);
-      // console.log('OUR SLEEP!', sleepData);
+      console.log('OUR SLEEP!', sleepData);
       // console.log('OUR HYDRATION! ', hydrationData);
 
       newUserRepo = new UserRepository(usersData);
       currentUser = new User(
         usersData[Math.floor(Math.random() * usersData.length)]
       );
-      //console.log(currentUser.userId);
       hydration = new Hydration(hydrationData);
-      // console.log('ALL USER******', newUserRepo);
-      // console.log('CURRENT USER******', currentUser);
+      sleepInfo = new Sleep(sleepData);
 
       loadUser();
     }
@@ -66,6 +66,10 @@ const weeklyHydration = document.querySelector("#week-ounces");
 //const ounceInfo = document.querySelector(".indiv-ounce");
 
 //SLEEP SELECTORS
+const sleepWidget = document.querySelector(".user-sleep-widget");
+const singleSleep = document.querySelector("#singleSleepData");
+const weeklySleep = document.querySelector(".week-sleep-data");
+const allTimeAvgs = document.querySelector(".all-time-sleep-avgs");
 
 //FRIEND SELECTORS
 const friendWidget = document.querySelector("#user-friends-widget");
@@ -79,6 +83,7 @@ function loadUser() {
   renderWelcomeMessage();
   renderUserInfo();
   renderFriendInfo();
+  renderMostRecentUserSleepData();
   renderOuncesDrankPerDay();
   renderOuncesDrankPerWeek();
   getOuncesDrankPerWeek();
@@ -141,6 +146,34 @@ function splitFriendsIntoList() {
   return friendList;
 }
 
+// For a user, their sleep data for the latest day (hours slept and quality of sleep)
+function getMostRecentUserSleepHrs() {
+  const date = sleepInfo.getLatestDayForUser(currentUser.userId);
+  const latestSleepHrs = sleepInfo.getUserSleepHrsForDay(currentUser.userId, date);
+
+  return latestSleepHrs;
+}
+
+function getMostRecentUserSleepQual() {
+  const date = sleepInfo.getLatestDayForUser(currentUser.userId);
+  const latestSleepQual = sleepInfo.getUserSleepQualForDay(currentUser.userId, date);
+  
+  return latestSleepQual;
+}
+
+function renderMostRecentUserSleepData() {
+  singleSleep.innerHTML = 
+  `<h2 class="label"> Last Night's Sleep
+  <h4>Hours Slept: ${getMostRecentUserSleepHrs()}</h4>
+  <h4>Sleep Quality: ${getMostRecentUserSleepQual()}</h4>
+  </h2>`
+}
+
+
+
+// For a user, their sleep data over the course of the latest week (hours slept and quality of sleep)
+// For a user, their all-time average sleep quality and all-time average number of hours slept
+
 function renderOuncesDrankPerDay() {
   singleDayHydration.innerHTML = `<div class="card">
     <h3 class="label">
@@ -189,6 +222,6 @@ function getOuncesDrankPerWeek() {
     .returnAWeekOfOunces(currentUserID, lastHydrationDate)
     .forEach((ounce) => {
       ounceList =
-        ounceInfo.innerHTML += `<div class="indiv-ounce"> Day ${x++}: ${ounce}</div>`;
+        ounceInfo.innerHTML += `<div class="indiv-ounce"> Day ${x++}: ${ounce} oz</div>`;
     });
 }
