@@ -34,14 +34,14 @@ class Sleep {
     let thisDate, dayOfWeek;
     const weekInfo = this.getDataForAWeek(userId, date);
     const literalDays = weekInfo.reduce((acc, data) => {
-        thisDate = new Date(data.date);
-        dayOfWeek = thisDate.toLocaleDateString(undefined, { weekday: 'long' });  
-        acc.push({
-            day : dayOfWeek,
-            hoursSlept : data.hoursSlept,
-            sleepQuality :data.sleepQuality
-        });
-        return acc;
+      thisDate = new Date(data.date);
+      dayOfWeek = thisDate.toLocaleDateString(undefined, { weekday: "long" });
+      acc.push({
+        day: dayOfWeek,
+        hoursSlept: data.hoursSlept,
+        sleepQuality: data.sleepQuality,
+      });
+      return acc;
     }, []);
 
     return literalDays;

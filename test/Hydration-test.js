@@ -14,17 +14,14 @@ describe("Hydration", () => {
   });
 
   it("should be a function", () => {
-
     expect(Hydration).to.be.a("function");
   });
 
   it("should have hydration data", () => {
-
     expect(hydration).to.be.an.instanceOf(Hydration);
   });
 
   it("should an array of objects", () => {
-
     expect(hydration.hydrationData).to.deep.equal([
       { userID: 1, date: "2019/06/15", numOunces: 37 },
       { userID: 2, date: "2019/06/15", numOunces: 75 },
@@ -46,7 +43,6 @@ describe("Hydration", () => {
   });
 
   it("should return the hydration data for a particular user", () => {
-
     expect(hydration.findUserByID(user1.userId)).to.deep.equal([
       { userID: 1, date: "2019/06/15", numOunces: 37 },
       { userID: 1, date: "2019/06/16", numOunces: 48 },
@@ -71,13 +67,11 @@ describe("Hydration", () => {
   });
 
   it("should return the all time fluid ounces a person has drank", () => {
-
     expect(hydration.getAverageAllTimeFluidOunces(user1.userId)).to.equal(53);
     expect(hydration.getAverageAllTimeFluidOunces(user2.userId)).to.equal(65);
   });
 
   it("should return the last day of user input", () => {
-
     expect(hydration.findTheLastDayForData(user1.userId)).to.equal(
       "2019/06/22"
     );
@@ -87,7 +81,6 @@ describe("Hydration", () => {
   });
 
   it("should return ounces for specific day", () => {
-
     expect(hydration.getFluidOuncesPerDay(user1.userId, "2019/06/21")).to.equal(
       55
     );
@@ -103,7 +96,6 @@ describe("Hydration", () => {
   });
 
   it("should return a weeks worth of data", () => {
-
     expect(
       hydration.findAWeekOfDateData(user1.userId, "2019/06/22")
     ).to.deep.equal([
@@ -129,7 +121,6 @@ describe("Hydration", () => {
   });
 
   it("should return a weeks worth of dates", () => {
-
     expect(
       hydration.returnAWeekOfDates(user1.userId, "2019/06/21")
     ).to.deep.equal([
@@ -155,7 +146,6 @@ describe("Hydration", () => {
   });
 
   it("should return a weeks worth of ounces per day", () => {
-
     expect(
       hydration.returnAWeekOfOunces(user1.userId, "2019/06/21")
     ).to.deep.equal([37, 48, 91, 62, 48, 38, 55]);
