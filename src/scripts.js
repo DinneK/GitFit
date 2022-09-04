@@ -86,14 +86,14 @@ function loadUser() {
   renderWelcomeMessage();
   renderUserInfo();
   renderFriendInfo();
-  renderMostRecentUserSleepData();
-  // getWeekSleepHours();
-  // getWeekSleepQual();
-  renderSleepWeek();
-  getUserAvgSleepHrs();
-  getUserAvgSleepQual()
-  renderUserAvgs()
-  getDaysOfSleepWeek();
+  // renderMostRecentUserSleepData();
+  // getWeekSleepHours(); // Probably won't need
+  // getWeekSleepQual(); // Probably won't need
+  // renderSleepWeek();
+  // getUserAvgSleepHrs();
+  // getUserAvgSleepQual()
+  // renderUserAvgs()
+  // getDaysOfSleepWeek();
   renderOuncesDrankPerDay();
   renderOuncesDrankPerWeek();
   getOuncesDrankPerWeek();
