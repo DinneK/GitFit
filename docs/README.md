@@ -17,6 +17,7 @@
 - Displays a user's data and compares their daily step goals to the average step goals of all users.
 - Displays a user's friends
 - Allows a user to track sleep goals and hydration goals.
+- 100% Accessibilty Score
 
 ## Deployed Page
 Visit our published Hang In There Site! [here](https://jdeloach03.github.io/whats-for-dinner/)
