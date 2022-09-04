@@ -33,20 +33,19 @@ class Sleep {
   }
 
   getLiteralDaysOfWeek(userId, date) {
-    let thisDate, actualDay;
+    let thisDate, dayOfWeek;
     const weekInfo = this.getDataForAWeek(userId, date);
     const literalDays = weekInfo.reduce((acc, data) => {
-        data.date
         thisDate = new Date(data.date);
-        actualDay = thisDate.toLocaleDateString(undefined, { weekday: 'long' });  
+        dayOfWeek = thisDate.toLocaleDateString(undefined, { weekday: 'long' });  
         acc.push({
-            literalDay : actualDay,
+            day : dayOfWeek,
             hoursSlept : data.hoursSlept,
             sleepQuality :data.sleepQuality
         });
         return acc;
     }, []);
-    console.log(literalDays);
+
     return literalDays;
   }
 

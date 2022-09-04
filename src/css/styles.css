@@ -157,3 +157,12 @@ b {
   font-size: 0.8em;
   margin-bottom: 15px;
 }
+
+.calendarDay {
+  height: 75px;
+  width: 175px;
+}
+
+.sleep-font {
+  font: 5px;
+}
