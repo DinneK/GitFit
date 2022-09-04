@@ -6,6 +6,7 @@ import "./css/styles.css";
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 // import './images/turing-logo.png'
+import "./images/walking1.png";
 
 console.log("This is the JavaScript entry file - your code begins here.");
 
@@ -40,7 +41,7 @@ function instatiateAllData() {
       hydrationData = data[2].hydrationData;
 
       // console.log('OUR USERS', usersData);
-      console.log('OUR SLEEP!', sleepData);
+      console.log("OUR SLEEP!", sleepData);
       // console.log('OUR HYDRATION! ', hydrationData);
 
       newUserRepo = new UserRepository(usersData);
@@ -100,17 +101,17 @@ function renderWelcomeMessage() {
 
 function renderUserInfo() {
   userWidget.innerHTML = `<section class="user-info-card">
-    <h3 class="label">
+    <div class="label">
       User Information
-    </h3>
-    <div class="user-info">
-      <h5><b>Email:</b> ${currentUser.email}</h5>
-      <h5><b>Addres:</b> ${currentUser.address}</h5>
-      <h5><b>Stride Length:</b> ${currentUser.strideLength}</h5>
     </div>
-    <h3 class="label">
+    <div class="user-info">
+      <h2><b>Email:</b> ${currentUser.email}</h2>
+      <h2><b>Addres:</b> ${currentUser.address}</h2>
+      <h2><b>Stride Length:</b> ${currentUser.strideLength}</h2>
+    </div>
+    <div class="label">
       Step Goal
-    </h3>
+    </div>
     <p class="user-step-goals">
       ${returnStepGoalComparision()}
     </p>
@@ -153,24 +154,31 @@ function splitFriendsIntoList() {
 // For a user, their sleep data for the latest day (hours slept and quality of sleep)
 function getMostRecentUserSleepHrs() {
   const date = sleepInfo.getLatestDayForUser(currentUser.userId);
-  const latestSleepHrs = sleepInfo.getUserSleepHrsForDay(currentUser.userId, date);
+  const latestSleepHrs = sleepInfo.getUserSleepHrsForDay(
+    currentUser.userId,
+    date
+  );
 
   return latestSleepHrs;
 }
 
 function getMostRecentUserSleepQual() {
   const date = sleepInfo.getLatestDayForUser(currentUser.userId);
-  const latestSleepQual = sleepInfo.getUserSleepQualForDay(currentUser.userId, date);
-  
+  const latestSleepQual = sleepInfo.getUserSleepQualForDay(
+    currentUser.userId,
+    date
+  );
+
   return latestSleepQual;
 }
 
 function renderMostRecentUserSleepData() {
-  singleSleep.innerHTML = 
-  `<h2 class="label"> Last Night's Sleep
-  <h4>Hours Slept: ${getMostRecentUserSleepHrs()}</h4>
-  <h4>Sleep Quality: ${getMostRecentUserSleepQual()}</h4>
-  </h2>`
+  singleSleep.innerHTML = `<div class="label"> Last Night's Sleep
+  </div>
+  <div class="label">
+  <div class="sleep">Hours Slept: ${getMostRecentUserSleepHrs()}</div>
+  <div class="sleep">Sleep Quality: ${getMostRecentUserSleepQual()}</div>
+  </div>`;
 }
 
 // For a user, their sleep data over the course of the latest week (hours slept and quality of sleep)
