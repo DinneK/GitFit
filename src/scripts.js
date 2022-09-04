@@ -87,6 +87,7 @@ function loadUser() {
   getWeekSleepHours();
   getWeekSleepQual();
   renderWeekOfUserSleepData();
+  getDaysOfSleepWeek();
   renderOuncesDrankPerDay();
   renderOuncesDrankPerWeek();
   getOuncesDrankPerWeek();
@@ -176,22 +177,38 @@ function renderMostRecentUserSleepData() {
 
 function getWeekSleepHours() {
   const date = sleepInfo.getLatestDayForUser(currentUser.userId);
-  const weekSleepHours = sleepInfo.getUserHoursSleptForWeek(currentUser.usedId, date);
+  const weekSleepHrs = sleepInfo.getHoursSleptForWeek(currentUser.userId, date);
 
-  console.log(weekSleepHours);
-  // return weekSleepHours;
+  return weekSleepHrs;
 }
 
 function getWeekSleepQual() {
   const date = sleepInfo.getLatestDayForUser(currentUser.userId);
-  const weekSleepQual = sleepInfo.getSleepQualForWeek(currentUser.usedId, date);
+  const weekSleepQual = sleepInfo.getSleepQualForWeek(currentUser.userId, date);
 
-  console.log(weekSleepQual);
-  // return weekSleepQual;
+  return weekSleepQual;
+}
+
+function getDaysOfSleepWeek() {
+  const date = sleepInfo.getLatestDayForUser(currentUser.userId);
+  const weekOf = sleepInfo.getLiteralDaysOfWeek(currentUser.userId, date);
+  
+  return weekOf;
+}
+
+function generateWeeklyHTML() {
+  const weekOf = getDaysOfSleepWeek();
+  const weekHTML = weekOf.forEach(data => {
+    
+  });
 }
 
 function renderWeekOfUserSleepData() {
-  
+  weeklySleep.innerHtml = 
+  `<h3 class="label">
+    Your Sleep Last week
+  </h3>
+  `;
 }
 
 // For a user, their all-time average sleep quality and all-time average number of hours slept
