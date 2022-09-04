@@ -14,6 +14,7 @@ describe("Sleep", () => {
   });
 
   it("Should read the sleep data", () => {
+    
     expect(sleep.sleepData[0]).to.deep.equal({
       userID: 1,
       date: "2019/06/15",
