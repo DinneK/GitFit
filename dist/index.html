@@ -26,13 +26,18 @@
           <section class="user-friend-info-card" id="user-friend-info-card"></section>
         </section>
         <section class="multiBox" id="user-hydration-widget">
-          <div class="ounces single" id="single-day-ounces"></div>
-          <div class="ounces week" id="week-ounces"></div>
+          <div class="sub-widget single" id="single-day-ounces"></div>
+          <div class="sub-widget week" id="week-ounces"></div>
         </section>
-        <section class="multiBox user-sleep-widget">
-          <div class=" ounces single single-sleep-data" id="singleSleepData">singleSleep</div>
-          <div class="ounces single week week-sleep-data" id="weekSleepData">weeklySleep</div>
-          <div class="ounces week all-time-sleep-avgs">allTimeAvgs</div>
+        <section class="widget sleep-widget">
+          <div class="top-sleep">
+            <div class=" sub-widget single top-two-box" id="singleSleepData"></div>
+            <div class="sub-widget week top-two-box" id="sleepAvgs"></div>
+          </div>
+          <div class="sub-widget sleep-week-data" id="weekSleepData">
+            <div class="label">Your Sleep Last week</div>
+            <div class="sleep-week-days" id="sleepWeekDays"></div>
+          </div>
         </section>
       <!-- </section> -->
     </main>

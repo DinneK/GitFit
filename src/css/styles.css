@@ -3,11 +3,11 @@ body, html, main, header {
 }
 
 header {
+  align-items: center;
   background-image: url('/src/images/walking1.png');
   background-size: cover;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 h1 {
@@ -63,7 +63,7 @@ main {
   width: 40%;
 }
 
-.ounces {
+.sub-widget {
   background-color: white;
   border-radius: 12px;
   display: flex;
@@ -80,10 +80,6 @@ main {
       0 8px 8px hsl(0deg 0% 0% / 0.075),
       0 16px 16px hsl(0deg 0% 0% / 0.075)
     ;
-}
-
-.single {
-  margin-right: 7px;
 }
 
 .label {
@@ -114,6 +110,7 @@ b {
   font-size: 1.2em;
 }
 
+/*Friend List Widget*/
 .friend-list {
   font-size: 1.2em;
   text-align: center;
@@ -131,9 +128,18 @@ b {
     text-align: center;
 }
 
+
+/* Hydration Widget */
 .day-drink-label
 .week-drink-label {
   margin-bottom: 40px;
+}
+
+.week {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 7px;
 }
 
 .day-ounces {
@@ -145,25 +151,51 @@ b {
   font-size: 1.7em;
 }
 
-.week {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-left: 7px;
-}
-
 .indiv-ounce {
   font-size: 1.2em;
   margin-bottom: 2px;
 }
 
-/* Sleep Widget */
-
-.weekly-sleep {
-  margin-right: 14px;
+/*Sleep Widget*/
+.single {
+  margin-right: 7px;
 }
 
-.sleep {
-  font-size: 0.8em;
-  margin-bottom: 15px;
+.top-sleep {
+  display: flex;
+  width: 100%;
 }
+
+.top-two-box {
+  height: 15vh;
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.sleep-label {
+  font-size: 1.2em;
+
+  margin-top: 0px;
+}
+
+.sleep-widget {
+  background-color: transparent;
+}
+.sleep-week-data {
+  width: 100%;
+}
+
+.sleep-week-days {
+  display: flex;
+  width: 100%;
+}
+
+.calendarDay {
+  text-align: center;
+  font: 5px;
+  height: 75px;
+  margin-right: 0px;
+  width: 14.25vw;
+}
+
+

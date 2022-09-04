@@ -3,6 +3,7 @@ class Sleep {
     this.sleepData = data;
   }
 
+  //helper methods
   getUserSleepData(userId) {
     const userData = this.sleepData.reduce((data, user) => {
       if (user.userID === userId) {
@@ -23,14 +24,32 @@ class Sleep {
   }
 
   getDataForAWeek(userId, date) {
-    const userInfo = this.sleepData.filter((curr) => curr.userID === userId);
+    const userInfo = this.getUserSleepData(userId);
     const dateIndex = userInfo.findIndex((data) => data.date === date);
     const startIndex = dateIndex - 6 < 0 ? 0 : dateIndex - 6;
-    const weekOf = userInfo.slice(startIndex, dateIndex + 1);
+    const previousWeek = userInfo.slice(startIndex, dateIndex + 1);
 
-    return weekOf;
+    return previousWeek;
   }
 
+  getLiteralDaysOfWeek(userId, date) {
+    let thisDate, dayOfWeek;
+    const weekInfo = this.getDataForAWeek(userId, date);
+    const literalDays = weekInfo.reduce((acc, data) => {
+        thisDate = new Date(data.date);
+        dayOfWeek = thisDate.toLocaleDateString(undefined, { weekday: 'long' });  
+        acc.push({
+            day : dayOfWeek,
+            hoursSlept : data.hoursSlept,
+            sleepQuality :data.sleepQuality
+        });
+        return acc;
+    }, []);
+
+    return literalDays;
+  }
+
+  //behavioral
   getUserAvgSleepHoursPerDay(userId) {
     const userData = this.getUserSleepData(userId);
     const hrsSlept = userData.map((user) => user.hoursSlept);
@@ -61,7 +80,7 @@ class Sleep {
     return sleepQual[0].sleepQuality;
   }
 
-  getUserHoursSleptForWeek(userId, date) {
+  getHoursSleptForWeek(userId, date) {
     const userDataForWeek = this.getDataForAWeek(userId, date);
     const hoursSlept = userDataForWeek.map((user) => user.hoursSlept);
 

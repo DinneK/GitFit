@@ -69,7 +69,9 @@ const weeklyHydration = document.querySelector("#week-ounces");
 //SLEEP SELECTORS
 const sleepWidget = document.querySelector(".user-sleep-widget");
 const singleSleep = document.querySelector("#singleSleepData");
-const weeklySleep = document.querySelector("#weekSleepData");
+const weeklySleep = document.querySelector("#weekSleepData");//don't think we'll need here
+const sleepWeekDays = document.querySelector("#sleepWeekDays");
+const sleepAvgs = document.querySelector("#sleepAvgs");
 const allTimeAvgs = document.querySelector(".all-time-sleep-avgs");
 
 //FRIEND SELECTORS
@@ -85,9 +87,11 @@ function loadUser() {
   renderUserInfo();
   renderFriendInfo();
   renderMostRecentUserSleepData();
-  getWeekSleepHours();
-  getWeekSleepQual();
-  renderWeekOfUserSleepData();
+  renderSleepWeek();
+  // getUserAvgSleepHrs();
+  // getUserAvgSleepQual()
+  renderUserAvgs()
+  // getDaysOfSleepWeek();
   renderOuncesDrankPerDay();
   renderOuncesDrankPerWeek();
   getOuncesDrankPerWeek();
@@ -105,7 +109,7 @@ function renderUserInfo() {
     </div>
     <div class="user-info">
       <h2><b>Email:</b> ${currentUser.email}</h2>
-      <h2><b>Addres:</b> ${currentUser.address}</h2>
+      <h2><b>Address:</b> ${currentUser.address}</h2>
       <h2><b>Stride Length:</b> ${currentUser.strideLength}</h2>
     </div>
     <div class="label">
@@ -150,61 +154,76 @@ function splitFriendsIntoList() {
   return friendList;
 }
 
+
+//========================================SLEEP
 // For a user, their sleep data for the latest day (hours slept and quality of sleep)
 function getMostRecentUserSleepHrs() {
   const date = sleepInfo.getLatestDayForUser(currentUser.userId);
-  const latestSleepHrs = sleepInfo.getUserSleepHrsForDay(
-    currentUser.userId,
-    date
-  );
+  const latestSleepHrs = sleepInfo.getUserSleepHrsForDay(currentUser.userId,date);
 
   return latestSleepHrs;
 }
 
 function getMostRecentUserSleepQual() {
   const date = sleepInfo.getLatestDayForUser(currentUser.userId);
-  const latestSleepQual = sleepInfo.getUserSleepQualForDay(
-    currentUser.userId,
-    date
-  );
+  const latestSleepQual = sleepInfo.getUserSleepQualForDay(currentUser.userId,date);
 
   return latestSleepQual;
 }
 
 function renderMostRecentUserSleepData() {
-  singleSleep.innerHTML = `<div class="label"> Last Night's Sleep
-  </div>
-  <div class="label">
+  singleSleep.innerHTML = 
+  `<div class="label"> Last Night's Sleep</div>
+  <div class="label sleep-label">
   <div class="sleep">Hours Slept: ${getMostRecentUserSleepHrs()}</div>
   <div class="sleep">Sleep Quality: ${getMostRecentUserSleepQual()}</div>
   </div>`;
 }
 
 // For a user, their sleep data over the course of the latest week (hours slept and quality of sleep)
-
-function getWeekSleepHours() {
+function getDaysOfSleepWeek() {
   const date = sleepInfo.getLatestDayForUser(currentUser.userId);
-  const weekSleepHours = sleepInfo.getUserHoursSleptForWeek(
-    currentUser.usedId,
-    date
-  );
-
-  console.log(weekSleepHours);
-  // return weekSleepHours;
+  const weekOf = sleepInfo.getLiteralDaysOfWeek(currentUser.userId, date);
+  
+  return weekOf;
 }
 
-function getWeekSleepQual() {
-  const date = sleepInfo.getLatestDayForUser(currentUser.userId);
-  const weekSleepQual = sleepInfo.getSleepQualForWeek(currentUser.usedId, date);
-
-  console.log(weekSleepQual);
-  // return weekSleepQual;
+function renderSleepWeek() {
+  const weekOf = getDaysOfSleepWeek();
+  weekOf.forEach(data => {
+    sleepWeekDays.innerHTML += 
+    `<div class="calendarDay">
+      <div class="sleep-font">${data.day}</div> 
+      <div class="sleep-font">Hours: ${data.hoursSlept}</div>
+      <div class="sleep-font">Quality: ${data.sleepQuality}</div>
+    </div>`
+  });
 }
-
-function renderWeekOfUserSleepData() {}
 
 // For a user, their all-time average sleep quality and all-time average number of hours slept
 
+function getUserAvgSleepHrs() {
+  const sleepHrsAvg = sleepInfo.getUserAvgSleepHoursPerDay(currentUser.userId);
+  return sleepHrsAvg;
+}
+
+function getUserAvgSleepQual() {
+  const sleepQualAvg = sleepInfo.getAllOfUserAvgSleepQual(currentUser.userId);
+  return sleepQualAvg;
+}
+
+function renderUserAvgs(){
+  sleepAvgs.innerHTML = 
+  `<div class="label"> Your Sleep Average</div>
+  <div class="label sleep-label">
+  <div class="sleep">Hours Slept: ${getUserAvgSleepHrs()}</div>
+  <div class="sleep">Sleep Quality: ${getUserAvgSleepQual()}</div>
+  </div>`;
+}
+
+
+
+//===============================================HYDRATION
 function renderOuncesDrankPerDay() {
   singleDayHydration.innerHTML = `<div class="card">
     <h3 class="label">
