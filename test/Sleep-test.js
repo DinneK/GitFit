@@ -76,7 +76,6 @@ describe("Sleep", () => {
     const user1Week = sleep.getHoursSleptForWeek(1, "2019/06/22");
     const user2Week = sleep.getHoursSleptForWeek(2, "2019/06/20");
 
-
     expect(user1Week).to.deep.equal([3.5, 5.3, 14.2, 7.2, 3.9, 3.6, 6.9]);
     expect(user2Week).to.deep.equal([7, 5.7, 5.7, 5.8, 6.5, 7.5]);
   });

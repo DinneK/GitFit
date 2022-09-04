@@ -107,7 +107,6 @@ describe("Hydration", () => {
       { userID: 1, date: "2019/06/21", numOunces: 55 },
       { userID: 1, date: "2019/06/22", numOunces: 46 },
     ]);
-
     expect(
       hydration.findAWeekOfDateData(user2.userId, "2019/06/22")
     ).to.deep.equal([
@@ -133,7 +132,6 @@ describe("Hydration", () => {
       "2019/06/20",
       "2019/06/21",
     ]);
-
     expect(
       hydration.returnAWeekOfDates(user2.userId, "2019/06/22")
     ).to.deep.equal([
@@ -151,7 +149,6 @@ describe("Hydration", () => {
     expect(
       hydration.returnAWeekOfOunces(user1.userId, "2019/06/21")
     ).to.deep.equal([37, 48, 91, 62, 48, 38, 55]);
-
     expect(
       hydration.returnAWeekOfOunces(user2.userId, "2019/06/22")
     ).to.deep.equal([82, 27, 127, 62, 72, 36, 39]);

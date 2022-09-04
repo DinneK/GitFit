@@ -14,7 +14,7 @@ h1 {
   color: white;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 60px;
-  text-shadow:1px 0 0 #111111,0 1px 0 #111111,-1px 0 0 #111111,0 -1px 0 #111111
+  text-shadow:1px 0 0 #111111,0 1px 0 #111111,-1px 0 0 #111111,0 -1px 0 #111111;
 }
 
 .welcome {
@@ -22,64 +22,62 @@ h1 {
   font-family: 'Roboto', sans-serif;
   font-size: 40px;
   margin-bottom: 20px;
-  text-shadow:1px 0 0 #111111,0 1px 0 #111111,-1px 0 0 #111111,0 -1px 0 #111111
+  text-shadow:1px 0 0 #111111,0 1px 0 #111111,-1px 0 0 #111111,0 -1px 0 #111111;
 }
 
 main {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
   align-content: space-around;
   background-image: linear-gradient(to bottom right, red, orange, yellow);
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  justify-content: space-evenly;
+  width: 100vw;
 }
 
 .widget {
+  align-items: center;
   background-color: white;
   border-radius: 12px;
+  box-shadow:
+  0 1px 1px hsl(0deg 0% 0% / 0.075),
+  0 2px 2px hsl(0deg 0% 0% / 0.075),
+  0 4px 4px hsl(0deg 0% 0% / 0.075),
+  0 8px 8px hsl(0deg 0% 0% / 0.075),
+  0 16px 16px hsl(0deg 0% 0% / 0.075)
+  ;
   display: flex;
   flex-direction: column;
-  align-items: center;
   font-family: 'Roboto', sans-serif;
   height: 35%;
   width: 40%;
-  box-shadow:
-      0 1px 1px hsl(0deg 0% 0% / 0.075),
-      0 2px 2px hsl(0deg 0% 0% / 0.075),
-      0 4px 4px hsl(0deg 0% 0% / 0.075),
-      0 8px 8px hsl(0deg 0% 0% / 0.075),
-      0 16px 16px hsl(0deg 0% 0% / 0.075)
-    ;
 }
 
 .multiBox {
-  display: flex;
   align-items: center;
+  display: flex;
   font-family: 'Roboto', sans-serif;
   height: 35%;
   width: 40%;
 }
 
 .sub-widget {
+  align-items: center;
   background-color: white;
   border-radius: 12px;
+  box-shadow:
+  0 1px 1px hsl(0deg 0% 0% / 0.075),
+  0 2px 2px hsl(0deg 0% 0% / 0.075),
+  0 4px 4px hsl(0deg 0% 0% / 0.075),
+  0 8px 8px hsl(0deg 0% 0% / 0.075),
+  0 16px 16px hsl(0deg 0% 0% / 0.075)
+  ;
   display: flex;
   flex-direction: column;
-  align-items: center;
   font-family: 'Roboto', sans-serif;
   height: 100%;
-  width: 50%;
   margin: 0px;
-  box-shadow:
-      0 1px 1px hsl(0deg 0% 0% / 0.075),
-      0 2px 2px hsl(0deg 0% 0% / 0.075),
-      0 4px 4px hsl(0deg 0% 0% / 0.075),
-      0 8px 8px hsl(0deg 0% 0% / 0.075),
-      0 16px 16px hsl(0deg 0% 0% / 0.075)
-    ;
+  width: 50%;
 }
 
 .label {
@@ -87,8 +85,8 @@ main {
   font-weight: bold;
   text-align: center;
   margin: 5px;
+  margin-bottom: 25px;
   margin-top: 15px;
-  margin-bottom: 25px
 }
 
 p {
@@ -113,8 +111,8 @@ b {
 /*Friend List Widget*/
 .friend-list {
   font-size: 1.2em;
-  text-align: center;
   margin-bottom: 5px;
+  text-align: center;
 }
 
 .indiv-friend {
@@ -123,9 +121,9 @@ b {
 
 .card {
   display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 
@@ -136,9 +134,9 @@ b {
 }
 
 .week {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin-left: 7px;
 }
 
@@ -168,19 +166,20 @@ b {
 
 .top-two-box {
   height: 15vh;
-  width: 50%;
   margin-bottom: 10px;
+  width: 50%;
 }
 
 .sleep-label {
   font-size: 1.2em;
-
   margin-top: 0px;
 }
 
 .sleep-widget {
   background-color: transparent;
+  box-shadow: none;
 }
+
 .sleep-week-data {
   width: 100%;
 }
@@ -190,12 +189,11 @@ b {
   width: 100%;
 }
 
-.calendarDay {
-  text-align: center;
+.calendar-day {
   font: 5px;
   height: 75px;
-  margin-right: 0px;
+  margin-left: 3px;
+  margin-right: 3px;
+  text-align: center;
   width: 14.25vw;
 }
-
-

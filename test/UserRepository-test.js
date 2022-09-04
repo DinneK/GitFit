@@ -27,6 +27,7 @@ describe("UserRepository", () => {
 
   it("Should be able to return user data based on Id", () => {
     const user1Data = users1.returnUserData(2);
+
     expect(user1Data[0]).to.be.deep.equal({
       userId: 2,
       name: "Jarvis Considine",
@@ -40,11 +41,13 @@ describe("UserRepository", () => {
 
   it("Should be able to return the average step goals of all users", () => {
     const totalStepAvgs = users1.returnAllAvgStepGoals();
+
     expect(totalStepAvgs).to.be.equal(6400);
   });
 
   it("should return the ids of a users friends", () => {
     const user1Data = users1.returnUserData(1);
+
     expect(users1.findUserFriendsIDs(user1Data[0].userId)).to.deep.equal([
       1, 4, 5,
     ]);
@@ -52,6 +55,7 @@ describe("UserRepository", () => {
 
   it("should return the names of a users friends", () => {
     const user1Data = users1.returnUserData(1);
+
     expect(users1.returnUserFriendsNames(user1Data[0].userId)).to.deep.equal([
       "Luisa Hane",
       "Mae Connelly",

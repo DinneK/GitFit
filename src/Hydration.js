@@ -8,7 +8,6 @@ class Hydration {
       if (userID === curr.userID) {
         acc.push(curr);
       }
-
       return acc;
     }, []);
 
@@ -53,7 +52,6 @@ class Hydration {
 
   returnAWeekOfDates(userWeek, date) {
     const weekDays = [];
-
     this.findAWeekOfDateData(userWeek, date).forEach((day) =>
       weekDays.push(day.date)
     );
@@ -63,7 +61,6 @@ class Hydration {
 
   returnAWeekOfOunces(userWeek, date) {
     const weekOunces = [];
-
     this.findAWeekOfDateData(userWeek, date).forEach((day) =>
       weekOunces.push(day.numOunces)
     );

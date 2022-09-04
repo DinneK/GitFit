@@ -1,6 +1,5 @@
 import { expect } from "chai";
 import mockUserData from "../src/data/mockUserData";
-
 import User from "../src/User";
 
 describe("User", () => {
