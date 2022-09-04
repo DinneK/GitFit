@@ -3,13 +3,11 @@ class Sleep {
     this.sleepData = data;
   }
 
-  //helper methods
   getUserSleepData(userId) {
     const userData = this.sleepData.reduce((data, user) => {
       if (user.userID === userId) {
         data.push(user);
       }
-
       return data;
     }, []);
 
@@ -49,7 +47,6 @@ class Sleep {
     return literalDays;
   }
 
-  //behavioral
   getUserAvgSleepHoursPerDay(userId) {
     const userData = this.getUserSleepData(userId);
     const hrsSlept = userData.map((user) => user.hoursSlept);
@@ -70,6 +67,7 @@ class Sleep {
   getUserSleepHrsForDay(userId, date) {
     const userData = this.getUserSleepData(userId);
     const hrsSlpDay = userData.filter((userInfo) => userInfo.date === date);
+
     return hrsSlpDay[0].hoursSlept;
   }
 
@@ -97,7 +95,6 @@ class Sleep {
   getAllUsersAvgSleepQual() {
     const sleepQualData = this.sleepData.map((user) => user.sleepQuality);
     const totalAvgQual = sleepQualData.reduce((acc, upd) => acc + upd, 0);
-
     const avgSQ = parseFloat((totalAvgQual / sleepQualData.length).toFixed(1));
 
     return avgSQ;

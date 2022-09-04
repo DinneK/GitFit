@@ -43,7 +43,6 @@ class UserRepository {
           acc.push(user.name);
         }
       });
-
       return acc;
     }, []);
 

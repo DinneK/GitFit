@@ -1,18 +1,5 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you tell webpack to use a CSS file
 import "./css/styles.css";
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-// import './images/turing-logo.png'
 import "./images/walking1.png";
-
-console.log("This is the JavaScript entry file - your code begins here.");
-
-// An example of how you tell webpack to use a JS file
-
-// import userData from "./data/users";
 import User from "./User";
 import {
   getUsersApiData,
@@ -23,7 +10,6 @@ import UserRepository from "./UserRepository";
 import Hydration from "./Hydration";
 import Sleep from "./Sleep";
 
-//GLOBAL VARIABLES
 let currentUser;
 let usersData;
 let newUserRepo;
@@ -32,18 +18,12 @@ let sleepInfo;
 let hydrationData;
 let hydration;
 
-//FETCH CALLS
 function instatiateAllData() {
   Promise.all([getUsersApiData, getSleepApiData, getHydrationApiData]).then(
     (data) => {
       usersData = data[0].userData;
       sleepData = data[1].sleepData;
       hydrationData = data[2].hydrationData;
-
-      // console.log('OUR USERS', usersData);
-      console.log("OUR SLEEP!", sleepData);
-      // console.log('OUR HYDRATION! ', hydrationData);
-
       newUserRepo = new UserRepository(usersData);
       currentUser = new User(
         usersData[Math.floor(Math.random() * usersData.length)]
@@ -56,48 +36,33 @@ function instatiateAllData() {
   );
 }
 
-//SELECTORS
-//USER SELECTORS
 const userWidget = document.querySelector("#user-info-widget");
 const userWelcome = document.querySelector("#welcome-message");
-
-//HYDRATION SELECTORS
 const singleDayHydration = document.querySelector("#single-day-ounces");
 const weeklyHydration = document.querySelector("#week-ounces");
-//const ounceInfo = document.querySelector(".indiv-ounce");
-
-//SLEEP SELECTORS
 const sleepWidget = document.querySelector(".user-sleep-widget");
 const singleSleep = document.querySelector("#singleSleepData");
-const weeklySleep = document.querySelector("#weekSleepData");//don't think we'll need here
+const weeklySleep = document.querySelector("#weekSleepData");
 const sleepWeekDays = document.querySelector("#sleepWeekDays");
 const sleepAvgs = document.querySelector("#sleepAvgs");
 const allTimeAvgs = document.querySelector(".all-time-sleep-avgs");
-
-//FRIEND SELECTORS
 const friendWidget = document.querySelector("#user-friends-widget");
 const friendInfo = document.querySelector("#user-friend-info-card");
 
-//EVENT LISTENERS
 window.addEventListener("load", instatiateAllData);
 
-//HELPER FUNCTIONS
 function loadUser() {
   renderWelcomeMessage();
   renderUserInfo();
   renderFriendInfo();
   renderMostRecentUserSleepData();
   renderSleepWeek();
-  // getUserAvgSleepHrs();
-  // getUserAvgSleepQual()
   renderUserAvgs()
-  // getDaysOfSleepWeek();
   renderOuncesDrankPerDay();
   renderOuncesDrankPerWeek();
   getOuncesDrankPerWeek();
 }
 
-//FUNCTIONS
 function renderWelcomeMessage() {
   userWelcome.innerHTML = `<section class="welcome">Welcome Back ${currentUser.getFirstName()}</section>`;
 }
@@ -151,12 +116,10 @@ function splitFriendsIntoList() {
     friendList =
       friendInfo.innerHTML += `<div class="indiv-friend">${friend}</div>`;
   });
+
   return friendList;
 }
 
-
-//========================================SLEEP
-// For a user, their sleep data for the latest day (hours slept and quality of sleep)
 function getMostRecentUserSleepHrs() {
   const date = sleepInfo.getLatestDayForUser(currentUser.userId);
   const latestSleepHrs = sleepInfo.getUserSleepHrsForDay(currentUser.userId,date);
@@ -180,7 +143,6 @@ function renderMostRecentUserSleepData() {
   </div>`;
 }
 
-// For a user, their sleep data over the course of the latest week (hours slept and quality of sleep)
 function getDaysOfSleepWeek() {
   const date = sleepInfo.getLatestDayForUser(currentUser.userId);
   const weekOf = sleepInfo.getLiteralDaysOfWeek(currentUser.userId, date);
@@ -192,7 +154,7 @@ function renderSleepWeek() {
   const weekOf = getDaysOfSleepWeek();
   weekOf.forEach(data => {
     sleepWeekDays.innerHTML += 
-    `<div class="calendarDay">
+    `<div class="calendar-day">
       <div class="sleep-font">${data.day}</div> 
       <div class="sleep-font">Hours: ${data.hoursSlept}</div>
       <div class="sleep-font">Quality: ${data.sleepQuality}</div>
@@ -200,15 +162,15 @@ function renderSleepWeek() {
   });
 }
 
-// For a user, their all-time average sleep quality and all-time average number of hours slept
-
 function getUserAvgSleepHrs() {
   const sleepHrsAvg = sleepInfo.getUserAvgSleepHoursPerDay(currentUser.userId);
+
   return sleepHrsAvg;
 }
 
 function getUserAvgSleepQual() {
   const sleepQualAvg = sleepInfo.getAllOfUserAvgSleepQual(currentUser.userId);
+
   return sleepQualAvg;
 }
 
@@ -221,9 +183,6 @@ function renderUserAvgs(){
   </div>`;
 }
 
-
-
-//===============================================HYDRATION
 function renderOuncesDrankPerDay() {
   singleDayHydration.innerHTML = `<div class="card">
     <h3 class="label">
@@ -241,6 +200,7 @@ function renderOuncesDrankPerDay() {
 function getTheHydrationPerDate() {
   const currentUserID = currentUser.userId;
   const lastHydrationDate = hydration.findTheLastDayForData(currentUserID);
+  
   return hydration.getFluidOuncesPerDay(currentUserID, lastHydrationDate);
 }
 
