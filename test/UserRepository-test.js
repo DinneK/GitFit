@@ -14,17 +14,14 @@ describe("UserRepository", () => {
   });
 
   it("should instantiate UserRepository", () => {
-
     expect(users1).to.be.an.instanceOf(UserRepository);
   });
 
   it("Should be able to take in an array as an argument", () => {
-
     expect(users1.userData).to.be.an("array");
   });
 
   it("Should initially store an empty array for users", () => {
-
     expect(users1.users).to.be.an("array");
   });
 
@@ -58,7 +55,7 @@ describe("UserRepository", () => {
 
   it("should return the names of a users friends", () => {
     const user1Data = users1.returnUserData(1);
-    
+
     expect(users1.returnUserFriendsNames(user1Data[0].userId)).to.deep.equal([
       "Luisa Hane",
       "Mae Connelly",
