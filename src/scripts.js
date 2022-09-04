@@ -86,13 +86,11 @@ function loadUser() {
   renderWelcomeMessage();
   renderUserInfo();
   renderFriendInfo();
-  // renderMostRecentUserSleepData();
-  // getWeekSleepHours(); // Probably won't need
-  // getWeekSleepQual(); // Probably won't need
-  // renderSleepWeek();
+  renderMostRecentUserSleepData();
+  renderSleepWeek();
   // getUserAvgSleepHrs();
   // getUserAvgSleepQual()
-  // renderUserAvgs()
+  renderUserAvgs()
   // getDaysOfSleepWeek();
   renderOuncesDrankPerDay();
   renderOuncesDrankPerWeek();
@@ -111,7 +109,7 @@ function renderUserInfo() {
     </div>
     <div class="user-info">
       <h2><b>Email:</b> ${currentUser.email}</h2>
-      <h2><b>Addres:</b> ${currentUser.address}</h2>
+      <h2><b>Address:</b> ${currentUser.address}</h2>
       <h2><b>Stride Length:</b> ${currentUser.strideLength}</h2>
     </div>
     <div class="label">
@@ -168,10 +166,7 @@ function getMostRecentUserSleepHrs() {
 
 function getMostRecentUserSleepQual() {
   const date = sleepInfo.getLatestDayForUser(currentUser.userId);
-  const latestSleepQual = sleepInfo.getUserSleepQualForDay(
-    currentUser.userId,
-    date
-  );
+  const latestSleepQual = sleepInfo.getUserSleepQualForDay(currentUser.userId,date);
 
   return latestSleepQual;
 }
@@ -179,28 +174,13 @@ function getMostRecentUserSleepQual() {
 function renderMostRecentUserSleepData() {
   singleSleep.innerHTML = 
   `<div class="label"> Last Night's Sleep</div>
-  <div class="label">
+  <div class="label sleep-label">
   <div class="sleep">Hours Slept: ${getMostRecentUserSleepHrs()}</div>
   <div class="sleep">Sleep Quality: ${getMostRecentUserSleepQual()}</div>
   </div>`;
 }
 
 // For a user, their sleep data over the course of the latest week (hours slept and quality of sleep)
-
-// function getWeekSleepHours() {
-//   const date = sleepInfo.getLatestDayForUser(currentUser.userId);
-//   const weekSleepHrs = sleepInfo.getHoursSleptForWeek(currentUser.userId, date);
-
-//   return weekSleepHrs;
-// }
-
-// function getWeekSleepQual() {
-//   const date = sleepInfo.getLatestDayForUser(currentUser.userId);
-//   const weekSleepQual = sleepInfo.getSleepQualForWeek(currentUser.userId, date);
-
-//   return weekSleepQual;
-// }
-
 function getDaysOfSleepWeek() {
   const date = sleepInfo.getLatestDayForUser(currentUser.userId);
   const weekOf = sleepInfo.getLiteralDaysOfWeek(currentUser.userId, date);
@@ -210,13 +190,12 @@ function getDaysOfSleepWeek() {
 
 function renderSleepWeek() {
   const weekOf = getDaysOfSleepWeek();
-  // console.log(weekOf);
   weekOf.forEach(data => {
     sleepWeekDays.innerHTML += 
     `<div class="calendarDay">
-      <p class="sleep-font">${data.day}</p> 
-      <p class="sleep-font">Hours of Sleep: ${data.hoursSlept}</p>
-      <p class="sleep-font">Sleep Quality: ${data.sleepQuality}</p>
+      <div class="sleep-font">${data.day}</div> 
+      <div class="sleep-font">Hours: ${data.hoursSlept}</div>
+      <div class="sleep-font">Quality: ${data.sleepQuality}</div>
     </div>`
   });
 }
@@ -235,8 +214,8 @@ function getUserAvgSleepQual() {
 
 function renderUserAvgs(){
   sleepAvgs.innerHTML = 
-  `<div class="label"> Your SleepAverage</div>
-  <div class="label">
+  `<div class="label"> Your Sleep Average</div>
+  <div class="label sleep-label">
   <div class="sleep">Hours Slept: ${getUserAvgSleepHrs()}</div>
   <div class="sleep">Sleep Quality: ${getUserAvgSleepQual()}</div>
   </div>`;
