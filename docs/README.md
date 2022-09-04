@@ -12,8 +12,8 @@
 - ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
 
 ## Illustrations
-  ![GitFit Activity Tracker](https://user-images.githubusercontent.com/63877492/188251466-9bbd39dd-4cc1-46c3-841c-da3945b221d8.png)
-  **PLACE HOLDER**
+  ![GitFit Activity Tracker](https://user-images.githubusercontent.com/106847513/188336341-2d6c1d78-924d-4632-929a-0b65bd26b554.png)
+
 
 ## Features
 - Displays a user's data and compares their daily step goals to the average step goals of all users.
@@ -22,7 +22,7 @@
 - 100% Accessibilty Score
 
 ## Possible Future Extensions
-- Implement Chart.js library to create beatiful charts showing a user's progress
+- Implement Chart.js library to create beautiful charts showing a user's progress
 - Implement Day.js library to 
 - Drag-and-drop widgets
 - Calculate and display this trend: for a user, what days had increasing steps for 3 or more days.
