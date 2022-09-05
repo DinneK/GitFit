@@ -36,7 +36,7 @@
 ## Challenges 
 - Remaining open and willing to hear each other out. We managed this by referring back to our DTR each day.
 - Staying in the present and not rushing ahead in our work despite our deadline. We laid out a very thoughout map that we utilized to avoid these pitfalls.
-- The API was even more challenging than any of us anticipated. But due to the constant contact with our DTR we able to properly identify when we got stuck in a rabbit hole and how to get out of it.
+- The API was even more challenging than any of us anticipated. But due to the constant contact with our DTR we were able to properly identify when we got stuck in a rabbit hole and how to get out of it.
 
 ### Set Up
 1. Clone the repo
