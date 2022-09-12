@@ -49,7 +49,7 @@ const allTimeAvgs = document.querySelector(".all-time-sleep-avgs");
 const friendWidget = document.querySelector("#user-friends-widget");
 const friendInfo = document.querySelector("#user-friend-info-card");
 
-window.addEventListener("load", instatiateAllData);
+window.addEventListener("load", instantiateAllData);
 
 function loadUser() {
   renderWelcomeMessage();
