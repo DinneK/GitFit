@@ -18,7 +18,7 @@ let sleepInfo;
 let hydrationData;
 let hydration;
 
-function instatiateAllData() {
+function instantiateAllData() {
   Promise.all([getUsersApiData, getSleepApiData, getHydrationApiData]).then(
     (data) => {
       usersData = data[0].userData;
@@ -49,7 +49,7 @@ const allTimeAvgs = document.querySelector(".all-time-sleep-avgs");
 const friendWidget = document.querySelector("#user-friends-widget");
 const friendInfo = document.querySelector("#user-friend-info-card");
 
-window.addEventListener("load", instatiateAllData);
+window.addEventListener("load", instantiateAllData);
 
 function loadUser() {
   renderWelcomeMessage();
@@ -166,23 +166,11 @@ function renderSleepWeek() {
   });
 }
 
-function getUserAvgSleepHrs() {
-  const sleepHrsAvg = sleepInfo.getUserAvgSleepHoursPerDay(currentUser.userId);
-
-  return sleepHrsAvg;
-}
-
-function getUserAvgSleepQual() {
-  const sleepQualAvg = sleepInfo.getAllOfUserAvgSleepQual(currentUser.userId);
-
-  return sleepQualAvg;
-}
-
 function renderUserAvgs() {
   sleepAvgs.innerHTML = `<div class="label"> Your Sleep Average</div>
   <div class="label sleep-label">
-  <div class="sleep">Hours Slept: ${getUserAvgSleepHrs()}</div>
-  <div class="sleep">Sleep Quality: ${getUserAvgSleepQual()}</div>
+  <div class="sleep">Hours Slept: ${sleepInfo.getUserAvgSleepHoursPerDay(currentUser.userId)}</div>
+  <div class="sleep">Sleep Quality: ${sleepInfo.getAllOfUserAvgSleepQual(currentUser.userId)}</div>
   </div>`;
 }
 
