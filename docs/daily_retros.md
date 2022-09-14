@@ -230,3 +230,31 @@
      - Dinne: 
      - Matt: I have a curiosity for chart.js. Does it matter when we decide to implement it? (Group response: I think this will be something that we can double-back on, once we are finish with our main objectives/functionalities we can go back and revisit). 
      - Dani: I'm curious about our Fetch calls. Figuring out what the standard/best practice is to implement our fetch calls.
+
+
+
+### Tuesday 09/13/22
+
+- Today we created:
+     - Built our template for the `Activities.js` class including
+          - Constructor
+          - Annotating our methods we will be dividing and conquering.
+
+
+- To Do:
+     - Knock out the `Activities.js` class
+          - Dinne will work on this class for the morning.
+          - Matt and Dani will work the 10:30 work time
+          - including finishing our tests
+     - Work on Fetch calls 
+     - Data Model to Dom manipulation once we get a hold of our Activities data from the API
+
+- Challenges:
+     - Dinne: Finding the time and committing to this project today was hard for me. I didn't feel like I was present for it. 
+     - Matt: Coding in general, felt like coloring with my foot. Today was a rough day, coding felt frustrating.
+     - Dani: realizing when I actually have more drive in me to do more for myself when I hit a point of having feel like I have done 'enough' work.
+
+- Wins
+     - Dinne: Getting two mock iterators test assessments down within the 30 minutes I set out to complete them in. Also, making the time to honor myself in desiring to test myself. 
+     - Matt: After getting clarification from Beth, I was able to get a hold of working POST methods for FETCH calls.
+     - Dani: Making the intentional time to go out and network.
