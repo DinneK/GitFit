@@ -60,8 +60,12 @@ class Activities {
   // For a user, find all the days where they exceeded their step goal
 
   findUserStairClimbingRecord(userId) {
-    const stairRecord = this.findUserByID(userId).find(day => Math.max(...this.findUserByID(userId).flightsOfStairs));
-    console.log(stairRecord);
+    const stairRecord = this.findUserByID(userId).reduce((prev, curr) => {
+      
+      return prev.flightsOfStairs > curr.flightsOfStairs ? prev : curr
+    });
+
+    return stairRecord.flightsOfStairs
   }
   // For a user, find their all-time stair climbing record
 
