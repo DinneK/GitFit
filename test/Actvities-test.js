@@ -13,7 +13,7 @@ describe("Activities", () => {
     user2 = new User(mockUserData[1]);
   });
 
-  it.only("should be a function", () => {
+  it.only("Should be a function", () => {
     expect(Activities).to.be.a("function");
   });
 
@@ -21,14 +21,14 @@ describe("Activities", () => {
     expect(activities).to.be.instanceOf(Activities);
   });
 
-  //Possibly not needed, since we instanciate a new user in User?
+  //Possibly not needed, since we instantiate a new user in User?
   it.only("Should instantiate a user", () => {
     expect(user1).to.be.an.instanceOf(User);
     expect(user2).to.be.an.instanceOf(User);
   });
 
-  //Tests that all avtivities data is available.
-  it.only("should return an array of avtivity objects", () => {
+  //Tests that all activities data is available.
+  it.only("Should return an array of activity objects", () => {
     expect(activities.activitiesData).to.deep.equal([
       {
         userID: 1,
@@ -145,8 +145,8 @@ describe("Activities", () => {
     ]);
   });
 
-  //This also finds the user by ID and return that users data for avtivity
-  it.only("should return the activity data for a single user", () => {
+  //This also finds the user by ID and return that users data for activity
+  it.only("Should return the activity data for a single user", () => {
     expect(activities.findUserByID(user1.userId)).to.deep.equal([
       {
         userID: 1,
@@ -267,12 +267,12 @@ describe("Activities", () => {
   });
 
   //Return the last date in the data, we can change this once or if we decide to use a date picker.
-  it.only("should return the last day of user input", () => {
+  it.only("Should return the last day of user input", () => {
     expect(activities.getMostRecentDate(user1.userId)).to.equal("2019/06/22");
     expect(activities.getMostRecentDate(user2.userId)).to.equal("2019/06/22");
   });
 
-  it.only("should return a weeks worth of data", () => {
+  it.only("Should return a weeks worth of data", () => {
     expect(
       activities.getMostRecentWeekData(user1.userId, "2019/06/22")
     ).to.deep.equal([
@@ -388,8 +388,17 @@ describe("Activities", () => {
     expect(activities.getUserMilesPerDay(user2.userId)).to.equal();
   });
 
+  //getUserMinutesFromDay
   it.only("should return users active minutes for a specific date", () => {
     expect(activities.getUserMinutesFromDay(user1.userId, '2019/06/20')).to.equal(140);
     expect(activities.getUserMinutesFromDay(user2.userId, '2019/06/18')).to.equal(181);
   });
+
+  //getUserMinActiveAvgForWeek
+  it.only("Should calculate a users minutes active avg for a given week", () => {
+    expect(activities.getUserMinActiveAvgForWeek(user1.userId, "2019/06/22")).to.equal(168.14);
+    expect(activities.getUserMinActiveAvgForWeek(user2.userId, "2019/06/22")).to.equal(154.43);
+  });
+
+  
 });
