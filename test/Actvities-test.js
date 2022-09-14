@@ -388,6 +388,11 @@ describe("Activities", () => {
     expect(activities.getUserMilesPerDay(user2.userId)).to.equal();
   });
 
+  //getUserMinutesFromDay
+  it.only("should return users active minutes for a specific date", () => {
+    expect(activities.getUserMinutesFromDay(user1.userId, '2019/06/20')).to.equal(140);
+    expect(activities.getUserMinutesFromDay(user2.userId, '2019/06/18')).to.equal(181);
+  });
 
   //getUserMinActiveAvgForWeek
   it.only("Should calculate a users minutes active avg for a given week", () => {
@@ -395,4 +400,5 @@ describe("Activities", () => {
     expect(activities.getUserMinActiveAvgForWeek(user2.userId, "2019/06/22")).to.equal(154.43);
   });
 
+  
 });
