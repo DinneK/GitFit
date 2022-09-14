@@ -35,11 +35,22 @@ class Activities {
   // For a specific day (specified by a date), return the miles a user has
   // walked based on their number of steps (use their strideLength to help calculate this)
 
-  getUserMinutesFromDay(userId) {}
+  getUserMinutesFromDay(userId, date) {
+    const dayData = this.findUserByID(userId).find(day => day.date === date);
+    
+    return dayData.minutesActive
+  }
   // For a user, (identified by their userId) how many minutes were
   // they active for a given day (specified by a date)?
 
-  getUserActiveAvgForWeek(userId) {}
+  getUserMinActiveAvgForWeek(userId, date) {
+    const thisSpecifiedWeek = this.getMostRecentWeekData(userId, date);
+    const avg = thisSpecifiedWeek.reduce((acc, day) => {
+        return acc += day.minutesActive;
+    }, 0) / thisSpecifiedWeek.length;
+
+    return parseFloat(avg.toFixed(2));
+  }
   // For a user, how many minutes active did they average for a given week (7 days)?
 
   compareUserStepGoals(userId) {}
