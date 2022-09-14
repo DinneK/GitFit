@@ -400,5 +400,9 @@ describe("Activities", () => {
     expect(activities.getUserMinActiveAvgForWeek(user2.userId, "2019/06/22")).to.equal(154.43);
   });
 
+  //getUsersStairsClimbedAvg
+  it.only("Should be able to get an average of all stairs climbed by users by a specific date", () => {
+    expect(activities.getUsersStairsClimbedAvg("2019/06/17")).to.equal(11);
+  })
   
 });
