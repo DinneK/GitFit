@@ -48,7 +48,9 @@ class Activities {
   filterDaysExceededUserStepGoal(userId) {}
   // For a user, find all the days where they exceeded their step goal
 
-  findUserStairClimbingRecord(userId) {}
+  findUserStairClimbingRecord(userId) {
+    const stairRecord = this 
+  }
   // For a user, find their all-time stair climbing record
 
   getUsersStairsClimbedAvg() {}
