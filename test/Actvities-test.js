@@ -387,4 +387,9 @@ describe("Activities", () => {
     expect(activities.getUserMilesPerDay(user1.userId)).to.equal();
     expect(activities.getUserMilesPerDay(user2.userId)).to.equal();
   });
+
+  it.only("should return users active minutes for a specific date", () => {
+    expect(activities.getUserMinutesFromDay(user1.userId, '2019/06/20')).to.equal(140);
+    expect(activities.getUserMinutesFromDay(user2.userId, '2019/06/18')).to.equal(181);
+  });
 });

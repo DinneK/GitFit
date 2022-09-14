@@ -35,7 +35,11 @@ class Activities {
   // For a specific day (specified by a date), return the miles a user has
   // walked based on their number of steps (use their strideLength to help calculate this)
 
-  getUserMinutesFromDay(userId) {}
+  getUserMinutesFromDay(userId, date) {
+    const dayData = this.findUserByID(userId).find(day => day.date === date);
+    
+    return dayData.minutesActive
+  }
   // For a user, (identified by their userId) how many minutes were
   // they active for a given day (specified by a date)?
 
