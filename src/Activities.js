@@ -1,43 +1,64 @@
 class Activities {
-    constructor(data) {
-        this.activitiesData = data;
-    }
+  constructor(data) {
+    this.activitiesData = data;
+  }
 
-    findUserInData(userId) {}
+  findUserByID(userID) {
+    return this.activitiesData.reduce((acc, curr) => {
+      if (userID === curr.userID) {
+        acc.push(curr);
+      }
 
-    getRecentDate() {}
+      return acc;
+    }, []);
+  }
 
-    getMostRecentWeekData() {}
+  getMostRecentDate(userID) {
+    return this.findUserByID(userID)
+      .reverse()
+      .splice(0, 1)
+      .map((lastDay) => lastDay.date)[0];
+  }
 
-    getUserMiles(date) {}
-    // For a specific day (specified by a date), return the miles a user has 
-    // walked based on their number of steps (use their strideLength to help calculate this)
+  getMostRecentWeekData(userID, date) {
+    const specificUser = this.findUserByID(userID);
+    const getDayByIndex = specificUser.findIndex((day) => day.date === date);
+    const backToDate = specificUser.slice(0, getDayByIndex + 1);
+    return backToDate.slice(-7).map((dates) => dates);
+  }
 
-    getUserMinutesFromDay(userId) {}
-    // For a user, (identified by their userId) how many minutes were 
-    // they active for a given day (specified by a date)?
+  getUserMilesPerDay(date) {}
+  //look at a specific date for a users activity (needs date)
+  //check for the number of steps for that day (single day user Activity data numSteps)
+  //
+  //
+  // For a specific day (specified by a date), return the miles a user has
+  // walked based on their number of steps (use their strideLength to help calculate this)
 
-    getUserActiveAvgForWeek(userId) {}
-    // For a user, how many minutes active did they average for a given week (7 days)?
+  getUserMinutesFromDay(userId) {}
+  // For a user, (identified by their userId) how many minutes were
+  // they active for a given day (specified by a date)?
 
-    compareUserStepGoals(userId) {}
-    // For a user, did they reach their step goal for a given day (specified by a date)?
+  getUserActiveAvgForWeek(userId) {}
+  // For a user, how many minutes active did they average for a given week (7 days)?
 
-    filterDaysExceededUserStepGoal(userId) {}
-    // For a user, find all the days where they exceeded their step goal
+  compareUserStepGoals(userId) {}
+  // For a user, did they reach their step goal for a given day (specified by a date)?
 
-    findUserStairClimbingRecord(userId) {}
-    // For a user, find their all-time stair climbing record
+  filterDaysExceededUserStepGoal(userId) {}
+  // For a user, find all the days where they exceeded their step goal
 
-    getUsersStairsClimbedAvg() {}
-    // For all users, what is the average number of stairs climbed for a specified date
+  findUserStairClimbingRecord(userId) {}
+  // For a user, find their all-time stair climbing record
 
-    getUsersStepsForADay() {}
-    // For all users, what is the average number of steps taken for a specific date
+  getUsersStairsClimbedAvg() {}
+  // For all users, what is the average number of stairs climbed for a specified date
 
-    getUsersAvgMinutesActiveForDay() {}
-    // For all users, what is the average number of minutes active for a specific date
+  getUsersStepsForADay() {}
+  // For all users, what is the average number of steps taken for a specific date
 
+  getUsersAvgMinutesActiveForDay() {}
+  // For all users, what is the average number of minutes active for a specific date
 }
 
 export default Activities;
