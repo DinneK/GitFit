@@ -39,7 +39,14 @@ class Activities {
   // For a user, (identified by their userId) how many minutes were
   // they active for a given day (specified by a date)?
 
-  getUserActiveAvgForWeek(userId) {}
+  getUserMinActiveAvgForWeek(userId, date) {
+    const thisSpecifiedWeek = this.getMostRecentWeekData(userId, date);
+    const avg = thisSpecifiedWeek.reduce((acc, day) => {
+        return acc += day.minutesActive;
+    }, 0) / thisSpecifiedWeek.length;
+
+    return parseFloat(avg.toFixed(2));
+  }
   // For a user, how many minutes active did they average for a given week (7 days)?
 
   compareUserStepGoals(userId) {}
