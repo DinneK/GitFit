@@ -69,7 +69,12 @@ class Activities {
   }
   // For a user, find their all-time stair climbing record
 
-  getUsersStairsClimbedAvg() {}
+  getUsersStairsClimbedAvg(date) {
+    const thatDay = this.activitiesData.filter(day => day.date === date);
+    const totalStairs = thatDay.reduce((prev, curr) => prev + curr.flightsOfStairs, 0);
+    
+    return totalStairs/thatDay.length
+  }
   // For all users, what is the average number of stairs climbed for a specified date
 
   getUsersStepsForADay() {}
