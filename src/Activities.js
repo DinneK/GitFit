@@ -53,22 +53,41 @@ class Activities {
   }
   // For a user, how many minutes active did they average for a given week (7 days)?
 
-  didUserMeetStepGoalForDay(userId, dailyStepGoal, date) {
-    const thisSpecifiedUser = this.findUserByID(userId);
-    const getDayByIndex = thisSpecifiedUser.findIndex(day => day.date === date);
-    
-    console.log("USER 1 DATA: ", thisSpecifiedUser);
-    console.log("DATE AT INDEX: ", getDayByIndex);
+  didUserMeetStepGoalForDay(user, date) {
+    const thisSpecifiedUser = this.findUserByID(user.userId);
+    const getSpecifiedDay = thisSpecifiedUser.find(day => day.date === date);
+    const compareStepGoals = getSpecifiedDay.numSteps >= user.dailyStepGoal;
+    let difference;
+
+    if(compareStepGoals) {
+        difference = getSpecifiedDay.numSteps - user.dailyStepGoal;
+        return `CRUSHING IT! You went over your daily step goal of ${user.dailyStepGoal} by ${difference} steps!`
+    } else {
+        difference = user.dailyStepGoal - getSpecifiedDay.numSteps;
+        return `You're doing great: you missed your daily step goal of ${user.dailyStepGoal} by ${difference} steps.`
+    }
   }
   // For a user, did they reach their step goal for a given day (specified by a date)?
 
   filterDaysExceededUserStepGoal(userId) {}
   // For a user, find all the days where they exceeded their step goal
 
-  findUserStairClimbingRecord(userId) {}
+  findUserStairClimbingRecord(userId) {
+    const stairRecord = this.findUserByID(userId).reduce((prev, curr) => {
+      
+      return prev.flightsOfStairs > curr.flightsOfStairs ? prev : curr
+    });
+
+    return stairRecord.flightsOfStairs
+  }
   // For a user, find their all-time stair climbing record
 
-  getUsersStairsClimbedAvg() {}
+  getUsersStairsClimbedAvg(date) {
+    const thatDay = this.activitiesData.filter(day => day.date === date);
+    const totalStairs = thatDay.reduce((prev, curr) => prev + curr.flightsOfStairs, 0);
+    
+    return totalStairs/thatDay.length
+  }
   // For all users, what is the average number of stairs climbed for a specified date
 
   getUsersStepsForADay() {}

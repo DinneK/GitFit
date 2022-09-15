@@ -390,8 +390,8 @@ describe("Activities", () => {
 
   //getUserMinutesFromDay
   it.only("should return users active minutes for a specific date", () => {
-    expect(activities.getUserMinutesFromDay(user1.userId, '2019/06/20')).to.equal(140);
-    expect(activities.getUserMinutesFromDay(user2.userId, '2019/06/18')).to.equal(181);
+    expect(activities.getUserMinutesFromDay(user1.userId, "2019/06/20")).to.equal(140);
+    expect(activities.getUserMinutesFromDay(user2.userId, "2019/06/18")).to.equal(181);
   });
 
   //getUserMinActiveAvgForWeek
@@ -402,8 +402,21 @@ describe("Activities", () => {
 
   //didUserMeetStepGoalForDay
   it.only("Should check if user met their daily step goal for a given day", () => {
-    expect(activities.didUserMeetStepGoalForDay(user1.userId, user1.dailyStepGoal, "2019/06/18")).to.equal(false);
-    expect(activities.didUserMeetStepGoalForDay(user2.userId, user2.dailyStepGoal, "2019/06/19")).to.equal(true);
+    expect(activities.didUserMeetStepGoalForDay(user1, "2019/06/18")).to.equal(
+        "You\'re doing great: you missed your daily step goal of 10000 by 5581 steps.");
+    expect(activities.didUserMeetStepGoalForDay(user2, "2019/06/19")).to.equal(
+        "CRUSHING IT! You went over your daily step goal of 5000 by 4858 steps!");
   });
 
+   //findUserStairClimbingRecord
+   it.only("Should be able to get a users highest record of stairs climbed over all of that user\'s data", () => {
+    expect(activities.findUserStairClimbingRecord(user1.userId)).to.equal(36);
+    expect(activities.findUserStairClimbingRecord(user2.userId)).to.equal(44);
+  });
+
+  //getUsersStairsClimbedAvg
+  it.only("Should be able to get an average of all stairs climbed by users by a specific date", () => {
+    expect(activities.getUsersStairsClimbedAvg("2019/06/17")).to.equal(11);
+  })
+  
 });
