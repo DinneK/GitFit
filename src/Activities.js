@@ -102,15 +102,19 @@ class Activities {
   }
   // For all users, what is the average number of stairs climbed for a specified date
 
-  getUsersStepsForADay() {}
+  getAllUsersStepsAvgForADay(date) {
+    const allUsersForDay = this.activitiesData.filter(user => user.date === date);
+    const avgSteps = allUsersForDay.reduce((acc, user) => {
+      return acc + user.numSteps;
+    }, 0) / allUsersForDay.length;
+
+    return parseFloat(avgSteps.toFixed(2));
+  }
   // For all users, what is the average number of steps taken for a specific date
 
   getUsersAvgMinutesActiveForDay(date) {
     const dateChosen = this.activitiesData.filter((day) => day.date === date);
-    const totalMins = dateChosen.reduce(
-      (prev, curr) => prev + curr.minutesActive,
-      0
-    );
+    const totalMins = dateChosen.reduce((prev, curr) => prev + curr.minutesActive, 0);
 
     return totalMins / dateChosen.length
   }

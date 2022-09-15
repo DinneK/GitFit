@@ -416,6 +416,13 @@ describe("Activities", () => {
         "CRUSHING IT! You went over your daily step goal of 5000 by 4858 steps!");
   });
 
+  //filterDaysExceededUserStepGoal
+  it.only("Should collect all the days a user has met their step goal", () => {
+    // console.log(user1)
+    expect(activities.filterDaysExceededUserStepGoal(user1)).to.deep.equal(['2019/06/17', '2019/06/20', '2019/06/22']);
+    expect(activities.filterDaysExceededUserStepGoal(user2)).to.deep.equal(['2019/06/17', '2019/06/19', '2019/06/20', '2019/06/21']);
+  })
+
    //findUserStairClimbingRecord
    it.only("Should be able to get a users highest record of stairs climbed over all of that user\'s data", () => {
     expect(activities.findUserStairClimbingRecord(user1.userId)).to.equal(36);
@@ -428,18 +435,11 @@ describe("Activities", () => {
     expect(activities.getUsersStairsClimbedAvg("2019/06/22")).to.equal(18.5);
   });
 
-  //findUserStairClimbingRecord
-  it.only("Should be able to get a users highest record of stairs climbed over all of that user's data", () => {
-    expect(activities.findUserStairClimbingRecord(user1.userId)).to.equal(36);
-    expect(activities.findUserStairClimbingRecord(user2.userId)).to.equal(44);
+  //getAllUsersStepsAvgForADay
+  it.only("Should find avg number of steps taken for a specific day for all users", () => {
+    expect(activities.getAllUsersStepsAvgForADay("2019/06/17")).to.equal(14039.50);
+    expect(activities.getAllUsersStepsAvgForADay("2019/06/19")).to.equal(9143.50);
   });
-
-  //filterDaysExceededUserStepGoal
-  it.only("Should collect all the days a user has met their step goal", () => {
-    // console.log(user1)
-    expect(activities.filterDaysExceededUserStepGoal(user1)).to.deep.equal(['2019/06/17', '2019/06/20', '2019/06/22']);
-    expect(activities.filterDaysExceededUserStepGoal(user2)).to.deep.equal(['2019/06/17', '2019/06/19', '2019/06/20', '2019/06/21']);
-  })
 
   //getUsersAvgMinutesActiveForDay
   it.only("Should be able to get an average of all users active minutes on a specific date", () => {
