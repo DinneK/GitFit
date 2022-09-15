@@ -384,29 +384,37 @@ describe("Activities", () => {
 
   //For miles per day, just starting to flush out
   it.only("should return the last day of user input", () => {
-    expect(activities.getUserMilesPerDay(user1.userId)).to.equal();
-    expect(activities.getUserMilesPerDay(user2.userId)).to.equal();
+    expect(activities.getUserMilesPerDay(user1, "2019/06/22")).to.equal(8.4);
+    expect(activities.getUserMilesPerDay(user2, "2019/06/16")).to.equal(3.5);
   });
 
   //getUserMinutesFromDay
   it.only("should return users active minutes for a specific date", () => {
-    expect(activities.getUserMinutesFromDay(user1.userId, "2019/06/20")).to.equal(140);
-    expect(activities.getUserMinutesFromDay(user2.userId, "2019/06/18")).to.equal(181);
+    expect(
+      activities.getUserMinutesFromDay(user1.userId, "2019/06/20")
+    ).to.equal(140);
+    expect(
+      activities.getUserMinutesFromDay(user2.userId, "2019/06/18")
+    ).to.equal(181);
   });
 
   //getUserMinActiveAvgForWeek
   it.only("Should calculate a users minutes active avg for a given week", () => {
-    expect(activities.getUserMinActiveAvgForWeek(user1.userId, "2019/06/22")).to.equal(168.14);
-    expect(activities.getUserMinActiveAvgForWeek(user2.userId, "2019/06/22")).to.equal(154.43);
+    expect(
+      activities.getUserMinActiveAvgForWeek(user1.userId, "2019/06/22")
+    ).to.equal(168.14);
+    expect(
+      activities.getUserMinActiveAvgForWeek(user2.userId, "2019/06/22")
+    ).to.equal(154.43);
   });
 
   //getUsersStairsClimbedAvg
   it.only("Should be able to get an average of all stairs climbed by users by a specific date", () => {
     expect(activities.getUsersStairsClimbedAvg("2019/06/17")).to.equal(11);
-  })
-  
+  });
+
   //findUserStairClimbingRecord
-  it.only("Should be able to get a users highest record of stairs climbed over all of that user\'s data", () => {
+  it.only("Should be able to get a users highest record of stairs climbed over all of that user's data", () => {
     expect(activities.findUserStairClimbingRecord(user1.userId)).to.equal(36);
     expect(activities.findUserStairClimbingRecord(user2.userId)).to.equal(44);
   });
