@@ -390,8 +390,8 @@ describe("Activities", () => {
 
   //getUserMinutesFromDay
   it.only("should return users active minutes for a specific date", () => {
-    expect(activities.getUserMinutesFromDay(user1.userId, '2019/06/20')).to.equal(140);
-    expect(activities.getUserMinutesFromDay(user2.userId, '2019/06/18')).to.equal(181);
+    expect(activities.getUserMinutesFromDay(user1.userId, "2019/06/20")).to.equal(140);
+    expect(activities.getUserMinutesFromDay(user2.userId, "2019/06/18")).to.equal(181);
   });
 
   //getUserMinActiveAvgForWeek
@@ -405,4 +405,9 @@ describe("Activities", () => {
     expect(activities.getUsersStairsClimbedAvg("2019/06/17")).to.equal(11);
   })
   
+  //findUserStairClimbingRecord
+  it.only("Should be able to get a users highest record of stairs climbed over all of that user\'s data", () => {
+    expect(activities.findUserStairClimbingRecord(user1.userId)).to.equal(36);
+    expect(activities.findUserStairClimbingRecord(user2.userId)).to.equal(44);
+  });
 });
