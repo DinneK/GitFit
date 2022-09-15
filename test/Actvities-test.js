@@ -426,8 +426,7 @@ describe("Activities", () => {
   it.only("Should be able to get an average of all stairs climbed by users by a specific date", () => {
     expect(activities.getUsersStairsClimbedAvg("2019/06/17")).to.equal(11);
     expect(activities.getUsersStairsClimbedAvg("2019/06/22")).to.equal(18.5);
-  })
-  
+  });
 
   //findUserStairClimbingRecord
   it.only("Should be able to get a users highest record of stairs climbed over all of that user's data", () => {
