@@ -53,7 +53,20 @@ class Activities {
   }
   // For a user, how many minutes active did they average for a given week (7 days)?
 
-  compareUserStepGoals(userId) {}
+  didUserMeetStepGoalForDay(user, date) {
+    const thisSpecifiedUser = this.findUserByID(user.userId);
+    const getSpecifiedDay = thisSpecifiedUser.find(day => day.date === date);
+    const compareStepGoals = getSpecifiedDay.numSteps >= user.dailyStepGoal;
+    let difference;
+
+    if(compareStepGoals) {
+        difference = getSpecifiedDay.numSteps - user.dailyStepGoal;
+        return `CRUSHING IT! You went over your daily step goal of ${user.dailyStepGoal} by ${difference} steps!`
+    } else {
+        difference = user.dailyStepGoal - getSpecifiedDay.numSteps;
+        return `You're doing great: you missed your daily step goal of ${user.dailyStepGoal} by ${difference} steps.`
+    }
+  }
   // For a user, did they reach their step goal for a given day (specified by a date)?
 
   filterDaysExceededUserStepGoal(userId) {}
