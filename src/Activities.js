@@ -107,14 +107,11 @@ class Activities {
 
   getUsersAvgMinutesActiveForDay(date) {
     const dateChosen = this.activitiesData.filter((day) => day.date === date);
-    console.log(dateChosen);
     const totalMins = dateChosen.reduce(
       (prev, curr) => prev + curr.minutesActive,
       0
     );
-    console.log(totalMins);
-    console.log(totalMins / dateChosen.length);
-    
+
     return totalMins / dateChosen.length
   }
   // For all users, what is the average number of minutes active for a specific date
