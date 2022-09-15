@@ -13,22 +13,22 @@ describe("Activities", () => {
     user2 = new User(mockUserData[1]);
   });
 
-  it.only("Should be a function", () => {
+  it("Should be a function", () => {
     expect(Activities).to.be.a("function");
   });
 
-  it.only("Should be an instance of Activities", () => {
+  it("Should be an instance of Activities", () => {
     expect(activities).to.be.instanceOf(Activities);
   });
 
   //Possibly not needed, since we instantiate a new user in User?
-  it.only("Should instantiate a user", () => {
+  it("Should instantiate a user", () => {
     expect(user1).to.be.an.instanceOf(User);
     expect(user2).to.be.an.instanceOf(User);
   });
 
   //Tests that all activities data is available.
-  it.only("Should return an array of activity objects", () => {
+  it("Should return an array of activity objects", () => {
     expect(activities.activitiesData).to.deep.equal([
       {
         userID: 1,
@@ -146,7 +146,7 @@ describe("Activities", () => {
   });
 
   //This also finds the user by ID and return that users data for activity
-  it.only("Should return the activity data for a single user", () => {
+  it("Should return the activity data for a single user", () => {
     expect(activities.findUserByID(user1.userId)).to.deep.equal([
       {
         userID: 1,
@@ -267,12 +267,12 @@ describe("Activities", () => {
   });
 
   //Return the last date in the data, we can change this once or if we decide to use a date picker.
-  it.only("Should return the last day of user input", () => {
+  it("Should return the last day of user input", () => {
     expect(activities.getMostRecentDate(user1.userId)).to.equal("2019/06/22");
     expect(activities.getMostRecentDate(user2.userId)).to.equal("2019/06/22");
   });
 
-  it.only("Should return a weeks worth of data", () => {
+  it("Should return a weeks worth of data", () => {
     expect(
       activities.getMostRecentWeekData(user1.userId, "2019/06/22")
     ).to.deep.equal([
@@ -383,13 +383,13 @@ describe("Activities", () => {
   });
 
   //For miles per day, just starting to flush out
-  it.only("should return the last day of user input", () => {
+  it("should return the last day of user input", () => {
     expect(activities.getUserMilesPerDay(user1, "2019/06/22")).to.equal(8.4);
     expect(activities.getUserMilesPerDay(user2, "2019/06/16")).to.equal(3.5);
   });
 
   //getUserMinutesFromDay
-  it.only("should return users active minutes for a specific date", () => {
+  it("should return users active minutes for a specific date", () => {
     expect(
       activities.getUserMinutesFromDay(user1.userId, "2019/06/20")
     ).to.equal(140);
@@ -399,7 +399,7 @@ describe("Activities", () => {
   });
 
   //getUserMinActiveAvgForWeek
-  it.only("Should calculate a users minutes active avg for a given week", () => {
+  it("Should calculate a users minutes active avg for a given week", () => {
     expect(
       activities.getUserMinActiveAvgForWeek(user1.userId, "2019/06/22")
     ).to.equal(168.14);
@@ -409,41 +409,60 @@ describe("Activities", () => {
   });
 
   //didUserMeetStepGoalForDay
-  it.only("Should check if user met their daily step goal for a given day", () => {
+  it("Should check if user met their daily step goal for a given day", () => {
     expect(activities.didUserMeetStepGoalForDay(user1, "2019/06/18")).to.equal(
-        "You\'re doing great: you missed your daily step goal of 10000 by 5581 steps.");
+      "You're doing great: you missed your daily step goal of 10000 by 5581 steps."
+    );
     expect(activities.didUserMeetStepGoalForDay(user2, "2019/06/19")).to.equal(
-        "CRUSHING IT! You went over your daily step goal of 5000 by 4858 steps!");
+      "CRUSHING IT! You went over your daily step goal of 5000 by 4858 steps!"
+    );
   });
 
   //filterDaysExceededUserStepGoal
-  it.only("Should collect all the days a user has met their step goal", () => {
+  it("Should collect all the days a user has met their step goal", () => {
     // console.log(user1)
-    expect(activities.filterDaysExceededUserStepGoal(user1)).to.deep.equal(['2019/06/17', '2019/06/20', '2019/06/22']);
-    expect(activities.filterDaysExceededUserStepGoal(user2)).to.deep.equal(['2019/06/17', '2019/06/19', '2019/06/20', '2019/06/21']);
-  })
+    expect(activities.filterDaysExceededUserStepGoal(user1)).to.deep.equal([
+      "2019/06/17",
+      "2019/06/20",
+      "2019/06/22",
+    ]);
+    expect(activities.filterDaysExceededUserStepGoal(user2)).to.deep.equal([
+      "2019/06/17",
+      "2019/06/19",
+      "2019/06/20",
+      "2019/06/21",
+    ]);
+  });
 
-   //findUserStairClimbingRecord
-   it.only("Should be able to get a users highest record of stairs climbed over all of that user\'s data", () => {
+  //findUserStairClimbingRecord
+  it("Should be able to get a users highest record of stairs climbed over all of that user's data", () => {
     expect(activities.findUserStairClimbingRecord(user1.userId)).to.equal(36);
     expect(activities.findUserStairClimbingRecord(user2.userId)).to.equal(44);
   });
 
   //getUsersStairsClimbedAvg
-  it.only("Should be able to get an average of all stairs climbed by users by a specific date", () => {
+  it("Should be able to get an average of all stairs climbed by users by a specific date", () => {
     expect(activities.getUsersStairsClimbedAvg("2019/06/17")).to.equal(11);
     expect(activities.getUsersStairsClimbedAvg("2019/06/22")).to.equal(18.5);
   });
 
   //getAllUsersStepsAvgForADay
-  it.only("Should find avg number of steps taken for a specific day for all users", () => {
-    expect(activities.getAllUsersStepsAvgForADay("2019/06/17")).to.equal(14039.50);
-    expect(activities.getAllUsersStepsAvgForADay("2019/06/19")).to.equal(9143.50);
+  it("Should find avg number of steps taken for a specific day for all users", () => {
+    expect(activities.getAllUsersStepsAvgForADay("2019/06/17")).to.equal(
+      14039.5
+    );
+    expect(activities.getAllUsersStepsAvgForADay("2019/06/19")).to.equal(
+      9143.5
+    );
   });
 
   //getUsersAvgMinutesActiveForDay
-  it.only("Should be able to get an average of all users active minutes on a specific date", () => {
-    expect(activities.getUsersAvgMinutesActiveForDay("2019/06/17")).to.equal(116.5);
-    expect(activities.getUsersAvgMinutesActiveForDay("2019/06/22")).to.equal(121.5);
-  })
+  it("Should be able to get an average of all users active minutes on a specific date", () => {
+    expect(activities.getUsersAvgMinutesActiveForDay("2019/06/17")).to.equal(
+      116.5
+    );
+    expect(activities.getUsersAvgMinutesActiveForDay("2019/06/22")).to.equal(
+      121.5
+    );
+  });
 });
