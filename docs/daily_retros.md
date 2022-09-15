@@ -258,3 +258,37 @@
      - Dinne: Getting two mock iterators test assessments down within the 30 minutes I set out to complete them in. Also, making the time to honor myself in desiring to test myself. 
      - Matt: After getting clarification from Beth, I was able to get a hold of working POST methods for FETCH calls.
      - Dani: Making the intentional time to go out and network.
+
+
+### Wednesday 09/14/22
+
+- Today we created:
+     - Activities class
+          - `findUserByID(userID)`
+          - `getMostRecentDate(userID)`
+          - `getMostRecentWeekData(userID, date)`
+          - `getUserMilesPerDay(user, date)`
+          - `getUserMinutesFromDay(userId, date)`
+          - `getUserMinActiveAvgForWeek(userId, date)`
+          - `didUserMeetStepGoalForDay(user, date)`
+          - `filterDaysExceededUserStepGoal(user)`
+          - `findUserStairClimbingRecord(userId)`
+          - `getUsersStairsClimbedAvg(date)`
+          - along with our TDD build for all of these methods found in our `Activities-test.js` file
+
+
+- To Do:
+     - Finish the last two methods in our `Activities.js` class
+     - UPdate our FETCH methods to update the URL
+     - Data Model to DOM manipulation
+     - Complete Fetch calls after DOM manipulation so that we can actually incorporate user input to POST api calls
+
+- Challenges:
+     - Dinne: Trying to satay calm today, after juggle so much today; doing iterator practice this morning, completing my assigned methods for the `Activities.js` class, and not doing so well during mock assessment practices this evening. This whole day has been a mental challenge.
+     - Matt: Properly accessing parts of objects during my practice with array iterators. 
+     - Dani: A challenge for me today was not to compare myself to another person's code. I took some time to work on array iterators practice with a classmate and both he and I were working on the same problem set, except he got the answer a lot faster than I did. The challenge was getting myself to a place where I don't want to worry about "not getting" in the moment. My learning comes with patience and trust with my own abilities.
+
+- Wins: 
+     - Dinne: Being  able to say (I've been following the mantra of) you've done this before you can do it again, instead of being nervous or beating myself up. Really starting to believe in my abilities has been my biggest win. 
+     - Matt: But, on the flip side, i'm getting further on my thought process, i.e. the ability to follow a logic flow, than getting stuck. I am seeing a strong growth.
+     - Dani: My win was being able to take my time to show a group of people my thought process when I work through a problem. The important thing here is that I was able to speak in full sentences. It gives me the confidence to be able to speak in code, and therefore getting me closer to feel comfortable to speak to employers.
