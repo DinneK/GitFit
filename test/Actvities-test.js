@@ -441,4 +441,9 @@ describe("Activities", () => {
     expect(activities.filterDaysExceededUserStepGoal(user2)).to.deep.equal(['2019/06/17', '2019/06/19', '2019/06/20', '2019/06/21']);
   })
 
+  //getUsersAvgMinutesActiveForDay
+  it.only("Should be able to get an average of all users active minutes on a specific date", () => {
+    expect(activities.getUsersAvgMinutesActiveForDay("2019/06/17")).to.equal(116.5);
+    expect(activities.getUsersAvgMinutesActiveForDay("2019/06/22")).to.equal(121.5);
+  })
 });

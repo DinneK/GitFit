@@ -98,14 +98,22 @@ class Activities {
       0
     );
 
-    return totalStairs / thatDay.length;
+    return totalStairs / thatDay.length
   }
   // For all users, what is the average number of stairs climbed for a specified date
 
   getUsersStepsForADay() {}
   // For all users, what is the average number of steps taken for a specific date
 
-  getUsersAvgMinutesActiveForDay() {}
+  getUsersAvgMinutesActiveForDay(date) {
+    const dateChosen = this.activitiesData.filter((day) => day.date === date);
+    const totalMins = dateChosen.reduce(
+      (prev, curr) => prev + curr.minutesActive,
+      0
+    );
+
+    return totalMins / dateChosen.length
+  }
   // For all users, what is the average number of minutes active for a specific date
 }
 
