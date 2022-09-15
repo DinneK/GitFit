@@ -69,7 +69,17 @@ class Activities {
   }
   // For a user, did they reach their step goal for a given day (specified by a date)?
 
-  filterDaysExceededUserStepGoal(userId) {}
+  filterDaysExceededUserStepGoal(user) {
+    const stepFilter = [];
+    this.findUserByID(user.userId).filter(day => {
+      if (day.numSteps >= user.dailyStepGoal) {
+        stepFilter.push(day.date)
+      }
+    })
+
+    return stepFilter
+  }
+
   // For a user, find all the days where they exceeded their step goal
 
   findUserStairClimbingRecord(userId) {

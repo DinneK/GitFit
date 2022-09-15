@@ -425,6 +425,7 @@ describe("Activities", () => {
   //getUsersStairsClimbedAvg
   it.only("Should be able to get an average of all stairs climbed by users by a specific date", () => {
     expect(activities.getUsersStairsClimbedAvg("2019/06/17")).to.equal(11);
+    expect(activities.getUsersStairsClimbedAvg("2019/06/22")).to.equal(18.5);
   });
 
   //findUserStairClimbingRecord
@@ -432,4 +433,12 @@ describe("Activities", () => {
     expect(activities.findUserStairClimbingRecord(user1.userId)).to.equal(36);
     expect(activities.findUserStairClimbingRecord(user2.userId)).to.equal(44);
   });
+
+  //filterDaysExceededUserStepGoal
+  it.only("Should collect all the days a user has met their step goal", () => {
+    // console.log(user1)
+    expect(activities.filterDaysExceededUserStepGoal(user1)).to.deep.equal(['2019/06/17', '2019/06/20', '2019/06/22']);
+    expect(activities.filterDaysExceededUserStepGoal(user2)).to.deep.equal(['2019/06/17', '2019/06/19', '2019/06/20', '2019/06/21']);
+  })
+
 });
