@@ -400,5 +400,10 @@ describe("Activities", () => {
     expect(activities.getUserMinActiveAvgForWeek(user2.userId, "2019/06/22")).to.equal(154.43);
   });
 
-  
+  //didUserMeetStepGoalForDay
+  it.only("Should check if user met their daily step goal for a given day", () => {
+    expect(activities.didUserMeetStepGoalForDay(user1.userId, user1.dailyStepGoal, "2019/06/18")).to.equal(false);
+    expect(activities.didUserMeetStepGoalForDay(user2.userId, user2.dailyStepGoal, "2019/06/19")).to.equal(true);
+  });
+
 });

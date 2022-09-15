@@ -53,7 +53,13 @@ class Activities {
   }
   // For a user, how many minutes active did they average for a given week (7 days)?
 
-  compareUserStepGoals(userId) {}
+  didUserMeetStepGoalForDay(userId, dailyStepGoal, date) {
+    const thisSpecifiedUser = this.findUserByID(userId);
+    const getDayByIndex = thisSpecifiedUser.findIndex(day => day.date === date);
+    
+    console.log("USER 1 DATA: ", thisSpecifiedUser);
+    console.log("DATE AT INDEX: ", getDayByIndex);
+  }
   // For a user, did they reach their step goal for a given day (specified by a date)?
 
   filterDaysExceededUserStepGoal(userId) {}
