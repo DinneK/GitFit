@@ -8,7 +8,6 @@ class Activities {
       if (userID === curr.userID) {
         acc.push(curr);
       }
-
       return acc;
     }, []);
   }
@@ -27,27 +26,28 @@ class Activities {
     return backToDate.slice(-7).map((dates) => dates);
   }
 
-  getUserMilesPerDay(date) {}
-  //look at a specific date for a users activity (needs date)
-  //check for the number of steps for that day (single day user Activity data numSteps)
-  //
-  //
-  // For a specific day (specified by a date), return the miles a user has
-  // walked based on their number of steps (use their strideLength to help calculate this)
+  getUserMilesPerDay(user, date) {
+    const strideLength = user.strideLength;
+    const dailyUserSteps = this.findUserByID(user.userId).find(
+      (day) => day.date === date
+    ).numSteps;
+    return parseFloat(((dailyUserSteps * strideLength) / 5280).toFixed(1));
+  }
 
   getUserMinutesFromDay(userId, date) {
-    const dayData = this.findUserByID(userId).find(day => day.date === date);
-    
-    return dayData.minutesActive
+    const dayData = this.findUserByID(userId).find((day) => day.date === date);
+
+    return dayData.minutesActive;
   }
   // For a user, (identified by their userId) how many minutes were
   // they active for a given day (specified by a date)?
 
   getUserMinActiveAvgForWeek(userId, date) {
     const thisSpecifiedWeek = this.getMostRecentWeekData(userId, date);
-    const avg = thisSpecifiedWeek.reduce((acc, day) => {
-        return acc += day.minutesActive;
-    }, 0) / thisSpecifiedWeek.length;
+    const avg =
+      thisSpecifiedWeek.reduce((acc, day) => {
+        return (acc += day.minutesActive);
+      }, 0) / thisSpecifiedWeek.length;
 
     return parseFloat(avg.toFixed(2));
   }
@@ -74,19 +74,21 @@ class Activities {
 
   findUserStairClimbingRecord(userId) {
     const stairRecord = this.findUserByID(userId).reduce((prev, curr) => {
-      
-      return prev.flightsOfStairs > curr.flightsOfStairs ? prev : curr
+      return prev.flightsOfStairs > curr.flightsOfStairs ? prev : curr;
     });
 
-    return stairRecord.flightsOfStairs
+    return stairRecord.flightsOfStairs;
   }
   // For a user, find their all-time stair climbing record
 
   getUsersStairsClimbedAvg(date) {
-    const thatDay = this.activitiesData.filter(day => day.date === date);
-    const totalStairs = thatDay.reduce((prev, curr) => prev + curr.flightsOfStairs, 0);
-    
-    return totalStairs/thatDay.length
+    const thatDay = this.activitiesData.filter((day) => day.date === date);
+    const totalStairs = thatDay.reduce(
+      (prev, curr) => prev + curr.flightsOfStairs,
+      0
+    );
+
+    return totalStairs / thatDay.length;
   }
   // For all users, what is the average number of stairs climbed for a specified date
 
