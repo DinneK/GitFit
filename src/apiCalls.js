@@ -10,8 +10,8 @@ const getHydrationApiData = fetch('http://localhost:3001/api/v1/hydration')
 .then(response => response.json())
 .catch(err => console.log(err))
 
-const getActivityData = fetch('http://localhost:3001/api/v1/activity')
+const getActivitiesData = fetch('http://localhost:3001/api/v1/activity')
 .then(response => response.json())
 .catch(err => console.log(err))
 
-export { getUsersApiData, getSleepApiData, getHydrationApiData, getActivityData}
+export { getUsersApiData, getSleepApiData, getHydrationApiData, getActivitiesData}
