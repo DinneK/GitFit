@@ -56,6 +56,8 @@ const friendInfo = document.querySelector("#user-friend-info-card");
 const dailySteps = document.querySelector("#steps-per-day");
 const dailyMins = document.querySelector("#minutes-per-day");
 const dailyMiles = document.querySelector("#miles-per-day");
+const latestActivityDayVsAll = document.querySelector("#activity-vs-all");
+
 
 window.addEventListener("load", instantiateAllData);
 
@@ -69,9 +71,8 @@ function loadUser() {
   renderOuncesDrankPerDay();
   renderOuncesDrankPerWeek();
   getOuncesDrankPerWeek();
-  getUserStepsToday();
-  getUserDailyMins();
-  getUserDailyMiles();
+  renderRecentActivitiesDay();
+  renderUserActivityComparison();
 }
 
 function renderWelcomeMessage() {
@@ -238,26 +239,62 @@ function getOuncesDrankPerWeek() {
     });
 }
 
-function getUserStepsToday() {
+function renderRecentActivitiesDay() {
   const dayData = activity.getMostRecentDate(currentUser.userId);
+  const milesByDate = activity.getUserMilesPerDay(currentUser, dayData.date);
+
   dailySteps.innerHTML = `<div>
     ${dayData.numSteps}
-  </div>`
-}
+  </div>`;
 
-function getUserDailyMins() {
-  const dayData = activity.getMostRecentDate(currentUser.userId);
   dailyMins.innerHTML = `<div>
   ${dayData.minutesActive}
-  </div>`
-}
+  </div>`;
 
-function getUserDailyMiles() {
-  const dayData = activity.getMostRecentDate(currentUser.userId);
-  console.log(currentUser);
-  console.log(dayData.date)
-  const milesByDate = activity.getUserMilesPerDay(currentUser, dayData.date);
   dailyMiles.innerHTML = `<div>
   ${milesByDate}
-  </div>`
+  </div>`;
+}
+
+function compareUserStepsToAll() {
+  const dayData = activity.getMostRecentDate(currentUser.userId);
+  const stepsAvgForDay = activity.getAllUsersStepsAvgForADay(dayData.date);
+  console.log("USER ACTIVITY COMPARISON: ", dayData, stepsAvgForDay);
+
+  if(dayData.numSteps >= stepsAvgForDay) {
+    return `Awesome, your ${dayData.numSteps} steps today are above the average of ${stepsAvgForDay}, compared to everyone else.`;
+  } else {
+    return `Almost there, you ${dayData.numSteps} steps today are below the average of ${stepsAvgForDay}, compared to everyone else.`;
+  }
+}
+
+function compareUserClimbingToAll() {
+  const dayData = activity.getMostRecentDate(currentUser.userId);
+  const climbingAvg = activity.getUsersStairsClimbedAvg(dayData.date);
+
+  if(dayData.flightOfStairs >= climbingAvg) {
+    return `You climbed ${dayData.flightOfStairs} flight of stairs compared to the avg flight of ${climbingAvg} stairs.`;
+  } else {
+    return `We'll keep working on it, You climbed ${dayData.flightOfStairs} flight of stairs compared to the avg flight of ${climbingAvg} stairs.`;
+  }
+}
+
+function compareUserMinsActiveToAll() {
+  const dayData = activity.getMostRecentDate(currentUser.userId);
+  const minsActiveAvg = activity.getUsersAvgMinutesActiveForDay(dayData.date);
+
+  if(dayData.minutesActive >= minsActiveAvg) {
+    return `Keep up the great work! You were active for ${dayData.minutesActive} minutes, compared to the average of ${minsActiveAvg} minutes.`;
+  } else {
+    return `No sweat, you spent ${dayData.minutesActive} minutes active today, compared to the average of ${minsActiveAvg} minutes.`;
+  }
+}
+
+
+function renderUserActivityComparison() {
+
+  latestActivityDayVsAll.innerHTML = 
+  `<div>${compareUserStepsToAll()}</div>
+  <div> ${compareUserClimbingToAll()}</div>
+  <div> ${compareUserMinsActiveToAll()}</div>`;
 }

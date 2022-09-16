@@ -109,6 +109,21 @@ b {
 }
 
 /*Friend List Widget*/
+.info-override {
+  background-color: transparent;
+  box-shadow: none;
+}
+.user-and-friend-widget {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.user-friends-widget {
+  margin-left: 7px;
+}
+
 .friend-list {
   font-size: 1.2em;
   margin-bottom: 5px;
@@ -117,6 +132,11 @@ b {
 
 .indiv-friend {
   margin-bottom: 10px;
+}
+
+.user-info-card {
+  width: 25vw;
+  margin-right: 7px;
 }
 
 .card {

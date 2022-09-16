@@ -17,11 +17,15 @@
       <section class="welcome" id="welcome-message"></section>
     </header>
     <main>
-      <section class="widget" id="user-info-widget">
-        <section class="user-info-card"></section>
-      </section>
-      <section class="widget" id="user-friends-widget"> 
-        <section class="user-friend-info-card" id="user-friend-info-card"></section>
+      <section class="widget info-override">
+        <!-- <div class="sub-widget" id="user-info-widget"> -->
+        <div class="user-and-friend-widget">
+          <section class=" sub-widget user-info-card" id="user-info-widget"></section>
+          <!-- <section class="widget" id="user-friends-widget">  -->
+          <section class="sub-widget user-friends-widget" id="user-friends-widget"> 
+            <section class="user-friend-info-card" id="user-friend-info-card"></section>
+          </section>
+        </div>
       </section>
       <section class="multiBox" id="user-hydration-widget">
         <div class="sub-widget single" id="single-day-ounces"></div>
