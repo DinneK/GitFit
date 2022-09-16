@@ -5,10 +5,12 @@ import {
   getUsersApiData,
   getSleepApiData,
   getHydrationApiData,
+  getActivitiesData,
 } from "./apiCalls";
 import UserRepository from "./UserRepository";
 import Hydration from "./Hydration";
 import Sleep from "./Sleep";
+import Activities from "./Activities";
 
 let currentUser;
 let usersData;
@@ -17,20 +19,23 @@ let sleepData;
 let sleepInfo;
 let hydrationData;
 let hydration;
+let activitiesData;
+let activity;
 
 function instantiateAllData() {
-  Promise.all([getUsersApiData, getSleepApiData, getHydrationApiData]).then(
+  Promise.all([getUsersApiData, getSleepApiData, getHydrationApiData, getActivitiesData]).then(
     (data) => {
       usersData = data[0].userData;
       sleepData = data[1].sleepData;
       hydrationData = data[2].hydrationData;
+      activitiesData = data[3].activityData;
       newUserRepo = new UserRepository(usersData);
       currentUser = new User(
         usersData[Math.floor(Math.random() * usersData.length)]
       );
       hydration = new Hydration(hydrationData);
       sleepInfo = new Sleep(sleepData);
-
+      activity = new Activities(activitiesData);
       loadUser();
     }
   );
@@ -64,6 +69,7 @@ function loadUser() {
 }
 
 function renderWelcomeMessage() {
+  console.log(activity)
   userWelcome.innerHTML = `<section class="welcome">Welcome Back ${currentUser.getFirstName()}</section>`;
 }
 
