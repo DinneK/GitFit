@@ -292,3 +292,27 @@
      - Dinne: Being  able to say (I've been following the mantra of) you've done this before you can do it again, instead of being nervous or beating myself up. Really starting to believe in my abilities has been my biggest win. 
      - Matt: But, on the flip side, i'm getting further on my thought process, i.e. the ability to follow a logic flow, than getting stuck. I am seeing a strong growth.
      - Dani: My win was being able to take my time to show a group of people my thought process when I work through a problem. The important thing here is that I was able to speak in full sentences. It gives me the confidence to be able to speak in code, and therefore getting me closer to feel comfortable to speak to employers.
+
+
+### Thursday 09/15/22
+
+- Today we:
+     - Finished our `Activities.ja` class
+     - Updated our api calls file to our `localhost:3001` url
+     - Started rendering our activities class methods to our DOM
+
+- To do:
+     - Finish rendering our `Activities.js` class to the DOM
+     - Setup our form on the HTML side 
+     - Finish our Fetch calls for POST
+
+
+- Challenges: 
+     - Dinne: 
+     - Matt: Just remembering how to manipulate the DOM. Feels like I haven't done that in 7 years.
+     - Dani: Getting a grasp with today's error handling with fetch calls lesson. I feel like I am still trying to conceptualize how we will handle our errors when we come across writing our POST methods in our api class.
+
+- Wins: 
+     - Dinne: 
+     - Matt: overall, writing code today was very seamless. Once I realized what code I needed to write I was able to naturally write things from all my practice.
+     - Dani: Being able to quickly troubleshoot a number of errors on different peoples code today.
