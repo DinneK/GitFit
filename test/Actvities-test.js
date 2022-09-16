@@ -266,10 +266,22 @@ describe("Activities", () => {
     ]);
   });
 
-  //Return the last date in the data, we can change this once or if we decide to use a date picker.
+  //Return the last days data, we can change this once or if we decide to use a date picker.
   it("Should return the last day of user input", () => {
-    expect(activities.getMostRecentDate(user1.userId)).to.equal("2019/06/22");
-    expect(activities.getMostRecentDate(user2.userId)).to.equal("2019/06/22");
+    expect(activities.getMostRecentDate(user1.userId)).to.deep.equal({
+      userID: 1,
+      date: '2019/06/22',
+      numSteps: 10289,
+      minutesActive: 119,
+      flightsOfStairs: 6
+    });
+    expect(activities.getMostRecentDate(user2.userId)).to.deep.equal({
+      userID: 2,
+      date: '2019/06/22',
+      numSteps: 3605,
+      minutesActive: 124,
+      flightsOfStairs: 31
+    });
   });
 
   it("Should return a weeks worth of data", () => {

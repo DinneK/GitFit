@@ -15,8 +15,8 @@ class Activities {
   getMostRecentDate(userID) {
     return this.findUserByID(userID)
       .reverse()
-      .splice(0, 1)
-      .map((lastDay) => lastDay.date)[0];
+      .splice(0, 1)[0]
+      // .map((lastDay) => lastDay.date)[0];
   }
 
   getMostRecentWeekData(userID, date) {
