@@ -308,11 +308,11 @@
 
 
 - Challenges: 
-     - Dinne: 
+     - Dinne: Struggling with focus today, after my mid mod. Just feeling completely bunt out.
      - Matt: Just remembering how to manipulate the DOM. Feels like I haven't done that in 7 years.
      - Dani: Getting a grasp with today's error handling with fetch calls lesson. I feel like I am still trying to conceptualize how we will handle our errors when we come across writing our POST methods in our api class.
 
 - Wins: 
-     - Dinne: 
+     - Dinne: Finishing the second mid mod.
      - Matt: overall, writing code today was very seamless. Once I realized what code I needed to write I was able to naturally write things from all my practice.
      - Dani: Being able to quickly troubleshoot a number of errors on different peoples code today.
