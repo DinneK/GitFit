@@ -53,6 +53,9 @@ const sleepAvgs = document.querySelector("#sleepAvgs");
 const allTimeAvgs = document.querySelector(".all-time-sleep-avgs");
 const friendWidget = document.querySelector("#user-friends-widget");
 const friendInfo = document.querySelector("#user-friend-info-card");
+const dailySteps = document.querySelector("#steps-per-day");
+const dailyMins = document.querySelector("#minutes-per-day");
+const dailyMiles = document.querySelector("#miles-per-day");
 
 window.addEventListener("load", instantiateAllData);
 
@@ -66,10 +69,12 @@ function loadUser() {
   renderOuncesDrankPerDay();
   renderOuncesDrankPerWeek();
   getOuncesDrankPerWeek();
+  getUserStepsToday();
+  getUserDailyMins();
+  getUserDailyMiles();
 }
 
 function renderWelcomeMessage() {
-  console.log(activity)
   userWelcome.innerHTML = `<section class="welcome">Welcome Back ${currentUser.getFirstName()}</section>`;
 }
 
@@ -231,4 +236,28 @@ function getOuncesDrankPerWeek() {
       ounceList =
         ounceInfo.innerHTML += `<div class="indiv-ounce"> Day ${x++}: ${ounce} oz</div>`;
     });
+}
+
+function getUserStepsToday() {
+  const dayData = activity.getMostRecentDate(currentUser.userId);
+  dailySteps.innerHTML = `<div>
+    ${dayData.numSteps}
+  </div>`
+}
+
+function getUserDailyMins() {
+  const dayData = activity.getMostRecentDate(currentUser.userId);
+  dailyMins.innerHTML = `<div>
+  ${dayData.minutesActive}
+  </div>`
+}
+
+function getUserDailyMiles() {
+  const dayData = activity.getMostRecentDate(currentUser.userId);
+  console.log(currentUser);
+  console.log(dayData.date)
+  const milesByDate = activity.getUserMilesPerDay(currentUser, dayData.date);
+  dailyMiles.innerHTML = `<div>
+  ${milesByDate}
+  </div>`
 }
