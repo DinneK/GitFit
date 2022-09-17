@@ -56,7 +56,9 @@ const friendInfo = document.querySelector("#user-friend-info-card");
 const dailySteps = document.querySelector("#steps-per-day");
 const dailyMins = document.querySelector("#minutes-per-day");
 const dailyMiles = document.querySelector("#miles-per-day");
+const topActivity = document.querySelector("#topActivity");
 const latestActivityDayVsAll = document.querySelector("#activity-vs-all");
+const weeklyActivity = document.querySelector("#weeklyActivity");
 
 
 window.addEventListener("load", instantiateAllData);
@@ -73,6 +75,7 @@ function loadUser() {
   getOuncesDrankPerWeek();
   renderRecentActivitiesDay();
   renderUserActivityComparison();
+  renderWeekActivityData()
 }
 
 function renderWelcomeMessage() {
@@ -243,28 +246,29 @@ function renderRecentActivitiesDay() {
   const dayData = activity.getMostRecentDate(currentUser.userId);
   const milesByDate = activity.getUserMilesPerDay(currentUser, dayData.date);
 
-  dailySteps.innerHTML = `<div>
+  topActivity.innerHTML = 
+  `<div class=" sub-widget activity-card">
+  <div class="label">Steps Today</div>
     ${dayData.numSteps}
-  </div>`;
-
-  dailyMins.innerHTML = `<div>
-  ${dayData.minutesActive}
-  </div>`;
-
-  dailyMiles.innerHTML = `<div>
-  ${milesByDate}
+  </div>
+  <div class=" sub-widget activity-card">
+  <div class="label">Time Active</div>
+  ${dayData.minutesActive} Minutes
+  </div>
+  <div class=" sub-widget activity-card">
+  <div class="label">Distance</div>
+  ${milesByDate} Miles
   </div>`;
 }
 
 function compareUserStepsToAll() {
   const dayData = activity.getMostRecentDate(currentUser.userId);
   const stepsAvgForDay = activity.getAllUsersStepsAvgForADay(dayData.date);
-  console.log("USER ACTIVITY COMPARISON: ", dayData, stepsAvgForDay);
 
   if(dayData.numSteps >= stepsAvgForDay) {
-    return `Awesome, your ${dayData.numSteps} steps today are above the average of ${stepsAvgForDay}, compared to everyone else.`;
+    return `Awesome, your <span>${dayData.numSteps}</span> steps today are above the average of <span>${stepsAvgForDay}</span>, compared to everyone else.`;
   } else {
-    return `Almost there, you ${dayData.numSteps} steps today are below the average of ${stepsAvgForDay}, compared to everyone else.`;
+    return `You're almost there, at <span>${dayData.numSteps}</span> steps you are below the average of <span>${stepsAvgForDay}</span>.`;
   }
 }
 
@@ -272,10 +276,10 @@ function compareUserClimbingToAll() {
   const dayData = activity.getMostRecentDate(currentUser.userId);
   const climbingAvg = activity.getUsersStairsClimbedAvg(dayData.date);
 
-  if(dayData.flightOfStairs >= climbingAvg) {
-    return `You climbed ${dayData.flightOfStairs} flight of stairs compared to the avg flight of ${climbingAvg} stairs.`;
+  if(dayData.flightsOfStairs >= climbingAvg) {
+    return `Your climbing record of <span>${dayData.flightsOfStairs}</span> flights of stairs is above the avg of <span>${climbingAvg}</span> stairs.`;
   } else {
-    return `We'll keep working on it, You climbed ${dayData.flightOfStairs} flight of stairs compared to the avg flight of ${climbingAvg} stairs.`;
+    return `Your climbing record of <span>${dayData.flightsOfStairs}</span> flights of stairs is below the avg of <span>${climbingAvg}</span> stairs.`;
   }
 }
 
@@ -284,17 +288,24 @@ function compareUserMinsActiveToAll() {
   const minsActiveAvg = activity.getUsersAvgMinutesActiveForDay(dayData.date);
 
   if(dayData.minutesActive >= minsActiveAvg) {
-    return `Keep up the great work! You were active for ${dayData.minutesActive} minutes, compared to the average of ${minsActiveAvg} minutes.`;
+    return `But keep up the great work! You were active for <span>${dayData.minutesActive}</span> minutes, compared to the average <span>${minsActiveAvg}</span> minutes.`;
   } else {
-    return `No sweat, you spent ${dayData.minutesActive} minutes active today, compared to the average of ${minsActiveAvg} minutes.`;
+    return `And no sweat, you spent <span>${dayData.minutesActive}</span> minutes active today, compared to the average <span>${minsActiveAvg}</span> minutes.`;
   }
 }
-
 
 function renderUserActivityComparison() {
 
   latestActivityDayVsAll.innerHTML = 
-  `<div>${compareUserStepsToAll()}</div>
+  `<div class="label">Your Activity Averages</div> 
+  <div>${compareUserStepsToAll()}</div>
   <div> ${compareUserClimbingToAll()}</div>
   <div> ${compareUserMinsActiveToAll()}</div>`;
+}
+
+function renderWeekActivityData() {
+  weeklyActivity.innerHTML = 
+  `<div>
+    <div class="label">You Week Overview</div>
+  </div>`;
 }
