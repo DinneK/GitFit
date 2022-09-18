@@ -59,9 +59,37 @@ const dailyMiles = document.querySelector("#miles-per-day");
 const topActivity = document.querySelector("#topActivity");
 const latestActivityDayVsAll = document.querySelector("#activity-vs-all");
 const activityWeekDays = document.querySelector("#activityWeekDays");
+const addDataButton = document.querySelector("#addData");
+const form = document.querySelector("#form")
 
 
 window.addEventListener("load", instantiateAllData);
+addDataButton.addEventListener("click", showForm);
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const newSleepData = {
+    userId: currentUser.userId,
+    date: formData.get('form-date'),
+    hoursSlept: formData.get('hours-slept'),
+    sleepQuality: formData.get('sleep-quality'),
+  };
+  const newHydrationData = {
+    userId: currentUser.userId,
+    date: formData.get('form-date'),
+    numOunces: formData.get('ounces-drank'),
+  };
+  const newActivitiesData = {
+    userId: currentUser.userId,
+    date: formData.get('form-date'),
+    numSteps: formData.get('number-steps'),
+    minutesActive: formData.get('minutes-active'),
+    flightsOfStairs: formData.get('flights-of-stairs'),
+  };
+  // POST GOES HERE
+  addAnimal(newData);
+  e.target.reset();
+})
 
 function loadUser() {
   renderWelcomeMessage();
@@ -318,3 +346,13 @@ function renderWeekActivityData() {
     </div>`;
   });
 }
+
+function showForm() {
+  addDataButton.classList.add("hidden");
+  form.classList.remove("hidden");
+}
+
+function submitForm() {
+  
+}
+

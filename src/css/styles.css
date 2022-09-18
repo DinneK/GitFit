@@ -81,6 +81,7 @@ main {
 }
 
 .label {
+  /* font-family: fangsong; */
   font-size: 1.5em;
   font-weight: bold;
   text-align: center;
@@ -275,14 +276,13 @@ span {
   font-size: 9.5px;
 }
 
-/* form */
+/* FORM */
 form {
   /* width: 50%; */
 }
 
 .user-input {
   align-items: center;
-  border: 1px solid black;
   display: flex;
   justify-content: center;
   width: 100vw;
@@ -309,9 +309,21 @@ form {
 .inputs {
   display: flex;
   margin: 10px;
+  font-size: 20px;
+  font-weight: bolder;
+  font-family: fangsong;
 }
 
 .align {
   display: flex;
   justify-content: center;
+}
+
+label {
+  font-weight: 100;
+  font-size: 15px;
+}
+
+.hidden {
+  display: none;
 }

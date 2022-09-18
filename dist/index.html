@@ -19,29 +19,29 @@
     <main>
       <section class="user-input" id="user-input">
         <div class="form-container">
-          <button class="add-data">ADD NEW DATA</button>
-          <form>
+          <button class="add-data" id="addData">ADD NEW DATA</button>
+          <form class="hidden" id="form">
             <div class="align">
-              <input type="date" id="start" name="trip-start" value="2019-06-23" min="2019-01-01" max="2022-12-31">
+              <input type="date" id="start" name="form-date" value="2019-06-23" min="2019-01-01" max="2022-12-31">
             </div>
             <div class="inputs">
               <div class="form-section">SLEEP<br>
                 <label for="">Hours Slept</label>
-                <input type="" id="" name="">
+                <input type="" id="" name="hours-slept" required="required" placeholder="7.5">
                 <label for="">Sleep Quality</label>
-                <input type="" id="" name="">
+                <input type="" id="" name="sleep-quality" required="required" placeholder="4.3">
               </div>
               <div class="form-section">HYDRATION
                 <label for="">Ounces Drank</label>
-                <input type="" id="" name="">
+                <input type="" id="" name="ounces-drank" required="required" placeholder="87">
               </div>
               <div class="form-section">ACTIVITY
                 <label for="">Number of Steps</label>
-                <input type="" id="" name="">
+                <input type="" id="" name="number-steps" required="required" placeholder="5712">
                 <label for="">Minutes Active</label>
-                <input type="" id="" name="">
+                <input type="" id="" name="minutes-active" required="required" placeholder="106">
                 <label for="">Flights of Stairs</label>
-                <input type="" id="" name="">
+                <input type="" id="" name="flights-of-stairs" required="required" placeholder="13">
               </div>
             </div>
             <br>
