@@ -81,6 +81,7 @@ main {
 }
 
 .label {
+  /* font-family: fangsong; */
   font-size: 1.5em;
   font-weight: bold;
   text-align: center;
@@ -273,4 +274,56 @@ span {
 .activity-week-days {
   margin-top: 5px;
   font-size: 9.5px;
+}
+
+/* FORM */
+form {
+  /* width: 50%; */
+}
+
+.user-input {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
+.form-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 8%), 0 2px 2px hsl(0deg 0% 0% / 8%), 0 4px 4px hsl(0deg 0% 0% / 8%), 0 8px 8px hsl(0deg 0% 0% / 8%), 0 16px 16px hsl(0deg 0% 0% / 8%);
+  font-family: "Roboto", sans-serif;
+  }
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  text-align: center;
+}
+
+.inputs {
+  display: flex;
+  margin: 10px;
+  font-size: 20px;
+  font-weight: bolder;
+  font-family: fangsong;
+}
+
+.align {
+  display: flex;
+  justify-content: center;
+}
+
+label {
+  font-weight: 100;
+  font-size: 15px;
+}
+
+.hidden {
+  display: none;
 }
