@@ -109,6 +109,21 @@ b {
 }
 
 /*Friend List Widget*/
+.info-override {
+  background-color: transparent;
+  box-shadow: none;
+}
+.user-and-friend-widget {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.user-friends-widget {
+  margin-left: 7px;
+}
+
 .friend-list {
   font-size: 1.2em;
   margin-bottom: 5px;
@@ -117,6 +132,11 @@ b {
 
 .indiv-friend {
   margin-bottom: 10px;
+}
+
+.user-info-card {
+  width: 25vw;
+  margin-right: 7px;
 }
 
 .card {
@@ -175,7 +195,7 @@ b {
   margin-top: 0px;
 }
 
-.sleep-widget {
+.transparent-widget {
   background-color: transparent;
   box-shadow: none;
 }
@@ -184,7 +204,7 @@ b {
   width: 100%;
 }
 
-.sleep-week-days {
+.week-days {
   display: flex;
   width: 100%;
 }
@@ -196,4 +216,61 @@ b {
   margin-right: 3px;
   text-align: center;
   width: 14.25vw;
+}
+
+/*ACTIVITIES*/
+.top-activity {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.bottom-activity {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.activity-card {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+}
+
+.activity-card-label {
+  margin-bottom: 10px;
+}
+
+.activity-text {
+  margin-bottom: 15px;
+}
+
+.avg-container {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.avg-card {
+  font-size: 9.5px;
+}
+
+span {
+  color: orangered;
+}
+
+.weekly-activity-sub-widget {
+  display: flex;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.activity-label {
+  margin-bottom: 10px;
+}
+
+.activity-week-days {
+  margin-top: 5px;
+  font-size: 9.5px;
 }

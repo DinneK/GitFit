@@ -56,6 +56,10 @@ const friendInfo = document.querySelector("#user-friend-info-card");
 const dailySteps = document.querySelector("#steps-per-day");
 const dailyMins = document.querySelector("#minutes-per-day");
 const dailyMiles = document.querySelector("#miles-per-day");
+const topActivity = document.querySelector("#topActivity");
+const latestActivityDayVsAll = document.querySelector("#activity-vs-all");
+const activityWeekDays = document.querySelector("#activityWeekDays");
+
 
 window.addEventListener("load", instantiateAllData);
 
@@ -69,9 +73,9 @@ function loadUser() {
   renderOuncesDrankPerDay();
   renderOuncesDrankPerWeek();
   getOuncesDrankPerWeek();
-  getUserStepsToday();
-  getUserDailyMins();
-  getUserDailyMiles();
+  renderRecentActivitiesDay();
+  renderUserActivityComparison();
+  renderWeekActivityData()
 }
 
 function renderWelcomeMessage() {
@@ -169,7 +173,8 @@ function getDaysOfSleepWeek() {
 function renderSleepWeek() {
   const weekOf = getDaysOfSleepWeek();
   weekOf.forEach((data) => {
-    sleepWeekDays.innerHTML += `<div class="calendar-day">
+    sleepWeekDays.innerHTML += 
+    `<div class="calendar-day">
       <div class="sleep-font">${data.day}</div> 
       <div class="sleep-font">Hours: ${data.hoursSlept}</div>
       <div class="sleep-font">Quality: ${data.sleepQuality}</div>
@@ -238,26 +243,78 @@ function getOuncesDrankPerWeek() {
     });
 }
 
-function getUserStepsToday() {
+function renderRecentActivitiesDay() {
   const dayData = activity.getMostRecentDate(currentUser.userId);
-  dailySteps.innerHTML = `<div>
-    ${dayData.numSteps}
-  </div>`
-}
-
-function getUserDailyMins() {
-  const dayData = activity.getMostRecentDate(currentUser.userId);
-  dailyMins.innerHTML = `<div>
-  ${dayData.minutesActive}
-  </div>`
-}
-
-function getUserDailyMiles() {
-  const dayData = activity.getMostRecentDate(currentUser.userId);
-  console.log(currentUser);
-  console.log(dayData.date)
   const milesByDate = activity.getUserMilesPerDay(currentUser, dayData.date);
-  dailyMiles.innerHTML = `<div>
-  ${milesByDate}
-  </div>`
+
+  topActivity.innerHTML = 
+  `<div class=" sub-widget activity-card">
+  <div class="label activity-card-label">Steps Today</div>
+  <div class="activity-text">${dayData.numSteps}</div>
+  </div>
+  <div class=" sub-widget activity-card">
+  <div class="label activity-card-label">Time Active</div>
+  <div class="activity-text">${dayData.minutesActive} Minutes</div>
+  </div>
+  <div class=" sub-widget activity-card">
+  <div class="label activity-card-label">Distance</div>
+  <div class="activity-text">${milesByDate} Miles</div>
+  </div>`;
+}
+
+function compareUserStepsToAll() {
+  const dayData = activity.getMostRecentDate(currentUser.userId);
+  const stepsAvgForDay = activity.getAllUsersStepsAvgForADay(dayData.date);
+
+  if(dayData.numSteps >= stepsAvgForDay) {
+    return `Awesome, your <span>${dayData.numSteps}</span> steps today are above the average of <span>${stepsAvgForDay}</span>, compared to everyone else.`;
+  } else {
+    return `You're almost there, at <span>${dayData.numSteps}</span> steps you are below the average of <span>${stepsAvgForDay}</span>.`;
+  }
+}
+
+function compareUserClimbingToAll() {
+  const dayData = activity.getMostRecentDate(currentUser.userId);
+  const climbingAvg = activity.getUsersStairsClimbedAvg(dayData.date);
+
+  if(dayData.flightsOfStairs >= climbingAvg) {
+    return `Your climbing record of <span>${dayData.flightsOfStairs}</span> flights of stairs is above the avg of <span>${climbingAvg}</span> stairs.`;
+  } else {
+    return `Your climbing record of <span>${dayData.flightsOfStairs}</span> flights of stairs is below the avg of <span>${climbingAvg}</span> stairs.`;
+  }
+}
+
+function compareUserMinsActiveToAll() {
+  const dayData = activity.getMostRecentDate(currentUser.userId);
+  const minsActiveAvg = activity.getUsersAvgMinutesActiveForDay(dayData.date);
+
+  if(dayData.minutesActive >= minsActiveAvg) {
+    return `But keep up the great work! You were active for <span>${dayData.minutesActive}</span> minutes, compared to the average <span>${minsActiveAvg}</span> minutes.`;
+  } else {
+    return `And no sweat, you spent <span>${dayData.minutesActive}</span> minutes active today, compared to the average <span>${minsActiveAvg}</span> minutes.`;
+  }
+}
+
+function renderUserActivityComparison() {
+
+  latestActivityDayVsAll.innerHTML = 
+  `<div class="label activity-label">Your Activity Averages</div> 
+  <div class="avg-card">${compareUserStepsToAll()}</div>
+  <div class="avg-card"> ${compareUserClimbingToAll()}</div>
+  <div class="avg-card"> ${compareUserMinsActiveToAll()}</div>`;
+}
+
+function renderWeekActivityData() {
+  const dayData = activity.getMostRecentDate(currentUser.userId);
+  const weekOf = activity.getDaysForWeekData(currentUser.userId, dayData.date);
+  console.log(weekOf);
+  weekOf.forEach((data) => {
+    activityWeekDays.innerHTML += 
+    `<div class="calendar-day">
+      <div class="sleep-font">${data.day}</div>
+      <div class="sleep-font">Steps: ${data.numSteps}</div>
+      <div class="sleep-font">Minutes Active: ${data.minutesActive}</div>
+      <div class="sleep-font">Stair Count: ${data.flightsOfStairs}</div>
+    </div>`;
+  });
 }

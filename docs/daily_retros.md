@@ -316,3 +316,20 @@
      - Dinne: Finishing the second mid mod.
      - Matt: overall, writing code today was very seamless. Once I realized what code I needed to write I was able to naturally write things from all my practice.
      - Dani: Being able to quickly troubleshoot a number of errors on different peoples code today.
+
+
+### Friday 09/16/22
+
+- Today we:
+
+- To Do:
+
+- Challenges: 
+     - Dinne: Motivation today has been challenging!!! All this girl wanted was to NAP!
+     - Matt: The audit for error handling. I kind of had an idea about error handling when it comes to Fetch calling, but that audit made me realize otherwise.
+     - Dani: Prioritization! I had to cut off many things today from our Turing calendar (Talk with Jeff and our house retros with our cohort) in order to put in more time to practice array iterations.
+
+- Wins:
+     - Dinne: Getting up and writing up a mock `iterators` assessment this morning! I was able to write it out and test it as well!
+     - Matt: I had a breakthrough on `for` loops today! I realized I was missing something from the foundational structure that when I had this breakthrough I was better able to understand array iterators that much more! Because of this I was able to process my thoughts out better when it came to iterating objects within objects.
+     - Dani: My win was being able to refine my problem solving process! With this, I feel that much more confident in being able to take my time and pesudocode my logic flow.

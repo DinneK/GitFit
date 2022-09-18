@@ -17,35 +17,39 @@
       <section class="welcome" id="welcome-message"></section>
     </header>
     <main>
-      <section class="widget" id="user-info-widget">
-        <section class="user-info-card"></section>
-      </section>
-      <section class="widget" id="user-friends-widget"> 
-        <section class="user-friend-info-card" id="user-friend-info-card"></section>
+      <section class="widget info-override">
+        <!-- <div class="sub-widget" id="user-info-widget"> -->
+        <div class="user-and-friend-widget">
+          <section class=" sub-widget user-info-card" id="user-info-widget"></section>
+          <!-- <section class="widget" id="user-friends-widget">  -->
+          <section class="sub-widget user-friends-widget" id="user-friends-widget"> 
+            <section class="user-friend-info-card" id="user-friend-info-card"></section>
+          </section>
+        </div>
       </section>
       <section class="multiBox" id="user-hydration-widget">
         <div class="sub-widget single" id="single-day-ounces"></div>
         <div class="sub-widget week" id="week-ounces"></div>
       </section>
-      <section class="widget" id="user-activity-widget">
-        <div class="top-activity">
-          <div class="sub-widget" id="steps-per-day"></div>
-          <div class="sub-widget" id="minutes-per-day"></div>
-          <div class="sub-widget" id="miles-per-day"></div>
+      <section class="widget transparent-widget" id="user-activity-widget">
+        <div class="top-activity" id="topActivity">
         </div>
-        <div class="bottom-activity">
-          <div class="sub-widget" id="activity-vs-all"></div>
-          <div class="sub-widget" id="weekly-steps"></div>
+        <div class="sub-widget bottom-activity transparent-widget">
+          <div class="sub-widget avg-container" id="activity-vs-all"></div>
+          <div class="sub-widget weekly-activity-sub-widget" id="weeklyActivity">
+            <div class="label activity-label">Your Activity Last Week</div>
+            <div class="week-days activity-week-days" id="activityWeekDays"></div>
+          </div>
         </div>
       </section>
-      <section class="widget sleep-widget">
+      <section class="widget transparent-widget">
         <div class="top-sleep">
           <div class="sub-widget single top-two-box" id="singleSleepData"></div>
           <div class="sub-widget week top-two-box" id="sleepAvgs"></div>
         </div>
         <div class="sub-widget sleep-week-data" id="weekSleepData">
-          <div class="label">Your Sleep Last week</div>
-          <div class="sleep-week-days" id="sleepWeekDays"></div>
+          <div class="label">Your Sleep Last Week</div>
+          <div class="week-days" id="sleepWeekDays"></div>
         </div>
       </section>
     </main>
