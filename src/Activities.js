@@ -26,6 +26,24 @@ class Activities {
     return backToDate.slice(-7).map((dates) => dates);
   }
 
+  getDaysForWeekData(userId, date) {
+    let thisDate, dayOfWeek;
+    const weekInfo = this.getMostRecentWeekData(userId, date);
+    const literalDays = weekInfo.reduce((acc, data) => {
+      thisDate = new Date(data.date);
+      dayOfWeek = thisDate.toLocaleDateString(undefined, { weekday: "long" });
+      acc.push({
+        day: dayOfWeek,
+        numSteps: data.numSteps,
+        minutesActive: data.minutesActive,
+        flightsOfStairs: data.flightsOfStairs,
+      });
+      return acc;
+    }, []);
+    console.log(literalDays)
+    return literalDays;
+  }
+
   getUserMilesPerDay(user, date) {
     const strideLength = user.strideLength;
     const dailyUserSteps = this.findUserByID(user.userId).find(

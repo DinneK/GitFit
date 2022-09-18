@@ -31,22 +31,25 @@
         <div class="sub-widget single" id="single-day-ounces"></div>
         <div class="sub-widget week" id="week-ounces"></div>
       </section>
-      <section class="widget" id="user-activity-widget">
+      <section class="widget transparent-widget" id="user-activity-widget">
         <div class="top-activity" id="topActivity">
         </div>
-        <div class="sub-widget bottom-activity">
-          <div class="sub-widget avg-card" id="activity-vs-all"></div>
-          <div class="sub-widget" id="weeklyActivity"></div>
+        <div class="sub-widget bottom-activity transparent-widget">
+          <div class="sub-widget avg-container" id="activity-vs-all"></div>
+          <div class="sub-widget weekly-activity-sub-widget" id="weeklyActivity">
+            <div class="label activity-label">Your Activity Last Week</div>
+            <div class="week-days activity-week-days" id="activityWeekDays"></div>
+          </div>
         </div>
       </section>
-      <section class="widget sleep-widget">
+      <section class="widget transparent-widget">
         <div class="top-sleep">
           <div class="sub-widget single top-two-box" id="singleSleepData"></div>
           <div class="sub-widget week top-two-box" id="sleepAvgs"></div>
         </div>
         <div class="sub-widget sleep-week-data" id="weekSleepData">
-          <div class="label">Your Sleep Last week</div>
-          <div class="sleep-week-days" id="sleepWeekDays"></div>
+          <div class="label">Your Sleep Last Week</div>
+          <div class="week-days" id="sleepWeekDays"></div>
         </div>
       </section>
     </main>

@@ -58,7 +58,7 @@ const dailyMins = document.querySelector("#minutes-per-day");
 const dailyMiles = document.querySelector("#miles-per-day");
 const topActivity = document.querySelector("#topActivity");
 const latestActivityDayVsAll = document.querySelector("#activity-vs-all");
-const weeklyActivity = document.querySelector("#weeklyActivity");
+const activityWeekDays = document.querySelector("#activityWeekDays");
 
 
 window.addEventListener("load", instantiateAllData);
@@ -173,7 +173,8 @@ function getDaysOfSleepWeek() {
 function renderSleepWeek() {
   const weekOf = getDaysOfSleepWeek();
   weekOf.forEach((data) => {
-    sleepWeekDays.innerHTML += `<div class="calendar-day">
+    sleepWeekDays.innerHTML += 
+    `<div class="calendar-day">
       <div class="sleep-font">${data.day}</div> 
       <div class="sleep-font">Hours: ${data.hoursSlept}</div>
       <div class="sleep-font">Quality: ${data.sleepQuality}</div>
@@ -248,16 +249,16 @@ function renderRecentActivitiesDay() {
 
   topActivity.innerHTML = 
   `<div class=" sub-widget activity-card">
-  <div class="label">Steps Today</div>
-    ${dayData.numSteps}
+  <div class="label activity-card-label">Steps Today</div>
+  <div class="activity-text">${dayData.numSteps}</div>
   </div>
   <div class=" sub-widget activity-card">
-  <div class="label">Time Active</div>
-  ${dayData.minutesActive} Minutes
+  <div class="label activity-card-label">Time Active</div>
+  <div class="activity-text">${dayData.minutesActive} Minutes</div>
   </div>
   <div class=" sub-widget activity-card">
-  <div class="label">Distance</div>
-  ${milesByDate} Miles
+  <div class="label activity-card-label">Distance</div>
+  <div class="activity-text">${milesByDate} Miles</div>
   </div>`;
 }
 
@@ -297,15 +298,23 @@ function compareUserMinsActiveToAll() {
 function renderUserActivityComparison() {
 
   latestActivityDayVsAll.innerHTML = 
-  `<div class="label">Your Activity Averages</div> 
-  <div>${compareUserStepsToAll()}</div>
-  <div> ${compareUserClimbingToAll()}</div>
-  <div> ${compareUserMinsActiveToAll()}</div>`;
+  `<div class="label activity-label">Your Activity Averages</div> 
+  <div class="avg-card">${compareUserStepsToAll()}</div>
+  <div class="avg-card"> ${compareUserClimbingToAll()}</div>
+  <div class="avg-card"> ${compareUserMinsActiveToAll()}</div>`;
 }
 
 function renderWeekActivityData() {
-  weeklyActivity.innerHTML = 
-  `<div>
-    <div class="label">You Week Overview</div>
-  </div>`;
+  const dayData = activity.getMostRecentDate(currentUser.userId);
+  const weekOf = activity.getDaysForWeekData(currentUser.userId, dayData.date);
+  console.log(weekOf);
+  weekOf.forEach((data) => {
+    activityWeekDays.innerHTML += 
+    `<div class="calendar-day">
+      <div class="sleep-font">${data.day}</div>
+      <div class="sleep-font">Steps: ${data.numSteps}</div>
+      <div class="sleep-font">Minutes Active: ${data.minutesActive}</div>
+      <div class="sleep-font">Stair Count: ${data.flightsOfStairs}</div>
+    </div>`;
+  });
 }

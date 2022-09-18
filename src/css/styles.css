@@ -195,7 +195,7 @@ b {
   margin-top: 0px;
 }
 
-.sleep-widget {
+.transparent-widget {
   background-color: transparent;
   box-shadow: none;
 }
@@ -204,7 +204,7 @@ b {
   width: 100%;
 }
 
-.sleep-week-days {
+.week-days {
   display: flex;
   width: 100%;
 }
@@ -239,10 +239,38 @@ b {
   width: 30%;
 }
 
-.avg-card {
+.activity-card-label {
+  margin-bottom: 10px;
+}
+
+.activity-text {
+  margin-bottom: 15px;
+}
+
+.avg-container {
   width: 100%;
+  margin-top: 10px;
+}
+
+.avg-card {
+  font-size: 9.5px;
 }
 
 span {
   color: orangered;
+}
+
+.weekly-activity-sub-widget {
+  display: flex;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.activity-label {
+  margin-bottom: 10px;
+}
+
+.activity-week-days {
+  margin-top: 5px;
+  font-size: 9.5px;
 }
