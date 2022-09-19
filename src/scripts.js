@@ -52,7 +52,6 @@ const addSleep = (newSleepData) => {
     })
     .then(response => response.json())
     .then(json => /*do.sumpin.w/json*/)
-    .catch(err => /*do.sumpin.w/err*/);
 }
 
 const addHydration = (newHydrationData) => {
@@ -65,7 +64,6 @@ const addHydration = (newHydrationData) => {
   })
   .then(response => response.json())
   .then(json => /*do.sumpin.w/json*/)
-  .catch(err => /*do.sumpin.w/err*/);
 }
 
 const addActivity = (newActivitiesData) => {
@@ -78,7 +76,6 @@ const addActivity = (newActivitiesData) => {
   })
   .then(response => response.json())
   .then(json => /*do.sumpin.w/json*/)
-  .catch(err => /*do.sumpin.w/err*/);
 }
 
 const userWidget = document.querySelector("#user-info-widget");
