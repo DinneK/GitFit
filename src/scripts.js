@@ -41,35 +41,57 @@ function instantiateAllData() {
   );
 }
 
+function reloadUserDashboard() {
+  Promise.all([getUsersApiData, getSleepApiData, getHydrationApiData, getActivitiesData]).then(
+    (data) => {
+      usersData = data[0].userData;
+      sleepData = data[1].sleepData;
+      hydrationData = data[2].hydrationData;
+      activitiesData = data[3].activityData;
+      newUserRepo = new UserRepository(usersData);
+      hydration = new Hydration(hydrationData);
+      console.log(currentUser);
+      sleepInfo = new Sleep(sleepData);
+      activity = new Activities(activitiesData);
+      loadUser();
+    }
+  );
+}
+
 // POSTS
 const addSleep = (newSleepData) => {
+  console.log('================fetch?===========', newSleepData);
+
   fetch('http://localhost:3001/api/v1/sleep', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newSleepData),
     })
     .then(response => response.json())
-    .then(json => /*do.sumpin.w/json*/)
+    .then(data => data)
+    .catch(err => console.log(err))
 }
 
 const addHydration = (newHydrationData) => {
-   fetch('http://localhost:3001/api/v1/hydration', {
+  fetch('http://localhost:3001/api/v1/hydration', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' }
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(newHydrationData),
   })
   .then(response => response.json())
-  .then(json => /*do.sumpin.w/json*/)
+  .then(data => console.log('**** THIS IS water DATA******', data))
+  .catch(err => console.log(err))
 }
 
 const addActivity = (newActivitiesData) => {
   fetch('http://localhost:3001/api/v1/activity', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' }
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(newActivitiesData),
   })
   .then(response => response.json())
-  .then(json => /*do.sumpin.w/json*/)
+    .then(data => console.log('**** THIS IS runnin DATA******', data))
+  .catch(err => console.log(err))
 }
 
 const userWidget = document.querySelector("#user-info-widget");
@@ -96,15 +118,19 @@ const form = document.querySelector("#form")
 
 window.addEventListener("load", instantiateAllData);
 addDataButton.addEventListener("click", showForm);
+
+// FORM SUBMSSION
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
+  console.log('-------curruserID----------', currentUser.userId);
   const newSleepData = {
     userId: currentUser.userId,
     date: formData.get('form-date'),
     hoursSlept: formData.get('hours-slept'),
     sleepQuality: formData.get('sleep-quality'),
   };
+  console.log('~~~~~~~~~~~~~~~newSleepData~~~~~~~~~~', newSleepData);
   const newHydrationData = {
     userId: currentUser.userId,
     date: formData.get('form-date'),
@@ -117,10 +143,12 @@ form.addEventListener('submit', (e) => {
     minutesActive: formData.get('minutes-active'),
     flightsOfStairs: formData.get('flights-of-stairs'),
   };
-  addSleep(newData);
-  addHydration(newData);
-  addActivity(newData);
+  addSleep(newSleepData);
+  addHydration(newHydrationData);
+  addActivity(newActivitiesData);
   e.target.reset();
+  // render user info to update dashboard ?? \/
+  reloadUserDashboard();
 })
   
 function loadUser() {
@@ -382,9 +410,5 @@ function renderWeekActivityData() {
 function showForm() {
   addDataButton.classList.add("hidden");
   form.classList.remove("hidden");
-}
-
-function submitForm() {
-  
 }
 
