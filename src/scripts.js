@@ -68,7 +68,7 @@ const addSleep = (newSleepData) => {
       body: JSON.stringify(newSleepData),
     })
     .then(response => response.json())
-    .then(data => data)
+    .then(data => console.log('**** THIS IS sleep DATA******', data))
     .catch(err => console.log(err))
 }
 
@@ -125,19 +125,19 @@ form.addEventListener('submit', (e) => {
   const formData = new FormData(e.target);
   console.log('-------curruserID----------', currentUser.userId);
   const newSleepData = {
-    userId: currentUser.userId,
+    userID: currentUser.userId,
     date: formData.get('form-date'),
     hoursSlept: formData.get('hours-slept'),
     sleepQuality: formData.get('sleep-quality'),
   };
   console.log('~~~~~~~~~~~~~~~newSleepData~~~~~~~~~~', newSleepData);
   const newHydrationData = {
-    userId: currentUser.userId,
+    userID: currentUser.userId,
     date: formData.get('form-date'),
     numOunces: formData.get('ounces-drank'),
   };
   const newActivitiesData = {
-    userId: currentUser.userId,
+    userID: currentUser.userId,
     date: formData.get('form-date'),
     numSteps: formData.get('number-steps'),
     minutesActive: formData.get('minutes-active'),
@@ -259,6 +259,7 @@ function getDaysOfSleepWeek() {
 }
 
 function renderSleepWeek() {
+  sleepWeekDays.innerHTML = " ";
   const weekOf = getDaysOfSleepWeek();
   weekOf.forEach((data) => {
     sleepWeekDays.innerHTML += 
@@ -393,6 +394,7 @@ function renderUserActivityComparison() {
 }
 
 function renderWeekActivityData() {
+  activityWeekDays.innerHTML = " ";
   const dayData = activity.getMostRecentDate(currentUser.userId);
   const weekOf = activity.getDaysForWeekData(currentUser.userId, dayData.date);
   console.log(weekOf);
