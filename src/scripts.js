@@ -87,6 +87,38 @@ form.addEventListener('submit', (e) => {
     flightsOfStairs: formData.get('flights-of-stairs'),
   };
   // POST GOES HERE
+  fetch('http://localhost:3001/api/v1/sleep', {
+    method: 'POST',
+    body: JSON.stringify(newSleepData),
+    headers: {
+        'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(json => /*do.sumpin.w/json*/)
+  .catch(err => /*do.sumpin.w/err*/);
+
+  fetch('http://localhost:3001/api/v1/hydration', {
+    method: 'POST',
+    body: JSON.stringify(newHydrationData),
+    headers: {
+        'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(json => /*do.sumpin.w/json*/)
+  .catch(err => /*do.sumpin.w/err*/);
+  fetch('http://localhost:3001/api/v1/activity', {
+    method: 'POST',
+    body: JSON.stringify(newActivitiesData),
+    headers: {
+        'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(json => /*do.sumpin.w/json*/)
+  .catch(err => /*do.sumpin.w/err*/);
+
   addAnimal(newData);
   e.target.reset();
 })
