@@ -45,10 +45,8 @@ function instantiateAllData() {
 const addSleep = (newSleepData) => {
   fetch('http://localhost:3001/api/v1/sleep', {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
       body: JSON.stringify(newSleepData),
-      headers: {
-          'Content-Type': 'application/json'
-      }
     })
     .then(response => response.json())
     .then(json => /*do.sumpin.w/json*/)
@@ -57,10 +55,8 @@ const addSleep = (newSleepData) => {
 const addHydration = (newHydrationData) => {
    fetch('http://localhost:3001/api/v1/hydration', {
     method: 'POST',
+    headers: { 'Content-Type': 'application/json' }
     body: JSON.stringify(newHydrationData),
-    headers: {
-        'Content-Type': 'application/json'
-    }
   })
   .then(response => response.json())
   .then(json => /*do.sumpin.w/json*/)
@@ -69,10 +65,8 @@ const addHydration = (newHydrationData) => {
 const addActivity = (newActivitiesData) => {
   fetch('http://localhost:3001/api/v1/activity', {
     method: 'POST',
+    headers: { 'Content-Type': 'application/json' }
     body: JSON.stringify(newActivitiesData),
-    headers: {
-        'Content-Type': 'application/json'
-    }
   })
   .then(response => response.json())
   .then(json => /*do.sumpin.w/json*/)
