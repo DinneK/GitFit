@@ -61,7 +61,6 @@ function reloadUserDashboard() {
 // POSTS
 const addSleep = (newSleepData) => {
   console.log('================fetch?===========', newSleepData);
-
   fetch('http://localhost:3001/api/v1/sleep', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -114,6 +113,7 @@ const latestActivityDayVsAll = document.querySelector("#activity-vs-all");
 const activityWeekDays = document.querySelector("#activityWeekDays");
 const addDataButton = document.querySelector("#addData");
 const form = document.querySelector("#form")
+const dateSelector = document.querySelector("input[type ='date']");
 
 
 window.addEventListener("load", instantiateAllData);
@@ -124,21 +124,23 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
   console.log('-------curruserID----------', currentUser.userId);
+  console.log('---------LOAD CURRNET DATE-----------', loadCurrentDate())
   const newSleepData = {
     userID: currentUser.userId,
-    date: formData.get('form-date'),
+    date: loadCurrentDate(),
+    // date: loadCurrentDate().split("-").join("/"),
     hoursSlept: formData.get('hours-slept'),
     sleepQuality: formData.get('sleep-quality'),
   };
   console.log('~~~~~~~~~~~~~~~newSleepData~~~~~~~~~~', newSleepData);
   const newHydrationData = {
     userID: currentUser.userId,
-    date: formData.get('form-date'),
+    date: loadCurrentDate(),
     numOunces: formData.get('ounces-drank'),
   };
   const newActivitiesData = {
     userID: currentUser.userId,
-    date: formData.get('form-date'),
+    date: loadCurrentDate(),
     numSteps: formData.get('number-steps'),
     minutesActive: formData.get('minutes-active'),
     flightsOfStairs: formData.get('flights-of-stairs'),
@@ -414,3 +416,7 @@ function showForm() {
   form.classList.remove("hidden");
 }
 
+function loadCurrentDate() {
+  dateSelector.value = new Date().toJSON().slice(0, 10);
+  return dateSelector.value.split("-").join("/");
+}
