@@ -41,6 +41,46 @@ function instantiateAllData() {
   );
 }
 
+// POSTS
+const addSleep = (newSleepData) => {
+  fetch('http://localhost:3001/api/v1/sleep', {
+      method: 'POST',
+      body: JSON.stringify(newSleepData),
+      headers: {
+          'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(json => /*do.sumpin.w/json*/)
+    .catch(err => /*do.sumpin.w/err*/);
+}
+
+const addHydration = (newHydrationData) => {
+   fetch('http://localhost:3001/api/v1/hydration', {
+    method: 'POST',
+    body: JSON.stringify(newHydrationData),
+    headers: {
+        'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(json => /*do.sumpin.w/json*/)
+  .catch(err => /*do.sumpin.w/err*/);
+}
+
+const addActivity = (newActivitiesData) => {
+  fetch('http://localhost:3001/api/v1/activity', {
+    method: 'POST',
+    body: JSON.stringify(newActivitiesData),
+    headers: {
+        'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(json => /*do.sumpin.w/json*/)
+  .catch(err => /*do.sumpin.w/err*/);
+}
+
 const userWidget = document.querySelector("#user-info-widget");
 const userWelcome = document.querySelector("#welcome-message");
 const singleDayHydration = document.querySelector("#single-day-ounces");
@@ -86,43 +126,12 @@ form.addEventListener('submit', (e) => {
     minutesActive: formData.get('minutes-active'),
     flightsOfStairs: formData.get('flights-of-stairs'),
   };
-  // POST GOES HERE
-  fetch('http://localhost:3001/api/v1/sleep', {
-    method: 'POST',
-    body: JSON.stringify(newSleepData),
-    headers: {
-        'Content-Type': 'application/json'
-    }
-  })
-  .then(response => response.json())
-  .then(json => /*do.sumpin.w/json*/)
-  .catch(err => /*do.sumpin.w/err*/);
-
-  fetch('http://localhost:3001/api/v1/hydration', {
-    method: 'POST',
-    body: JSON.stringify(newHydrationData),
-    headers: {
-        'Content-Type': 'application/json'
-    }
-  })
-  .then(response => response.json())
-  .then(json => /*do.sumpin.w/json*/)
-  .catch(err => /*do.sumpin.w/err*/);
-  fetch('http://localhost:3001/api/v1/activity', {
-    method: 'POST',
-    body: JSON.stringify(newActivitiesData),
-    headers: {
-        'Content-Type': 'application/json'
-    }
-  })
-  .then(response => response.json())
-  .then(json => /*do.sumpin.w/json*/)
-  .catch(err => /*do.sumpin.w/err*/);
-
-  addAnimal(newData);
+  addSleep(newData);
+  addHydration(newData);
+  addActivity(newData);
   e.target.reset();
 })
-
+  
 function loadUser() {
   renderWelcomeMessage();
   renderUserInfo();
