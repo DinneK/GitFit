@@ -19,7 +19,9 @@
 - Displays a user's data and compares their daily step goals to the average step goals of all users
 - Displays a user's friends
 - Allows a user to track sleep goals and hydration goals
+- Allows a user to add new step, sleep and hydration information
 - 100% Accessibilty Score
+- Easily tab through application enables a user to fill out a form
 - Colorblind friendly display
 
 ## Possible Future Extensions
@@ -62,3 +64,4 @@
 
 ## Project Specs
   - The project spec & rubric can be found [here](https://frontend.turing.edu/projects/Fitlit-part-one.html)
+  - The project spec & rubric can be found [here](https://frontend.turing.edu/projects/Fitlit-part-two.html)
