@@ -187,7 +187,7 @@ function returnStepGoalComparison() {
 }
 
 function renderFriendInfo() {
-  friendWidget.innerHTML = " ";
+  friendWidget.innerHTML = "";
   friendWidget.innerHTML = `<section class="user-friend-info-card">
     <h3 class="label friend" id="friend-label">
       Friends
@@ -199,6 +199,7 @@ function renderFriendInfo() {
 }
 
 function splitFriendsIntoList() {
+  friendInfo.innerHTML = "";
   let currentUserID = currentUser.userId;
   let friendList;
   newUserRepo.returnUserFriendsNames(currentUserID).forEach((friend) => {
