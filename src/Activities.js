@@ -40,7 +40,6 @@ class Activities {
       });
       return acc;
     }, []);
-    console.log(literalDays)
     return literalDays;
   }
 

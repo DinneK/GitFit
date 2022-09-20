@@ -23,7 +23,7 @@ let activitiesData;
 let activity;
 
 function instantiateAllData() {
-  Promise.all([getUsersApiData, getSleepApiData, getHydrationApiData, getActivitiesData]).then(
+  Promise.all([getUsersApiData(), getSleepApiData(), getHydrationApiData(), getActivitiesData()]).then(
     (data) => {
       usersData = data[0].userData;
       sleepData = data[1].sleepData;
@@ -41,8 +41,14 @@ function instantiateAllData() {
   );
 }
 
+// function reloadSleep() {
+//   getSleepApiData = fetch('http://localhost:3001/api/v1/sleep')
+//   .then(response => response.json())
+//   .catch(err => console.log(err))
+// }
+
 function reloadUserDashboard() {
-  Promise.all([getUsersApiData, getSleepApiData, getHydrationApiData, getActivitiesData]).then(
+  Promise.all([getUsersApiData(), getSleepApiData(), getHydrationApiData(), getActivitiesData()]).then(
     (data) => {
       usersData = data[0].userData;
       sleepData = data[1].sleepData;
@@ -50,7 +56,7 @@ function reloadUserDashboard() {
       activitiesData = data[3].activityData;
       newUserRepo = new UserRepository(usersData);
       hydration = new Hydration(hydrationData);
-      console.log(currentUser);
+      console.log("----------- reload User sleepData ----------", sleepData);
       sleepInfo = new Sleep(sleepData);
       activity = new Activities(activitiesData);
       loadUser();
@@ -60,14 +66,13 @@ function reloadUserDashboard() {
 
 // POSTS
 const addSleep = (newSleepData) => {
-  console.log('================fetch?===========', newSleepData);
   fetch('http://localhost:3001/api/v1/sleep', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newSleepData),
     })
     .then(response => response.json())
-    .then(data => console.log('**** THIS IS sleep DATA******', data))
+    .then(reloadUserDashboard())
     .catch(err => console.log(err))
 }
 
@@ -78,7 +83,7 @@ const addHydration = (newHydrationData) => {
     body: JSON.stringify(newHydrationData),
   })
   .then(response => response.json())
-  .then(data => console.log('**** THIS IS water DATA******', data))
+  .then(reloadUserDashboard())
   .catch(err => console.log(err))
 }
 
@@ -89,7 +94,7 @@ const addActivity = (newActivitiesData) => {
     body: JSON.stringify(newActivitiesData),
   })
   .then(response => response.json())
-    .then(data => console.log('**** THIS IS runnin DATA******', data))
+  .then(reloadUserDashboard())
   .catch(err => console.log(err))
 }
 
@@ -123,24 +128,20 @@ addDataButton.addEventListener("click", showForm);
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
-  console.log('-------curruserID----------', currentUser.userId);
-  console.log('---------LOAD CURRNET DATE-----------', loadCurrentDate())
   const newSleepData = {
     userID: currentUser.userId,
-    date: loadCurrentDate(),
-    // date: loadCurrentDate().split("-").join("/"),
+    date: formData.get("form-date").split("-").join("/"),
     hoursSlept: formData.get('hours-slept'),
     sleepQuality: formData.get('sleep-quality'),
   };
-  console.log('~~~~~~~~~~~~~~~newSleepData~~~~~~~~~~', newSleepData);
   const newHydrationData = {
     userID: currentUser.userId,
-    date: loadCurrentDate(),
+    date: formData.get("form-date").split("-").join("/"),
     numOunces: formData.get('ounces-drank'),
   };
   const newActivitiesData = {
     userID: currentUser.userId,
-    date: loadCurrentDate(),
+    date: formData.get("form-date").split("-").join("/"),
     numSteps: formData.get('number-steps'),
     minutesActive: formData.get('minutes-active'),
     flightsOfStairs: formData.get('flights-of-stairs'),
@@ -149,8 +150,6 @@ form.addEventListener('submit', (e) => {
   addHydration(newHydrationData);
   addActivity(newActivitiesData);
   e.target.reset();
-  // render user info to update dashboard ?? \/
-  reloadUserDashboard();
 })
   
 function loadUser() {
@@ -399,7 +398,6 @@ function renderWeekActivityData() {
   activityWeekDays.innerHTML = " ";
   const dayData = activity.getMostRecentDate(currentUser.userId);
   const weekOf = activity.getDaysForWeekData(currentUser.userId, dayData.date);
-  console.log(weekOf);
   weekOf.forEach((data) => {
     activityWeekDays.innerHTML += 
     `<div class="calendar-day">
@@ -417,6 +415,5 @@ function showForm() {
 }
 
 function loadCurrentDate() {
-  dateSelector.value = new Date().toJSON().slice(0, 10);
-  return dateSelector.value.split("-").join("/");
+
 }
