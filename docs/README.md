@@ -12,7 +12,8 @@
 - ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
 
 ## Illustrations
-  ![GitFit Activity Tracker](https://user-images.githubusercontent.com/106847513/188336341-2d6c1d78-924d-4632-929a-0b65bd26b554.png)
+  ![GitFit Activity Tracker 1](https://user-images.githubusercontent.com/63877492/191152457-5aea4500-c264-44a5-805f-dfab4abd1eef.png)
+  ![GitFit Activity Tracker 2](https://user-images.githubusercontent.com/63877492/191152752-e1648c4a-3d12-4af0-b0c0-c932b1722883.png)
 
 
 ## Features
