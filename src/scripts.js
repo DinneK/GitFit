@@ -57,7 +57,6 @@ const addSleep = (newSleepData) => {
         return response.json();
       }
     })
-    .then(instantiateAllData())
     .catch(err => console.log(err))
 }
 
@@ -74,7 +73,6 @@ const addHydration = (newHydrationData) => {
       return response.json();
     }
   })
-  .then(instantiateAllData())
   .catch(err => console.log(err))
 }
 

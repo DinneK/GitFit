@@ -15,8 +15,7 @@ class Activities {
   getMostRecentDate(userID) {
     return this.findUserByID(userID)
       .reverse()
-      .splice(0, 1)[0]
-      // .map((lastDay) => lastDay.date)[0];
+      .splice(0, 1)[0];
   }
 
   getMostRecentWeekData(userID, date) {
@@ -56,8 +55,6 @@ class Activities {
 
     return dayData.minutesActive;
   }
-  // For a user, (identified by their userId) how many minutes were
-  // they active for a given day (specified by a date)?
 
   getUserMinActiveAvgForWeek(userId, date) {
     const thisSpecifiedWeek = this.getMostRecentWeekData(userId, date);
@@ -68,7 +65,6 @@ class Activities {
 
     return parseFloat(avg.toFixed(2));
   }
-  // For a user, how many minutes active did they average for a given week (7 days)?
 
   didUserMeetStepGoalForDay(user, date) {
     const thisSpecifiedUser = this.findUserByID(user.userId);
@@ -84,7 +80,6 @@ class Activities {
         return `You're doing great: you missed your daily step goal of ${user.dailyStepGoal} by ${difference} steps.`
     }
   }
-  // For a user, did they reach their step goal for a given day (specified by a date)?
 
   filterDaysExceededUserStepGoal(user) {
     const stepFilter = [];
@@ -97,8 +92,6 @@ class Activities {
     return stepFilter
   }
 
-  // For a user, find all the days where they exceeded their step goal
-
   findUserStairClimbingRecord(userId) {
     const stairRecord = this.findUserByID(userId).reduce((prev, curr) => {
       return prev.flightsOfStairs > curr.flightsOfStairs ? prev : curr;
@@ -106,7 +99,6 @@ class Activities {
 
     return stairRecord.flightsOfStairs;
   }
-  // For a user, find their all-time stair climbing record
 
   getUsersStairsClimbedAvg(date) {
     const thatDay = this.activitiesData.filter((day) => day.date === date);
@@ -114,10 +106,11 @@ class Activities {
       (prev, curr) => prev + curr.flightsOfStairs,
       0
     );
-
-    return totalStairs / thatDay.length
+      console.log("====TOTAL STAIRS: ", totalStairs)
+      console.log("====THAT DAY LENGTH: ", totalStairs)
+      console.log("====AVG STAIRCLIMED: ", parseFloat((totalStairs / thatDay.length).toFixed(2)))
+    return parseFloat((totalStairs / thatDay.length).toFixed(2));
   }
-  // For all users, what is the average number of stairs climbed for a specified date
 
   getAllUsersStepsAvgForADay(date) {
     const allUsersForDay = this.activitiesData.filter(user => user.date === date);
@@ -125,17 +118,19 @@ class Activities {
       return acc + user.numSteps;
     }, 0) / allUsersForDay.length;
 
+    console.log("====avg Steps: ", avgSteps);
     return parseFloat(avgSteps.toFixed(2));
   }
-  // For all users, what is the average number of steps taken for a specific date
 
   getUsersAvgMinutesActiveForDay(date) {
     const dateChosen = this.activitiesData.filter((day) => day.date === date);
     const totalMins = dateChosen.reduce((prev, curr) => prev + curr.minutesActive, 0);
 
-    return totalMins / dateChosen.length
+    console.log("====TOTAL MINS: ", totalMins)
+    console.log("====date chosen LENGTH: ", dateChosen.length)
+    console.log("====AVG MINUTES ACTIVE: ", parseFloat((totalMins / dateChosen.length).toFixed(2)))
+    return parseFloat((totalMins / dateChosen.length).toFixed(2));
   }
-  // For all users, what is the average number of minutes active for a specific date
 }
 
 export default Activities;
