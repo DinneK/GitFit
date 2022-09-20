@@ -21,6 +21,7 @@ let hydrationData;
 let hydration;
 let activitiesData;
 let activity;
+let formSubmitted = false;
 
 function instantiateAllData() {
   Promise.all([getUsersApiData(), getSleepApiData(), getHydrationApiData(), getActivitiesData()]).then(
@@ -30,30 +31,15 @@ function instantiateAllData() {
       hydrationData = data[2].hydrationData;
       activitiesData = data[3].activityData;
       newUserRepo = new UserRepository(usersData);
-      currentUser = new User(
-        usersData[Math.floor(Math.random() * usersData.length)]
-      );
+      if(!formSubmitted){
+        currentUser = new User(
+          usersData[Math.floor(Math.random() * usersData.length)]
+        );
+      }
       hydration = new Hydration(hydrationData);
       sleepInfo = new Sleep(sleepData);
       activity = new Activities(activitiesData);
       loadUser();
-    }
-  );
-}
-
-function reloadUserDashboard() {
-  Promise.all([getUsersApiData(), getSleepApiData(), getHydrationApiData(), getActivitiesData()]).then(
-    (data) => {
-      usersData = data[0].userData;
-      sleepData = data[1].sleepData;
-      hydrationData = data[2].hydrationData;
-      activitiesData = data[3].activityData;
-      newUserRepo = new UserRepository(usersData);
-      hydration = new Hydration(hydrationData);
-      sleepInfo = new Sleep(sleepData);
-      activity = new Activities(activitiesData);
-      loadUser();
-      const test = sleepInfo.getDataForAWeek(currentUser.userId, sleepInfo.getLatestDayForUser(currentUser.userId));
     }
   );
 }
@@ -64,8 +50,14 @@ const addSleep = (newSleepData) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newSleepData),
     })
-    .then(response => response.json())
-    .then(reloadUserDashboard())
+    .then(response => {
+      if(!response.ok){
+        throw new Error('Sleep Data Required');
+      } else {
+        return response.json();
+      }
+    })
+    .then(instantiateAllData())
     .catch(err => console.log(err))
 }
 
@@ -75,8 +67,14 @@ const addHydration = (newHydrationData) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(newHydrationData),
   })
-  .then(response => response.json())
-  .then(reloadUserDashboard())
+  .then(response => {
+    if(!response.ok){
+      throw new Error('Hydration Data Required');
+    } else {
+      return response.json();
+    }
+  })
+  .then(instantiateAllData())
   .catch(err => console.log(err))
 }
 
@@ -86,8 +84,14 @@ const addActivity = (newActivitiesData) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(newActivitiesData),
   })
-  .then(response => response.json())
-  .then(reloadUserDashboard())
+  .then(response => {
+    if(!response.ok){
+      throw new Error('Activity Data Required');
+    } else {
+      return response.json();
+    }
+  })
+  .then(instantiateAllData())
   .catch(err => console.log(err))
 }
 
@@ -107,7 +111,7 @@ const addDataButton = document.querySelector("#addData");
 const form = document.querySelector("#form")
 
 window.addEventListener("load", instantiateAllData);
-addDataButton.addEventListener("click", showForm);
+addDataButton.addEventListener("click", showHideForm);
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -130,10 +134,12 @@ form.addEventListener('submit', (e) => {
     minutesActive: formData.get('minutes-active'),
     flightsOfStairs: formData.get('flights-of-stairs'),
   };
+  formSubmitted = true;
   addSleep(newSleepData);
   addHydration(newHydrationData);
   addActivity(newActivitiesData);
   e.target.reset();
+  showHideForm();
 })
   
 function loadUser() {
@@ -394,7 +400,12 @@ function renderWeekActivityData() {
   });
 }
 
-function showForm() {
-  addDataButton.classList.add("hidden");
-  form.classList.remove("hidden");
+function showHideForm() {
+  if(form.classList.value === "hidden") {
+    addDataButton.classList.add("hidden");
+    form.classList.remove("hidden");
+  } else {
+    addDataButton.classList.remove("hidden");
+    form.classList.add("hidden");
+  }
 }
