@@ -56,10 +56,11 @@ function reloadUserDashboard() {
       activitiesData = data[3].activityData;
       newUserRepo = new UserRepository(usersData);
       hydration = new Hydration(hydrationData);
-      console.log("----------- reload User sleepData ----------", sleepData);
       sleepInfo = new Sleep(sleepData);
       activity = new Activities(activitiesData);
       loadUser();
+      const test = sleepInfo.getDataForAWeek(currentUser.userId, sleepInfo.getLatestDayForUser(currentUser.userId));
+      console.log("TEST TEST TEST TEST", test);
     }
   );
 }
@@ -412,8 +413,4 @@ function renderWeekActivityData() {
 function showForm() {
   addDataButton.classList.add("hidden");
   form.classList.remove("hidden");
-}
-
-function loadCurrentDate() {
-
 }
