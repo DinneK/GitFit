@@ -13,9 +13,7 @@ class Activities {
   }
 
   getMostRecentDate(userID) {
-    return this.findUserByID(userID)
-      .reverse()
-      .splice(0, 1)[0];
+    return this.findUserByID(userID).reverse().splice(0, 1)[0];
   }
 
   getMostRecentWeekData(userID, date) {
@@ -68,28 +66,28 @@ class Activities {
 
   didUserMeetStepGoalForDay(user, date) {
     const thisSpecifiedUser = this.findUserByID(user.userId);
-    const getSpecifiedDay = thisSpecifiedUser.find(day => day.date === date);
+    const getSpecifiedDay = thisSpecifiedUser.find((day) => day.date === date);
     const compareStepGoals = getSpecifiedDay.numSteps >= user.dailyStepGoal;
     let difference;
 
-    if(compareStepGoals) {
-        difference = getSpecifiedDay.numSteps - user.dailyStepGoal;
-        return `CRUSHING IT! You went over your daily step goal of ${user.dailyStepGoal} by ${difference} steps!`
+    if (compareStepGoals) {
+      difference = getSpecifiedDay.numSteps - user.dailyStepGoal;
+      return `CRUSHING IT! You went over your daily step goal of ${user.dailyStepGoal} by ${difference} steps!`;
     } else {
-        difference = user.dailyStepGoal - getSpecifiedDay.numSteps;
-        return `You're doing great: you missed your daily step goal of ${user.dailyStepGoal} by ${difference} steps.`
+      difference = user.dailyStepGoal - getSpecifiedDay.numSteps;
+      return `You're doing great: you missed your daily step goal of ${user.dailyStepGoal} by ${difference} steps.`;
     }
   }
 
   filterDaysExceededUserStepGoal(user) {
     const stepFilter = [];
-    this.findUserByID(user.userId).filter(day => {
+    this.findUserByID(user.userId).filter((day) => {
       if (day.numSteps >= user.dailyStepGoal) {
-        stepFilter.push(day.date)
+        stepFilter.push(day.date);
       }
-    })
+    });
 
-    return stepFilter
+    return stepFilter;
   }
 
   findUserStairClimbingRecord(userId) {
@@ -106,29 +104,29 @@ class Activities {
       (prev, curr) => prev + curr.flightsOfStairs,
       0
     );
-      console.log("====TOTAL STAIRS: ", totalStairs)
-      console.log("====THAT DAY LENGTH: ", totalStairs)
-      console.log("====AVG STAIRCLIMED: ", parseFloat((totalStairs / thatDay.length).toFixed(2)))
+
     return parseFloat((totalStairs / thatDay.length).toFixed(2));
   }
 
   getAllUsersStepsAvgForADay(date) {
-    const allUsersForDay = this.activitiesData.filter(user => user.date === date);
-    const avgSteps = allUsersForDay.reduce((acc, user) => {
-      return acc + user.numSteps;
-    }, 0) / allUsersForDay.length;
+    const allUsersForDay = this.activitiesData.filter(
+      (user) => user.date === date
+    );
+    const avgSteps =
+      allUsersForDay.reduce((acc, user) => {
+        return acc + user.numSteps;
+      }, 0) / allUsersForDay.length;
 
-    console.log("====avg Steps: ", avgSteps);
     return parseFloat(avgSteps.toFixed(2));
   }
 
   getUsersAvgMinutesActiveForDay(date) {
     const dateChosen = this.activitiesData.filter((day) => day.date === date);
-    const totalMins = dateChosen.reduce((prev, curr) => prev + curr.minutesActive, 0);
+    const totalMins = dateChosen.reduce(
+      (prev, curr) => prev + curr.minutesActive,
+      0
+    );
 
-    console.log("====TOTAL MINS: ", totalMins)
-    console.log("====date chosen LENGTH: ", dateChosen.length)
-    console.log("====AVG MINUTES ACTIVE: ", parseFloat((totalMins / dateChosen.length).toFixed(2)))
     return parseFloat((totalMins / dateChosen.length).toFixed(2));
   }
 }
