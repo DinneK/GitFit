@@ -23,7 +23,7 @@ let activitiesData;
 let activity;
 
 function instantiateAllData() {
-  Promise.all([getUsersApiData, getSleepApiData, getHydrationApiData, getActivitiesData]).then(
+  Promise.all([getUsersApiData(), getSleepApiData(), getHydrationApiData(), getActivitiesData()]).then(
     (data) => {
       usersData = data[0].userData;
       sleepData = data[1].sleepData;
@@ -41,56 +41,101 @@ function instantiateAllData() {
   );
 }
 
+function reloadUserDashboard() {
+  Promise.all([getUsersApiData(), getSleepApiData(), getHydrationApiData(), getActivitiesData()]).then(
+    (data) => {
+      usersData = data[0].userData;
+      sleepData = data[1].sleepData;
+      hydrationData = data[2].hydrationData;
+      activitiesData = data[3].activityData;
+      newUserRepo = new UserRepository(usersData);
+      hydration = new Hydration(hydrationData);
+      sleepInfo = new Sleep(sleepData);
+      activity = new Activities(activitiesData);
+      loadUser();
+      const test = sleepInfo.getDataForAWeek(currentUser.userId, sleepInfo.getLatestDayForUser(currentUser.userId));
+    }
+  );
+}
+
+const addSleep = (newSleepData) => {
+  fetch('http://localhost:3001/api/v1/sleep', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newSleepData),
+    })
+    .then(response => response.json())
+    .then(reloadUserDashboard())
+    .catch(err => console.log(err))
+}
+
+const addHydration = (newHydrationData) => {
+  fetch('http://localhost:3001/api/v1/hydration', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newHydrationData),
+  })
+  .then(response => response.json())
+  .then(reloadUserDashboard())
+  .catch(err => console.log(err))
+}
+
+const addActivity = (newActivitiesData) => {
+  fetch('http://localhost:3001/api/v1/activity', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newActivitiesData),
+  })
+  .then(response => response.json())
+  .then(reloadUserDashboard())
+  .catch(err => console.log(err))
+}
+
 const userWidget = document.querySelector("#user-info-widget");
 const userWelcome = document.querySelector("#welcome-message");
 const singleDayHydration = document.querySelector("#single-day-ounces");
 const weeklyHydration = document.querySelector("#week-ounces");
-const sleepWidget = document.querySelector(".user-sleep-widget");
 const singleSleep = document.querySelector("#singleSleepData");
-const weeklySleep = document.querySelector("#weekSleepData");
 const sleepWeekDays = document.querySelector("#sleepWeekDays");
 const sleepAvgs = document.querySelector("#sleepAvgs");
-const allTimeAvgs = document.querySelector(".all-time-sleep-avgs");
 const friendWidget = document.querySelector("#user-friends-widget");
 const friendInfo = document.querySelector("#user-friend-info-card");
-const dailySteps = document.querySelector("#steps-per-day");
-const dailyMins = document.querySelector("#minutes-per-day");
-const dailyMiles = document.querySelector("#miles-per-day");
 const topActivity = document.querySelector("#topActivity");
 const latestActivityDayVsAll = document.querySelector("#activity-vs-all");
 const activityWeekDays = document.querySelector("#activityWeekDays");
 const addDataButton = document.querySelector("#addData");
 const form = document.querySelector("#form")
 
-
 window.addEventListener("load", instantiateAllData);
 addDataButton.addEventListener("click", showForm);
+
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
   const newSleepData = {
-    userId: currentUser.userId,
-    date: formData.get('form-date'),
+    userID: currentUser.userId,
+    date: formData.get("form-date").split("-").join("/"),
     hoursSlept: formData.get('hours-slept'),
     sleepQuality: formData.get('sleep-quality'),
   };
   const newHydrationData = {
-    userId: currentUser.userId,
-    date: formData.get('form-date'),
+    userID: currentUser.userId,
+    date: formData.get("form-date").split("-").join("/"),
     numOunces: formData.get('ounces-drank'),
   };
   const newActivitiesData = {
-    userId: currentUser.userId,
-    date: formData.get('form-date'),
+    userID: currentUser.userId,
+    date: formData.get("form-date").split("-").join("/"),
     numSteps: formData.get('number-steps'),
     minutesActive: formData.get('minutes-active'),
     flightsOfStairs: formData.get('flights-of-stairs'),
   };
-  // POST GOES HERE
-  addAnimal(newData);
+  addSleep(newSleepData);
+  addHydration(newHydrationData);
+  addActivity(newActivitiesData);
   e.target.reset();
 })
-
+  
 function loadUser() {
   renderWelcomeMessage();
   renderUserInfo();
@@ -124,12 +169,12 @@ function renderUserInfo() {
       Step Goal
     </div>
     <p class="user-step-goals">
-      ${returnStepGoalComparision()}
+      ${returnStepGoalComparison()}
     </p>
   </section>`;
 }
 
-function returnStepGoalComparision() {
+function returnStepGoalComparison() {
   if (currentUser.dailyStepGoal > newUserRepo.returnAllAvgStepGoals()) {
     return `Great job! Your daily step goal of ${
       currentUser.dailyStepGoal
@@ -142,6 +187,7 @@ function returnStepGoalComparision() {
 }
 
 function renderFriendInfo() {
+  friendWidget.innerHTML = " ";
   friendWidget.innerHTML = `<section class="user-friend-info-card">
     <h3 class="label friend" id="friend-label">
       Friends
@@ -199,6 +245,7 @@ function getDaysOfSleepWeek() {
 }
 
 function renderSleepWeek() {
+  sleepWeekDays.innerHTML = " ";
   const weekOf = getDaysOfSleepWeek();
   weekOf.forEach((data) => {
     sleepWeekDays.innerHTML += 
@@ -324,7 +371,6 @@ function compareUserMinsActiveToAll() {
 }
 
 function renderUserActivityComparison() {
-
   latestActivityDayVsAll.innerHTML = 
   `<div class="label activity-label">Your Activity Averages</div> 
   <div class="avg-card">${compareUserStepsToAll()}</div>
@@ -333,9 +379,9 @@ function renderUserActivityComparison() {
 }
 
 function renderWeekActivityData() {
+  activityWeekDays.innerHTML = " ";
   const dayData = activity.getMostRecentDate(currentUser.userId);
   const weekOf = activity.getDaysForWeekData(currentUser.userId, dayData.date);
-  console.log(weekOf);
   weekOf.forEach((data) => {
     activityWeekDays.innerHTML += 
     `<div class="calendar-day">
@@ -351,8 +397,3 @@ function showForm() {
   addDataButton.classList.add("hidden");
   form.classList.remove("hidden");
 }
-
-function submitForm() {
-  
-}
-
