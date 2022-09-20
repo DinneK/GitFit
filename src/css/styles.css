@@ -81,13 +81,12 @@ main {
 }
 
 .label {
-  /* font-family: fangsong; */
   font-size: 1.5em;
   font-weight: bold;
-  text-align: center;
   margin: 5px;
   margin-bottom: 25px;
   margin-top: 15px;
+  text-align: center;
 }
 
 p {
@@ -117,8 +116,8 @@ b {
 .user-and-friend-widget {
   display: flex;
   height: 100%;
-  width: 100%;
   justify-content: space-evenly;
+  width: 100%;
 }
 
 .user-friends-widget {
@@ -136,13 +135,13 @@ b {
 }
 
 .user-info-card {
-  width: 25vw;
   margin-right: 7px;
+  width: 25vw;
 }
 
 .card {
-  display: flex;
   align-items: center;
+  display: flex;
   flex-direction: column;
   text-align: center;
 }
@@ -233,10 +232,10 @@ b {
 }
 
 .activity-card {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   width: 30%;
 }
 
@@ -249,8 +248,8 @@ b {
 }
 
 .avg-container {
-  width: 100%;
   margin-top: 10px;
+  width: 100%;
 }
 
 .avg-card {
@@ -258,7 +257,7 @@ b {
 }
 
 span {
-  color: orangered;
+  color: blue;
 }
 
 .weekly-activity-sub-widget {
@@ -272,15 +271,11 @@ span {
 }
 
 .activity-week-days {
-  margin-top: 5px;
   font-size: 9.5px;
+  margin-top: 5px;
 }
 
 /* FORM */
-form {
-  /* width: 50%; */
-}
-
 .user-input {
   align-items: center;
   display: flex;
@@ -290,13 +285,13 @@ form {
 
 .form-container {
   align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   background-color: white;
   border-radius: 12px;
   box-shadow: 0 1px 1px hsl(0deg 0% 0% / 8%), 0 2px 2px hsl(0deg 0% 0% / 8%), 0 4px 4px hsl(0deg 0% 0% / 8%), 0 8px 8px hsl(0deg 0% 0% / 8%), 0 16px 16px hsl(0deg 0% 0% / 8%);
+  display: flex;
+  flex-direction: column;
   font-family: "Roboto", sans-serif;
+  justify-content: center;
   }
 
 .form-section {
@@ -308,10 +303,10 @@ form {
 
 .inputs {
   display: flex;
-  margin: 10px;
   font-size: 20px;
   font-weight: bolder;
   font-family: fangsong;
+  margin: 10px;
 }
 
 .align {
@@ -320,8 +315,8 @@ form {
 }
 
 label {
-  font-weight: 100;
   font-size: 15px;
+  font-weight: 100;
 }
 
 .hidden {
