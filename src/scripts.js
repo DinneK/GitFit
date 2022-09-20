@@ -41,12 +41,6 @@ function instantiateAllData() {
   );
 }
 
-// function reloadSleep() {
-//   getSleepApiData = fetch('http://localhost:3001/api/v1/sleep')
-//   .then(response => response.json())
-//   .catch(err => console.log(err))
-// }
-
 function reloadUserDashboard() {
   Promise.all([getUsersApiData(), getSleepApiData(), getHydrationApiData(), getActivitiesData()]).then(
     (data) => {
@@ -60,12 +54,10 @@ function reloadUserDashboard() {
       activity = new Activities(activitiesData);
       loadUser();
       const test = sleepInfo.getDataForAWeek(currentUser.userId, sleepInfo.getLatestDayForUser(currentUser.userId));
-      console.log("TEST TEST TEST TEST", test);
     }
   );
 }
 
-// POSTS
 const addSleep = (newSleepData) => {
   fetch('http://localhost:3001/api/v1/sleep', {
       method: 'POST',
@@ -103,29 +95,20 @@ const userWidget = document.querySelector("#user-info-widget");
 const userWelcome = document.querySelector("#welcome-message");
 const singleDayHydration = document.querySelector("#single-day-ounces");
 const weeklyHydration = document.querySelector("#week-ounces");
-const sleepWidget = document.querySelector(".user-sleep-widget");
 const singleSleep = document.querySelector("#singleSleepData");
-const weeklySleep = document.querySelector("#weekSleepData");
 const sleepWeekDays = document.querySelector("#sleepWeekDays");
 const sleepAvgs = document.querySelector("#sleepAvgs");
-const allTimeAvgs = document.querySelector(".all-time-sleep-avgs");
 const friendWidget = document.querySelector("#user-friends-widget");
 const friendInfo = document.querySelector("#user-friend-info-card");
-const dailySteps = document.querySelector("#steps-per-day");
-const dailyMins = document.querySelector("#minutes-per-day");
-const dailyMiles = document.querySelector("#miles-per-day");
 const topActivity = document.querySelector("#topActivity");
 const latestActivityDayVsAll = document.querySelector("#activity-vs-all");
 const activityWeekDays = document.querySelector("#activityWeekDays");
 const addDataButton = document.querySelector("#addData");
 const form = document.querySelector("#form")
-const dateSelector = document.querySelector("input[type ='date']");
-
 
 window.addEventListener("load", instantiateAllData);
 addDataButton.addEventListener("click", showForm);
 
-// FORM SUBMSSION
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
@@ -186,12 +169,12 @@ function renderUserInfo() {
       Step Goal
     </div>
     <p class="user-step-goals">
-      ${returnStepGoalComparision()}
+      ${returnStepGoalComparison()}
     </p>
   </section>`;
 }
 
-function returnStepGoalComparision() {
+function returnStepGoalComparison() {
   if (currentUser.dailyStepGoal > newUserRepo.returnAllAvgStepGoals()) {
     return `Great job! Your daily step goal of ${
       currentUser.dailyStepGoal
@@ -204,6 +187,7 @@ function returnStepGoalComparision() {
 }
 
 function renderFriendInfo() {
+  friendWidget.innerHTML = " ";
   friendWidget.innerHTML = `<section class="user-friend-info-card">
     <h3 class="label friend" id="friend-label">
       Friends
@@ -387,7 +371,6 @@ function compareUserMinsActiveToAll() {
 }
 
 function renderUserActivityComparison() {
-
   latestActivityDayVsAll.innerHTML = 
   `<div class="label activity-label">Your Activity Averages</div> 
   <div class="avg-card">${compareUserStepsToAll()}</div>
