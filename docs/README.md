@@ -1,7 +1,7 @@
 # GitFit
 
 ## Abstract
-  - Ever wanted to track all your activities in one place? Well, now your can with the GitFit Activity Tracker. GitFit implements Vanilla JavaScript to allow a user to see their daily step goals in comparison to other's. Track sleep habits and water intake in one handy, convenient place. 
+  - Ever wanted to track all your activities in one place? Well, now you can with the GitFit Activity Tracker. GitFit implements Vanilla JavaScript to allow a user to see their daily step goals in comparison to others. Track sleep habits and water intake in one handy, convenient place. 
 
 ## Technologies
 - ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
@@ -20,9 +20,9 @@
 - Displays a user's data and compares their daily step goals to the average step goals of all users
 - Displays a user's friends
 - Allows a user to track sleep goals and hydration goals
-- Allows a user to add new step, sleep and hydration information
-- 100% Accessibilty Score
-- Easily tab through application enables a user to fill out a form
+- Allows a user to add new steps, sleep, and hydration information
+- 100% Accessibility Score
+- Easily tab through the application enables a user to fill out a form
 - Colorblind friendly display
 
 ## Possible Future Extensions
@@ -32,14 +32,14 @@
 - Calculate and display this trend: for a user, what days had increasing steps for 3 or more days
 
 ## Milestones
-- We cultivated a wonderful team dynamic based on well planned and thought out approaches. 
-- We engineered an API integration while negotiating each others thoughts, ideas and feelings.
+- We cultivated a wonderful team dynamic based on well-planned and thought-out approaches. 
+- We engineered an API integration while negotiating each other's thoughts, ideas, and feelings.
 - We each navigated through any potentially arising issues with an empathetic team mentality and daily EOD retros to discuss any issues or needs.
 
 ## Challenges 
 - Remaining open and willing to hear each other out. We managed this by referring back to our DTR each day.
-- Staying in the present and not rushing ahead in our work despite our deadline. We laid out a very thoughout map that we utilized to avoid these pitfalls.
-- The API was even more challenging than any of us anticipated. But due to the constant contact with our DTR we were able to properly identify when we got stuck in a rabbit hole and how to get out of it.
+- Staying in the present and not rushing ahead in our work despite our deadline. We laid out a very thorough map that we utilized to avoid these pitfalls.
+- The API was even more challenging than any of us anticipated. However, due to the constant contact with our DTR, we were able to properly identify when we got stuck in a rabbit hole and how to get out of it.
 
 ### Set Up
 1. Clone the repo
@@ -51,7 +51,7 @@
    npm install
    npm start
    ``` 
-3. Enter the following url in your browser: http://localhost:8080/
+3. Enter the following URL in your browser: http://localhost:8080/
 4. Explore the website
 
 ## Sources
